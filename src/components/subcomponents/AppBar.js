@@ -62,7 +62,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Kashaya Language
+            Kashaya Vocabulary
         </Typography>
           <IconButton edge="start" color="inherit" aria-label="home" href="#/">
             <HomeIcon />
@@ -87,21 +87,33 @@ export default function ButtonAppBar() {
 
         <List className={classes.sidenav}>
           <Divider />
-          <ListItem button >
+          <ListItem button component="a" href="#/all"  >
             <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary={'Alphabet'} />
+            <ListItemText primary={'All List'} />
           </ListItem>
           <ListItem button >
             <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary={'Vocabulary List'} />
+            <ListItemText primary={'Animals'} />
           </ListItem>
           <ListItem button >
             <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary={'Sounds'} />
+            <ListItemText primary={'Descriptions'} />
           </ListItem>
           <ListItem button >
             <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary={'Class Recordings'} />
+            <ListItemText primary={'People'} />
+          </ListItem>
+          <ListItem button >
+            <ListItemIcon> <InboxIcon /></ListItemIcon>
+            <ListItemText primary={'Plants'} />
+          </ListItem>
+          <ListItem button >
+            <ListItemIcon> <InboxIcon /></ListItemIcon>
+            <ListItemText primary={'Things'} />
+          </ListItem>
+          <ListItem button >
+            <ListItemIcon> <InboxIcon /></ListItemIcon>
+            <ListItemText primary={'World'} />
           </ListItem>
         </List>
       </SwipeableDrawer>
