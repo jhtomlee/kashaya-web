@@ -32,3 +32,4 @@ yarn-error.log*
 
 # static files
 /src/static/*
+/public/static/*
