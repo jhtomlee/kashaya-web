@@ -29,3 +29,6 @@ yarn-error.log*
 /data_cleaning/result.json
 /data_cleaning/Files/*
 /kashaya-web-pages.txt
+
+# static files
+/src/static/*
