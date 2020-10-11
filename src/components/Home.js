@@ -1,23 +1,7 @@
 import React from 'react';
-import { Container, Typography, Grid, Link } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Intro from './Home/Intro'
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      <Link
-        color="inherit"
-        href="https://github.com/jhtomlee/react-personal-setup"
-        target="_blank"
-      >
-        jhtomlee
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles({
   root: {

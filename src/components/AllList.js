@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
-  Paper, Toolbar, Tooltip, IconButton, Grid,
-  TableHead, TableRow, FormControl, InputLabel, Select, MenuItem, FormHelperText
+  Paper, Toolbar, Tooltip, IconButton,
+  TableHead, TableRow, FormControl, InputLabel, Select, MenuItem
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import FilterModal from './subcomponents/FilterModal'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -37,16 +37,46 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+/**
+ * Table row creation
+ */
 function createData(img, english, kashaya, speaker, category, subcategory) {
   return { img, english, kashaya, speaker, category, subcategory };
 }
-
 const data_json = Object.values(data)
-
 const rows = data_json.map(
   i => createData(i["Image"], i["English"], i["Kashaya"], i["Audio"], i["Category"], i["Subcategory"])
 );
 
+/**
+ * Categories creation
+ */
+const getCategories = () => {
+  const categories = new Set()
+  const subcategories = {}
+  let category;
+  let subcategoryArr;
+  data_json.forEach((row) => {
+    category = row['Category'];
+    subcategoryArr = row['Subcategory']
+    if (category in subcategories) {
+      subcategoryArr.forEach(subcategory => subcategories[category].add(subcategory))
+    } else {
+      categories.add(category)
+      subcategories[category] = new Set()
+    }
+  })
+  const categoriesArr = Array.from(categories)
+  categoriesArr.sort();
+  categories.forEach( category => {
+    const subcategoryArr = Array.from(subcategories[category])
+    subcategoryArr.sort();
+    subcategories[category] = subcategoryArr
+  })
+
+  return [categoriesArr, subcategories]
+}
+const [categories, subcategories] = getCategories();
 
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
@@ -75,27 +105,63 @@ function getComparator(order, orderBy) {
 }
 
 function AllList() {
-
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('english');
+  const [rows_state, setRows] = useState(rows);
   const classes = useStyles();
 
+
+  /**
+   * Sorting table
+   */
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('english');
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
-
   const createSortHandler = (property) => (event) => {
     handleRequestSort(event, property);
   };
-
   const handleOrderByChange = (event) => {
     setOrderBy(event.target.value);
   };
 
+  /**
+   * Filter modal
+   */
+  const [openFilter, setOpenFilter] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  // const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+  const handleOpenFilter = () => {
+    setOpenFilter(true);
+  };
+  const handleCloseFilter = () => {
+    setOpenFilter(false);
+  };
+
+  /**
+   * Filter by categories
+   */
+  useEffect(() => {
+    const newRows = rows.filter(row => selectedCategories.length===0 || selectedCategories.includes(row.category ))
+    setRows(newRows)
+  }, [selectedCategories]); 
+
+  /**
+   * Render 
+   */
   return (
     <div className={classes.root}>
+      <FilterModal
+        categories={categories}
+        subcategories={subcategories}
+        openFilter={openFilter}
+        handleCloseFilter={handleCloseFilter}
+        selectedCategories={selectedCategories}
+        // selectedSubcategories={selectedSubcategories}
+        setSelectedCategories={setSelectedCategories}
+        // setSelectedSubcategories={setSelectedSubcategories} 
+        />
       <Container maxWidth="lg" className={classes.container} >
         {/* <Typography variant="h3" component="h1" gutterBottom>
           Kashaya Vocabulary - All
@@ -121,7 +187,7 @@ function AllList() {
             </Select>
           </FormControl>
           <Tooltip title="Filter list">
-            <IconButton aria-label="filter list">
+            <IconButton aria-label="filter list" onClick={() => handleOpenFilter()}>
               <FilterListIcon />
             </IconButton>
           </Tooltip>
@@ -133,7 +199,7 @@ function AllList() {
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
-                <TableCell align="center" sortDirection='asc'
+                <TableCell align="left"
                   sortDirection={orderBy === 'english' ? order : false}>
                   {orderBy === "english" ? (
                     <TableSortLabel
@@ -154,19 +220,19 @@ function AllList() {
                       </TableSortLabel>
                     )}
                 </TableCell>
-                <TableCell align="center">Category</TableCell>
-                <TableCell align="center">Subcategories</TableCell>
+                <TableCell align="left">Category</TableCell>
+                <TableCell align="left">Subcategories</TableCell>
               </TableRow>
             </TableHead>
             {/* Table Body */}
             <TableBody>
-              {stableSort(rows, getComparator(order, orderBy))
+              {stableSort(rows_state, getComparator(order, orderBy))
                 .map((row) => (
                   <TableRow key={row.english}>
                     <TableCell component="th" scope="row">
                       <img src={row.img} width="150" height="150"></img>
                     </TableCell>
-                    <TableCell align="center">
+                    <TableCell align="left">
                       {orderBy === "english" ? (
                         <div>
                           <Typography style={{ fontWeight: 700 }}>
@@ -187,8 +253,8 @@ function AllList() {
                         )}
                     </TableCell>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
-                    <TableCell align="center">{row.category}</TableCell>
-                    <TableCell align="center">{row.subcategory}</TableCell>
+                    <TableCell align="left">{row.category}</TableCell>
+                    <TableCell align="left">{row.subcategory}</TableCell>
                   </TableRow>
                 ))}
             </TableBody>
