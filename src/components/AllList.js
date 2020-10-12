@@ -66,15 +66,21 @@ const getCategories = () => {
       subcategories[category] = new Set()
     }
   })
+
   const categoriesArr = Array.from(categories)
   categoriesArr.sort();
-  categories.forEach( category => {
+  const categoriesFinal = categoriesArr.map(category => { return { value: category, label: category } })
+
+
+  categories.forEach(category => {
     const subcategoryArr = Array.from(subcategories[category])
     subcategoryArr.sort();
-    subcategories[category] = subcategoryArr
+    subcategories[category] = subcategoryArr.map(subcategory => { return { value: subcategory, label: subcategory+" ("+category+")", category: category } })
   })
 
-  return [categoriesArr, subcategories]
+
+
+  return [categoriesFinal, subcategories]
 }
 const [categories, subcategories] = getCategories();
 
@@ -131,7 +137,7 @@ function AllList() {
    */
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  // const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+  const [selectedSubcategories, setSelectedSubcategories] = useState(null);
   const handleOpenFilter = () => {
     setOpenFilter(true);
   };
@@ -143,9 +149,32 @@ function AllList() {
    * Filter by categories
    */
   useEffect(() => {
-    const newRows = rows.filter(row => selectedCategories.length===0 || selectedCategories.includes(row.category ))
+    const newRows = rows.filter(row => {
+      if (selectedCategories.length === 0) {
+        return true;
+      } else {
+        if (selectedCategories.includes(row.category)) {
+          if (selectedSubcategories && selectedSubcategories[row.category]) {
+            if (selectedSubcategories[row.category].length === 0) {
+              return true;
+            }
+            let intersection = row.subcategory.filter(x => selectedSubcategories[row.category].includes(x));
+            if (intersection.length > 0) {
+              return true;
+            } else {
+              return false;
+            }
+          } else{
+            return true
+          }
+        } else {
+          return false;
+        }
+      }
+    }
+    )
     setRows(newRows)
-  }, [selectedCategories]); 
+  }, [selectedCategories, selectedSubcategories]);
 
   /**
    * Render 
@@ -157,11 +186,9 @@ function AllList() {
         subcategories={subcategories}
         openFilter={openFilter}
         handleCloseFilter={handleCloseFilter}
-        selectedCategories={selectedCategories}
-        // selectedSubcategories={selectedSubcategories}
         setSelectedCategories={setSelectedCategories}
-        // setSelectedSubcategories={setSelectedSubcategories} 
-        />
+        setSelectedSubcategories={setSelectedSubcategories}
+      />
       <Container maxWidth="lg" className={classes.container} >
         {/* <Typography variant="h3" component="h1" gutterBottom>
           Kashaya Vocabulary - All
