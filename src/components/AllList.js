@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
-  TableHead, TableRow, FormControl, InputLabel, Select, MenuItem
+  TableHead, TableRow, FormControl, InputLabel, Select, MenuItem,
+  InputBase, Grid
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,18 +24,56 @@ const useStyles = makeStyles(theme => ({
     minWidth: 650,
   },
   toolbarRoot: {
-    paddingLeft: theme.spacing(2),
+    paddingLeft: theme.spacing(0),
     paddingRight: theme.spacing(1),
   },
-  toolbarTitle: {
-    flex: '1 1 100%',
-  },
+  // toolbarTitle: {
+  //   flex: '1 1 100%',
+  // },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  search: {
+    flex: '1 1 100%',
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
   },
 }));
 
@@ -114,6 +154,9 @@ function getComparator(order, orderBy) {
 
 function AllList() {
   const [rows_state, setRows] = useState(rows);
+  const [inputValue, setInputValue] = useState('');
+  const [rows_temp, setRowsTemp] = useState([]);
+  const [searching, setSearching] = useState(false);
   const classes = useStyles();
 
 
@@ -148,9 +191,33 @@ function AllList() {
   };
 
   /**
+   * Search
+   */
+  const onChangeSearchInput = (event) => {
+    setInputValue(event.target.value)
+    if (event.target.value===''){
+      //end search mode
+      setInputValue()
+      setSearching(false)
+      setRows(rows_temp)
+    } else {
+      const rows = rows_temp
+      // begin search mode
+      if (!searching){
+        setRowsTemp(rows_state)
+        setSearching(true)
+      }
+      // handle search
+      const newRows = rows.filter(row => row.english.includes(event.target.value) || row.kashaya.includes(event.target.value))
+      setRows(newRows)
+    }
+  }
+
+  /**
    * Filter by categories
    */
   useEffect(() => {
+    setInputValue('')
     const newRows = rows.filter(row => {
       if (selectedCategories.length === 0) {
         return true;
@@ -176,6 +243,7 @@ function AllList() {
     }
     )
     setRows(newRows)
+    setRowsTemp(newRows)
   }, [selectedCategories, selectedSubcategories]);
 
   /**
@@ -196,13 +264,29 @@ function AllList() {
           Kashaya Vocabulary - All
         </Typography> */}
         <Toolbar className={classes.toolbarRoot}>
-          <Typography className={classes.toolbarTitle} variant="h6" id="tableTitle" component="div">
-            Kashaya Vocabulary
-          </Typography>
+          {/* <Typography className={classes.toolbarTitle} variant="h6" id="tableTitle" component="div">
+            
+          </Typography> */}
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              onChange={onChangeSearchInput}
+              type="search"
+              placeholder="Search"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+              value={inputValue}
+            />
+          </div>
           <FormControl className={classes.formControl}>
             <InputLabel shrink id="select-placeholder-label-label">
               Order by
-          </InputLabel>
+              </InputLabel>
             <Select
               labelId="select-placeholder-label-label"
               id="select-placeholder-label"
@@ -214,12 +298,14 @@ function AllList() {
               <MenuItem value="english">English</MenuItem>
               <MenuItem value="kashaya">Kashaya</MenuItem>
             </Select>
+
           </FormControl>
           <Tooltip title="Filter list">
             <IconButton aria-label="filter list" onClick={() => handleOpenFilter()}>
               <FilterListIcon />
             </IconButton>
           </Tooltip>
+
         </Toolbar>
         {/* Table Container */}
         <TableContainer component={Paper}>

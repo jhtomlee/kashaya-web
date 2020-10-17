@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Modal, Backdrop, Fade, Grid, InputLabel, Typography } from '@material-ui/core/';
+import { Modal, Backdrop, Fade, Typography } from '@material-ui/core/';
 import Select from "react-select";
 
 const useStyles = makeStyles((theme) => ({
@@ -104,7 +104,6 @@ function FilterModal(props) {
         }
       })
     }
-    console.warn(selectedSubcategories)
     setSelectedSubcategories(selectedSubcategories)
   };
 
