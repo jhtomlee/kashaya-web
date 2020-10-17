@@ -50,25 +50,45 @@ function FilterModal(props) {
   const [subcategoryOptionsTemp, setsubCategoryOptionsTemp] = useState([])
   const handleChangeCategories = (selectedOption) => {
     
-    setCategoryOptionsTemp(selectedOption)
-    //create subcategoryOptions
-    const groupedOption = []
-    if (selectedOption){
-      let temp;
-      selectedOption.forEach((category) => {
-        temp = {
-          label: category.label,
-          options: subcategories[category.label]
-        }
-        console.log(category.label, temp)
-        groupedOption.push(temp)
-      })
-    }
-    setSubcategoryOptions(groupedOption)
+    // clear previous
+    setCategoryOptionsTemp([])
+    setSubcategoryOptions([])
+    setsubCategoryOptionsTemp([])
 
-    //set selectedCategories
-    const selectedCategories = selectedOption? selectedOption.map(category => category.value ) : []
-    setSelectedCategories(selectedCategories)
+    // create and show subcategories
+    setCategoryOptionsTemp(selectedOption)
+    const temp = {
+      label: selectedOption.label,
+      options: subcategories[selectedOption.label]
+    }
+    setSubcategoryOptions([temp])
+
+    // set category
+    setSelectedCategories(selectedOption.value)
+
+    // Code for multiple categories:
+    /* 
+      setCategoryOptionsTemp(selectedOption)
+      //create subcategoryOptions
+      const groupedOption = []
+      if (selectedOption){
+        let temp;
+        console.log(selectedOption)
+        selectedOption.forEach((category) => {
+          temp = {
+            label: category.label,
+            options: subcategories[category.label]
+          }
+          console.log(category.label, temp)
+          groupedOption.push(temp)
+        })
+      }
+      setSubcategoryOptions(groupedOption)
+
+      //set selectedCategories
+      const selectedCategories = selectedOption? selectedOption.map(category => category.value ) : []
+      setSelectedCategories(selectedCategories)
+    */
 
   };
   const handleChangeSubcategories = (selectedOption) => {
@@ -129,10 +149,9 @@ function FilterModal(props) {
     >
       <Fade in={openFilter}>
         <div className={classes.paper}>
-          <h2 id="transition-modal-title">Filter by categories</h2>
+          <h2 id="transition-modal-title">Filter by category</h2>
           <Select 
             className={classes.categoriesSelect}
-            isMulti
             onChange={handleChangeCategories}
             options={categories}
             value={categoryOptionsTemp}
