@@ -75,7 +75,9 @@ const getCategories = () => {
   categories.forEach(category => {
     const subcategoryArr = Array.from(subcategories[category])
     subcategoryArr.sort();
-    subcategories[category] = subcategoryArr.map(subcategory => { return { value: subcategory, label: subcategory+" ("+category+")", category: category } })
+    subcategories[category] = subcategoryArr.map(subcategory => {
+      return { value: subcategory, label: subcategory, category: category }
+    })
   })
 
 
@@ -164,7 +166,7 @@ function AllList() {
             } else {
               return false;
             }
-          } else{
+          } else {
             return true
           }
         } else {

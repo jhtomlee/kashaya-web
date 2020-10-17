@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Modal, Backdrop, Fade, Grid } from '@material-ui/core/';
+import { Modal, Backdrop, Fade, Grid, InputLabel, Typography } from '@material-ui/core/';
 import Select from "react-select";
 
 const useStyles = makeStyles((theme) => ({
@@ -150,6 +150,8 @@ function FilterModal(props) {
       <Fade in={openFilter}>
         <div className={classes.paper}>
           <h2 id="transition-modal-title">Filter by category</h2>
+          {/* <InputLabel id="demo-simple-select-helper-label">Category</InputLabel> */}
+          <Typography>Category</Typography>
           <Select 
             className={classes.categoriesSelect}
             onChange={handleChangeCategories}
@@ -157,6 +159,8 @@ function FilterModal(props) {
             value={categoryOptionsTemp}
           />
           <br></br>
+          {/* <InputLabel id="demo-simple-select-helper-label"></InputLabel> */}
+          <Typography>Subcategories</Typography>
           <Select className={classes.categoriesSelect}
             isMulti
             onChange={handleChangeSubcategories}
