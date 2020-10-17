@@ -3,7 +3,7 @@ import {
   Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
   TableHead, TableRow, FormControl, InputLabel, Select, MenuItem,
-  InputBase, Grid
+  InputBase, Grid, Button
 } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
@@ -119,12 +119,21 @@ const getCategories = () => {
       return { value: subcategory, label: subcategory, category: category }
     })
   })
-
-
-
   return [categoriesFinal, subcategories]
 }
 const [categories, subcategories] = getCategories();
+
+/**
+ * Audio creation
+ */
+const audioMap = {}
+rows.forEach(row => {
+  row.speaker.forEach(speaker => {
+    audioMap[speaker] = new Audio(speaker)
+  })
+})
+console.log(audioMap)
+
 
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
@@ -247,6 +256,14 @@ function AllList() {
   }, [selectedCategories, selectedSubcategories]);
 
   /**
+   * Speaker
+   */
+
+  const playWord = (speaker) => {
+    audioMap[speaker].play();
+  }
+
+  /**
    * Render 
    */
   return (
@@ -337,6 +354,7 @@ function AllList() {
                 </TableCell>
                 <TableCell align="left">Category</TableCell>
                 <TableCell align="left">Subcategories</TableCell>
+                <TableCell align="left">Audio</TableCell>
               </TableRow>
             </TableHead>
             {/* Table Body */}
@@ -370,6 +388,16 @@ function AllList() {
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
                     <TableCell align="left">{row.category}</TableCell>
                     <TableCell align="left">{row.subcategory}</TableCell>
+                    <TableCell align="left">{row.speaker.map(audio =>
+
+                        <Button key={audio} size="small" className={classes.margin} onClick={() => playWord(audio)} >
+                        Play
+                        </Button>
+
+                      
+                      )}
+                    
+                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
