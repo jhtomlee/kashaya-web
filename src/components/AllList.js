@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
   TableHead, TableRow, FormControl, InputLabel, Select, MenuItem,
-  InputBase, Grid, Button
+  InputBase
 } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
+import Player from './subcomponents/Player'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -123,18 +125,6 @@ const getCategories = () => {
 }
 const [categories, subcategories] = getCategories();
 
-/**
- * Audio creation
- */
-const audioMap = {}
-rows.forEach(row => {
-  row.speaker.forEach(speaker => {
-    audioMap[speaker] = new Audio(speaker)
-  })
-})
-console.log(audioMap)
-
-
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -204,7 +194,7 @@ function AllList() {
    */
   const onChangeSearchInput = (event) => {
     setInputValue(event.target.value)
-    if (event.target.value===''){
+    if (event.target.value === '') {
       //end search mode
       setInputValue()
       setSearching(false)
@@ -212,7 +202,7 @@ function AllList() {
     } else {
       const rows = rows_temp
       // begin search mode
-      if (!searching){
+      if (!searching) {
         setRowsTemp(rows_state)
         setSearching(true)
       }
@@ -254,14 +244,6 @@ function AllList() {
     setRows(newRows)
     setRowsTemp(newRows)
   }, [selectedCategories, selectedSubcategories]);
-
-  /**
-   * Speaker
-   */
-
-  const playWord = (speaker) => {
-    audioMap[speaker].play();
-  }
 
   /**
    * Render 
@@ -352,9 +334,9 @@ function AllList() {
                       </TableSortLabel>
                     )}
                 </TableCell>
-                <TableCell align="left">Category</TableCell>
-                <TableCell align="left">Subcategories</TableCell>
-                <TableCell align="left">Audio</TableCell>
+                <TableCell align="left">Pronunciation</TableCell>
+                {/* <TableCell align="left">Category</TableCell>
+                <TableCell align="left">Subcategories</TableCell> */}
               </TableRow>
             </TableHead>
             {/* Table Body */}
@@ -386,18 +368,11 @@ function AllList() {
                         )}
                     </TableCell>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
-                    <TableCell align="left">{row.category}</TableCell>
-                    <TableCell align="left">{row.subcategory}</TableCell>
-                    <TableCell align="left">{row.speaker.map(audio =>
-
-                        <Button key={audio} size="small" className={classes.margin} onClick={() => playWord(audio)} >
-                        Play
-                        </Button>
-
-                      
-                      )}
-                    
+                    <TableCell align="left">
+                        <Player speakerPaths={row.speaker} />
                     </TableCell>
+                    {/* <TableCell align="left">{row.category}</TableCell>
+                    <TableCell align="left">{row.subcategory}</TableCell> */}
                   </TableRow>
                 ))}
             </TableBody>
