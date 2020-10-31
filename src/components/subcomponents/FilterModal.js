@@ -37,23 +37,29 @@ function FilterModal(props) {
   const [categoryOptionsTemp, setCategoryOptionsTemp] = useState([])
   const [subcategoryOptionsTemp, setsubCategoryOptionsTemp] = useState([])
   const handleChangeCategories = (selectedOption) => {
-    
+
     // clear previous
     setCategoryOptionsTemp([])
     setSubcategoryOptions([])
     setsubCategoryOptionsTemp([])
 
     // create and show subcategories
-    setCategoryOptionsTemp(selectedOption)
-    const temp = {
-      label: selectedOption.label,
-      options: subcategories[selectedOption.label]
+    if (selectedOption) {
+      setCategoryOptionsTemp(selectedOption)
+      const temp = {
+        label: selectedOption.label,
+        options: subcategories[selectedOption.label]
+      }
+      setSubcategoryOptions([temp])
+
+      // set category
+      setSelectedCategories(selectedOption.value)
+
+    } 
+    // clear categories
+    else {
+      setSelectedCategories([])
     }
-    setSubcategoryOptions([temp])
-
-    // set category
-    setSelectedCategories(selectedOption.value)
-
     // Code for multiple categories:
     /* 
       setCategoryOptionsTemp(selectedOption)
@@ -83,9 +89,9 @@ function FilterModal(props) {
     setsubCategoryOptionsTemp(selectedOption)
     //set selectedSubcategories
     const selectedSubcategories = {}
-    if (selectedOption){
+    if (selectedOption) {
       selectedOption.forEach((subcategory) => {
-        if (subcategory.category in selectedSubcategories){
+        if (subcategory.category in selectedSubcategories) {
           selectedSubcategories[subcategory.category].push(subcategory.value)
         } else {
           selectedSubcategories[subcategory.category] = [subcategory.value]
@@ -139,7 +145,8 @@ function FilterModal(props) {
           <h2 id="transition-modal-title">Filter by category</h2>
           {/* <InputLabel id="demo-simple-select-helper-label">Category</InputLabel> */}
           <Typography>Category</Typography>
-          <Select 
+          <Select
+            isClearable={true}
             className={classes.categoriesSelect}
             onChange={handleChangeCategories}
             options={categories}
