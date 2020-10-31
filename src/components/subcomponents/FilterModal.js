@@ -20,8 +20,7 @@ const useStyles = makeStyles((theme) => ({
   categoriesSelect: {
     width: '100%',
     maxWidth: 300
-  },
-
+  }
 }));
 
 function FilterModal(props) {
@@ -30,18 +29,21 @@ function FilterModal(props) {
     handleCloseFilter,
     categories,
     subcategories,
+    speakers,
     setSelectedCategories,
-    setSelectedSubcategories
+    setSelectedSubcategories,
+    setSelectedSpeakers
   } = props;
   const [subcategoryOptions, setSubcategoryOptions] = useState([])
   const [categoryOptionsTemp, setCategoryOptionsTemp] = useState([])
-  const [subcategoryOptionsTemp, setsubCategoryOptionsTemp] = useState([])
+  const [subcategoryOptionsTemp, setSubCategoryOptionsTemp] = useState([])
+  const [speakerOptionsTemp, setSpeakerOptionsTemp] = useState([])
   const handleChangeCategories = (selectedOption) => {
 
     // clear previous
     setCategoryOptionsTemp([])
     setSubcategoryOptions([])
-    setsubCategoryOptionsTemp([])
+    setSubCategoryOptionsTemp([])
 
     // create and show subcategories
     if (selectedOption) {
@@ -86,7 +88,7 @@ function FilterModal(props) {
 
   };
   const handleChangeSubcategories = (selectedOption) => {
-    setsubCategoryOptionsTemp(selectedOption)
+    setSubCategoryOptionsTemp(selectedOption)
     //set selectedSubcategories
     const selectedSubcategories = {}
     if (selectedOption) {
@@ -100,6 +102,19 @@ function FilterModal(props) {
     }
     setSelectedSubcategories(selectedSubcategories)
   };
+  const handleChangeSpeakers = (selectedOption) => {
+    // at least one speaker selected
+    if (selectedOption){
+      setSpeakerOptionsTemp(selectedOption)
+      const speakers_val = selectedOption.map(speaker_obj => speaker_obj.value)
+      setSelectedSpeakers(speakers_val)
+    } 
+    // none selected
+    else {
+      setSpeakerOptionsTemp([])
+      setSelectedSpeakers([])
+    }
+  }
 
   const groupStyles = {
     display: "flex",
@@ -143,7 +158,6 @@ function FilterModal(props) {
       <Fade in={openFilter}>
         <div className={classes.paper}>
           <h2 id="transition-modal-title">Filter by category</h2>
-          {/* <InputLabel id="demo-simple-select-helper-label">Category</InputLabel> */}
           <Typography>Category</Typography>
           <Select
             isClearable={true}
@@ -153,7 +167,6 @@ function FilterModal(props) {
             value={categoryOptionsTemp}
           />
           <br></br>
-          {/* <InputLabel id="demo-simple-select-helper-label"></InputLabel> */}
           <Typography>Subcategories</Typography>
           <Select className={classes.categoriesSelect}
             isMulti
@@ -161,6 +174,14 @@ function FilterModal(props) {
             options={subcategoryOptions}
             formatGroupLabel={formatGroupLabel}
             value={subcategoryOptionsTemp}
+          />
+          <h2 id="transition-modal-title">Filter by speaker</h2>
+          <Typography>Speaker</Typography>
+          <Select className={classes.categoriesSelect}
+            isMulti
+            onChange={handleChangeSpeakers}
+            options={speakers}
+            value={speakerOptionsTemp}
           />
         </div>
       </Fade>

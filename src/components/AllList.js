@@ -89,16 +89,6 @@ const rows = data_json.map(
 );
 
 /**
- * Audio Map
- */
-const audioMap = {}
-rows.forEach(row => {
-  row.speaker.forEach(speaker => {
-    audioMap[speaker] = new Audio(speaker)
-  })
-})
-
-/**
  * Categories creation
  */
 const getCategories = () => {
@@ -121,7 +111,6 @@ const getCategories = () => {
   categoriesArr.sort();
   const categoriesFinal = categoriesArr.map(category => { return { value: category, label: category } })
 
-
   categories.forEach(category => {
     const subcategoryArr = Array.from(subcategories[category])
     subcategoryArr.sort();
@@ -133,6 +122,34 @@ const getCategories = () => {
 }
 const [categories, subcategories] = getCategories();
 
+/**
+ * Audio Map
+ */
+const audioMap = {}
+rows.forEach(row => {
+  row.speaker.forEach(speaker => {
+    audioMap[speaker] = new Audio(speaker)
+  })
+})
+
+/**
+ * Speakers creation
+ */
+const speakers_set = new Set()
+let speaker;
+data_json.forEach(row => {
+  row['Audio'].forEach((path) => {
+    speaker = path.substring(path.length - 6, path.length - 4)
+    speakers_set.add(speaker)
+  })
+})
+const speakersArr = Array.from(speakers_set)
+speakersArr.sort();
+const speakers = speakersArr.map(s =>  { return { value: s, label: s } })
+
+/**
+ * Table sorting functions
+ */
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -159,6 +176,9 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
+/**---------------------------------
+ * -------AllList Component--------
+ * --------------------------------*/
 function AllList() {
   const [rows_state, setRows] = useState(rows);
   const [rows_temp, setRowsTemp] = useState([]);
@@ -187,6 +207,7 @@ function AllList() {
    */
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedSpeakers, setSelectedSpeakers] = useState([]);
   const [selectedSubcategories, setSelectedSubcategories] = useState(null);
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -253,6 +274,7 @@ function AllList() {
    */
   useEffect(() => {
     inputRef.current.children[0].value = "";
+    // filter categories and subcategories
     const newRows = rows.filter(row => {
       if (selectedCategories.length === 0) {
         return true;
@@ -277,9 +299,23 @@ function AllList() {
       }
     }
     )
-    setRows(newRows)
-    setRowsTemp(newRows)
-  }, [selectedCategories, selectedSubcategories]);
+    // filter speakers
+    const newRows2 = newRows.filter(row => {
+      if (selectedSpeakers.length===0){
+        return true
+      } else{
+        const rowSpeakers = row.speaker.map((path) => path.substring(path.length - 6, path.length - 4))
+        const intersection = selectedSpeakers.filter(x => rowSpeakers.includes(x) )
+        if (intersection.length > 0){
+          return true
+        } else{
+          return false
+        }
+      }
+    })
+    setRows(newRows2)
+    setRowsTemp(newRows2)
+  }, [selectedCategories, selectedSubcategories, selectedSpeakers]);
 
   /**
    * Audio
@@ -297,9 +333,11 @@ function AllList() {
         categories={categories}
         subcategories={subcategories}
         openFilter={openFilter}
+        speakers={speakers}
         handleCloseFilter={handleCloseFilter}
         setSelectedCategories={setSelectedCategories}
         setSelectedSubcategories={setSelectedSubcategories}
+        setSelectedSpeakers={setSelectedSpeakers}
       />
       <Container maxWidth="lg" className={classes.container} >
         {/* <Typography variant="h3" component="h1" gutterBottom>
