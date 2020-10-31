@@ -12,6 +12,7 @@ import Player from './subcomponents/Player'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
+import { SpeakerRounded } from '@material-ui/icons';
 
 
 const useStyles = makeStyles(theme => ({
@@ -84,12 +85,23 @@ const useStyles = makeStyles(theme => ({
  * Table row creation
  */
 function createData(img, english, kashaya, speaker, category, subcategory) {
+  speaker.sort()
   return { img, english, kashaya, speaker, category, subcategory };
 }
 const data_json = Object.values(data)
 const rows = data_json.map(
   i => createData(i["Image"], i["English"], i["Kashaya"], i["Audio"], i["Category"], i["Subcategory"])
 );
+
+/**
+ * Audio Map
+ */
+const audioMap = {}
+rows.forEach(row => {
+  row.speaker.forEach(speaker => {
+    audioMap[speaker] = new Audio(speaker)
+  })
+})
 
 /**
  * Categories creation
@@ -194,18 +206,18 @@ function AllList() {
   const inputRef = useRef("")
   const onChangeSearchInput = (event) => {
     event.persist()
-    delaySearch(event,rows_temp,rows_state)
+    delaySearch(event, rows_temp, rows_state)
   }
-  const delaySearch = useCallback(debounce( 
-    (event, rows_temp) =>{
-    if (event.target.value === '') {
-      setRows(rows_temp)
-    } else {
-      const rows = rows_temp
-      const newRows = rows.filter(row => row.english.includes(event.target.value) || row.kashaya.includes(event.target.value))
-      setRows(newRows)
-    }
-  }, 250), []);
+  const delaySearch = useCallback(debounce(
+    (event, rows_temp) => {
+      if (event.target.value === '') {
+        setRows(rows_temp)
+      } else {
+        const rows = rows_temp
+        const newRows = rows.filter(row => row.english.includes(event.target.value) || row.kashaya.includes(event.target.value))
+        setRows(newRows)
+      }
+    }, 250), []);
   /**
    * Filter by categories
    */
@@ -238,6 +250,13 @@ function AllList() {
     setRows(newRows)
     setRowsTemp(newRows)
   }, [selectedCategories, selectedSubcategories]);
+
+  /**
+   * Audio
+   */
+  const playWord = (speaker) => {
+    audioMap[speaker].play();
+  }
 
   /**
    * Render 
@@ -362,7 +381,15 @@ function AllList() {
                     </TableCell>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
                     <TableCell align="left">
-                      <Player speakerPaths={row.speaker} />
+                      {/* <Player speakerPaths={row.speaker} /> */}
+                      {row.speaker.map(audio =>
+                        <Button 
+                          style={{marginLeft:5}}
+                          key={audio} size="small" variant="contained"
+                          color="primary" onClick={() => playWord(audio)}>
+                          ▶ {audio.substring(audio.length-6, audio.length-4)}
+                        </Button> 
+                      )}
                     </TableCell>
                     {/* <TableCell align="left">{row.category}</TableCell>
                     <TableCell align="left">{row.subcategory}</TableCell> */}
