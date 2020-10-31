@@ -4,13 +4,14 @@ import {
   Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
   TableHead, TableRow, FormControl, InputLabel, Select, MenuItem,
-  InputBase, Button
+  InputBase, Button, Grid, Hidden
 } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
+import Player from './subcomponents/Player'
 
 
 const useStyles = makeStyles(theme => ({
@@ -23,11 +24,12 @@ const useStyles = makeStyles(theme => ({
     minHeight: '100vh',
   },
   table: {
-    minWidth: 650,
+    // minWidth: 360,
   },
   toolbarRoot: {
     paddingLeft: theme.spacing(0),
     paddingRight: theme.spacing(1),
+    // minWidth: 360,
   },
   formControl: {
     margin: theme.spacing(1),
@@ -145,7 +147,7 @@ data_json.forEach(row => {
 })
 const speakersArr = Array.from(speakers_set)
 speakersArr.sort();
-const speakers = speakersArr.map(s =>  { return { value: s, label: s } })
+const speakers = speakersArr.map(s => { return { value: s, label: s } })
 
 /**
  * Table sorting functions
@@ -301,14 +303,14 @@ function AllList() {
     )
     // filter speakers
     const newRows2 = newRows.filter(row => {
-      if (selectedSpeakers.length===0){
+      if (selectedSpeakers.length === 0) {
         return true
-      } else{
+      } else {
         const rowSpeakers = row.speaker.map((path) => path.substring(path.length - 6, path.length - 4))
-        const intersection = selectedSpeakers.filter(x => rowSpeakers.includes(x) )
-        if (intersection.length > 0){
+        const intersection = selectedSpeakers.filter(x => rowSpeakers.includes(x))
+        if (intersection.length > 0) {
           return true
-        } else{
+        } else {
           return false
         }
       }
@@ -339,7 +341,8 @@ function AllList() {
         setSelectedSubcategories={setSelectedSubcategories}
         setSelectedSpeakers={setSelectedSpeakers}
       />
-      <Container maxWidth="lg" className={classes.container} >
+      {/*  */}
+      <Container  maxWidth="lg" className={classes.container} >
         {/* <Typography variant="h3" component="h1" gutterBottom>
           Kashaya Vocabulary - All
         </Typography> */}
@@ -414,10 +417,13 @@ function AllList() {
                       </TableSortLabel>
                     )}
                 </TableCell>
-                <TableCell align="left">Pronunciation</TableCell>
-                {/* <TableCell align="left">Category</TableCell>
+                <Hidden xsDown>
+                  <TableCell align="left">Pronunciation</TableCell>
+                  {/* <TableCell align="left">Category</TableCell>
                 <TableCell align="left">Subcategories</TableCell> */}
+                </Hidden>
               </TableRow>
+             
             </TableHead>
             {/* Table Body */}
             <TableBody>
@@ -435,7 +441,8 @@ function AllList() {
                           </Typography>
                           <Typography >
                             {row.kashaya}
-                          </Typography> </div>
+                          </Typography>
+                        </div>
                       ) : (
                           <div>
                             <Typography style={{ fontWeight: 700 }}>
@@ -446,19 +453,28 @@ function AllList() {
                             </Typography>
                           </div>
                         )}
+                      <Hidden smUp>
+                        <Player
+                          style={{ marginTop: 24 }}
+                          speakerPaths={row.speaker}
+                        />
+                      </Hidden>
+
                     </TableCell>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
-                    <TableCell align="left">
-                      {/* <Player speakerPaths={row.speaker} /> */}
-                      {row.speaker.map(audio =>
-                        <Button
-                          style={{ marginLeft: 5 }}
-                          key={audio} size="small" variant="contained"
-                          color="primary" onClick={() => playWord(audio)}>
-                          ▶ {audio.substring(audio.length - 6, audio.length - 4)}
-                        </Button>
-                      )}
-                    </TableCell>
+                    <Hidden xsDown>
+                      <TableCell align="left">
+                        {/* <Player speakerPaths={row.speaker} /> */}
+                        {row.speaker.map(audio =>
+                          <Button
+                            style={{ marginLeft: 5 }}
+                            key={audio} size="small" variant="contained"
+                            color="primary" onClick={() => playWord(audio)}>
+                            ▶ {audio.substring(audio.length - 6, audio.length - 4)}
+                          </Button>
+                        )}
+                      </TableCell>
+                    </Hidden>
                     {/* <TableCell align="left">{row.category}</TableCell>
                     <TableCell align="left">{row.subcategory}</TableCell> */}
                   </TableRow>

@@ -48,8 +48,11 @@ function Player(props) {
 
   return (
     <div>
-      <Button size="small" onClick={() => playWord()}>
-        <span role="img" aria-label="play_symbol">▶️ </span> Play
+      <Button size="small" onClick={() => playWord()} 
+      variant="contained"
+      color="primary">
+        <span role="img" aria-label="play_symbol">▶️{' '}</span> 
+        {' Play'}
       </Button>
       <IconButton
         aria-label="more"
