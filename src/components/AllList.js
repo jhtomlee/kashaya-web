@@ -8,11 +8,9 @@ import {
 } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
-import Player from './subcomponents/Player'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
-import { SpeakerRounded } from '@material-ui/icons';
 
 
 const useStyles = makeStyles(theme => ({
@@ -31,9 +29,6 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(0),
     paddingRight: theme.spacing(1),
   },
-  // toolbarTitle: {
-  //   flex: '1 1 100%',
-  // },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
@@ -203,21 +198,56 @@ function AllList() {
   /**
    * Search
    */
+  // reference to the html search box
   const inputRef = useRef("")
+  // function triggered when seach input change
   const onChangeSearchInput = (event) => {
     event.persist()
     delaySearch(event, rows_temp, rows_state)
   }
+  // fuction called to debounce search
   const delaySearch = useCallback(debounce(
     (event, rows_temp) => {
       if (event.target.value === '') {
         setRows(rows_temp)
       } else {
         const rows = rows_temp
-        const newRows = rows.filter(row => row.english.includes(event.target.value) || row.kashaya.includes(event.target.value))
+        const query = event.target.value.toLowerCase()
+        const kashayaQueries = new Set()
+        kashayaQueries.add(query)
+        combination_helper(kashayaQueries, query)
+        const kashayaQueriesArr = Array.from(kashayaQueries)
+        const newRows = rows.filter(row => row.english.includes(query) || kashayaQueriesArr.some(q => row.kashaya.includes(q)))
         setRows(newRows)
       }
     }, 250), []);
+  // helper to create combination of queries with possible kashaya characters
+  const combination_helper = (queries, query) => {
+    if (['s', 't', 'h', '?'].every((char) => !query.includes(char))) {
+      return
+    }
+    let new_query;
+    if (query.includes('s')) {
+      new_query = query.replace('s', 'š')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('t')) {
+      new_query = query.replace('t', 'ṭ')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('h')) {
+      new_query = query.replace('h', 'ʰ')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('?')) {
+      new_query = query.replace('?', 'ʔ')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+  }
   /**
    * Filter by categories
    */
@@ -383,12 +413,12 @@ function AllList() {
                     <TableCell align="left">
                       {/* <Player speakerPaths={row.speaker} /> */}
                       {row.speaker.map(audio =>
-                        <Button 
-                          style={{marginLeft:5}}
+                        <Button
+                          style={{ marginLeft: 5 }}
                           key={audio} size="small" variant="contained"
                           color="primary" onClick={() => playWord(audio)}>
-                          ▶ {audio.substring(audio.length-6, audio.length-4)}
-                        </Button> 
+                          ▶ {audio.substring(audio.length - 6, audio.length - 4)}
+                        </Button>
                       )}
                     </TableCell>
                     {/* <TableCell align="left">{row.category}</TableCell>
