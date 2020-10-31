@@ -9,7 +9,7 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import CreateIcon from '@material-ui/icons/Create';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 
 const drawerWidth = 240;
@@ -72,7 +72,7 @@ export default function ButtonAppBar() {
             aria-label="profile"
             href="#/profile"
           >
-            <AccountCircleIcon />
+            <CreateIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -86,11 +86,11 @@ export default function ButtonAppBar() {
 
         <List className={classes.sidenav}>
           <Divider />
-          <ListItem button component="a" href="#/all"  >
+          <ListItem button component="a" href="#/all" onClick={() => toggleSideNav()}>
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary={'All List'} />
           </ListItem>
-          <ListItem button >
+          {/* <ListItem button >
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary={'Animals'} />
           </ListItem>
@@ -113,7 +113,7 @@ export default function ButtonAppBar() {
           <ListItem button >
             <ListItemIcon> <InboxIcon /></ListItemIcon>
             <ListItemText primary={'World'} />
-          </ListItem>
+          </ListItem> */}
         </List>
       </SwipeableDrawer>
     </div>
