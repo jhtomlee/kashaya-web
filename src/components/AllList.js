@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { debounce } from 'lodash';
 import {
   Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
   TableHead, TableRow, FormControl, InputLabel, Select, MenuItem,
-  InputBase
+  InputBase, Button
 } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
@@ -153,9 +154,7 @@ function getComparator(order, orderBy) {
 
 function AllList() {
   const [rows_state, setRows] = useState(rows);
-  const [inputValue, setInputValue] = useState('');
   const [rows_temp, setRowsTemp] = useState([]);
-  const [searching, setSearching] = useState(false);
   const classes = useStyles();
 
 
@@ -192,31 +191,26 @@ function AllList() {
   /**
    * Search
    */
+  const inputRef = useRef("")
   const onChangeSearchInput = (event) => {
-    setInputValue(event.target.value)
+    event.persist()
+    delaySearch(event,rows_temp,rows_state)
+  }
+  const delaySearch = useCallback(debounce( 
+    (event, rows_temp) =>{
     if (event.target.value === '') {
-      //end search mode
-      setInputValue()
-      setSearching(false)
       setRows(rows_temp)
     } else {
       const rows = rows_temp
-      // begin search mode
-      if (!searching) {
-        setRowsTemp(rows_state)
-        setSearching(true)
-      }
-      // handle search
       const newRows = rows.filter(row => row.english.includes(event.target.value) || row.kashaya.includes(event.target.value))
       setRows(newRows)
     }
-  }
-
+  }, 250), []);
   /**
    * Filter by categories
    */
   useEffect(() => {
-    setInputValue('')
+    inputRef.current.children[0].value = "";
     const newRows = rows.filter(row => {
       if (selectedCategories.length === 0) {
         return true;
@@ -263,8 +257,7 @@ function AllList() {
           Kashaya Vocabulary - All
         </Typography> */}
         <Toolbar className={classes.toolbarRoot}>
-          {/* <Typography className={classes.toolbarTitle} variant="h6" id="tableTitle" component="div">
-            
+          {/* <Typography className={classes.toolbarTitle} variant="h6" id="tableTitle" component="div"> 
           </Typography> */}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -279,7 +272,7 @@ function AllList() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-              value={inputValue}
+              ref={inputRef}
             />
           </div>
           <FormControl className={classes.formControl}>
@@ -369,7 +362,7 @@ function AllList() {
                     </TableCell>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
                     <TableCell align="left">
-                        <Player speakerPaths={row.speaker} />
+                      <Player speakerPaths={row.speaker} />
                     </TableCell>
                     {/* <TableCell align="left">{row.category}</TableCell>
                     <TableCell align="left">{row.subcategory}</TableCell> */}
