@@ -6,9 +6,10 @@ import Select from "react-select";
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     justifyContent: 'center',
-    minWidth: 300
+    minWidth: 300,
+    marginTop: 64
     // maxWidth: 500
   },
   paper: {
@@ -57,7 +58,7 @@ function FilterModal(props) {
       // set category
       setSelectedCategories(selectedOption.value)
 
-    } 
+    }
     // clear categories
     else {
       setSelectedCategories([])
@@ -104,11 +105,11 @@ function FilterModal(props) {
   };
   const handleChangeSpeakers = (selectedOption) => {
     // at least one speaker selected
-    if (selectedOption){
+    if (selectedOption) {
       setSpeakerOptionsTemp(selectedOption)
       const speakers_val = selectedOption.map(speaker_obj => speaker_obj.value)
       setSelectedSpeakers(speakers_val)
-    } 
+    }
     // none selected
     else {
       setSpeakerOptionsTemp([])
@@ -141,7 +142,6 @@ function FilterModal(props) {
     </div>
   );
 
-
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -161,6 +161,7 @@ function FilterModal(props) {
           <Typography>Category</Typography>
           <Select
             isClearable={true}
+            isSearchable={false}
             className={classes.categoriesSelect}
             onChange={handleChangeCategories}
             options={categories}
@@ -170,6 +171,7 @@ function FilterModal(props) {
           <Typography>Subcategories</Typography>
           <Select className={classes.categoriesSelect}
             isMulti
+            isSearchable={false}
             onChange={handleChangeSubcategories}
             options={subcategoryOptions}
             formatGroupLabel={formatGroupLabel}
@@ -177,11 +179,13 @@ function FilterModal(props) {
           />
           <h2 id="transition-modal-title">Filter by speaker</h2>
           <Typography>Speaker</Typography>
-          <Select className={classes.categoriesSelect}
+          <Select 
             isMulti
+            isSearchable={false}
             onChange={handleChangeSpeakers}
             options={speakers}
             value={speakerOptionsTemp}
+            maxMenuHeight={120}
           />
         </div>
       </Fade>
