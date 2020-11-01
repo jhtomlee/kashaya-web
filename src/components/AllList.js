@@ -127,12 +127,12 @@ const [categories, subcategories] = getCategories();
 /**
  * Audio Map
  */
-const audioMap = {}
-rows.forEach(row => {
-  row.speaker.forEach(speaker => {
-    audioMap[speaker] = new Audio(speaker)
-  })
-})
+// const audioMap = {}
+// rows.forEach(row => {
+//   row.speaker.forEach(speaker => {
+//     audioMap[speaker] = new Audio(speaker)
+//   })
+// })
 
 /**
  * Speakers creation
@@ -323,7 +323,8 @@ function AllList() {
    * Audio
    */
   const playWord = (speaker) => {
-    audioMap[speaker].play();
+    new Audio(speaker).play()
+    // audioMap[speaker].play();
   }
 
   /**
@@ -457,6 +458,7 @@ function AllList() {
                         <Player
                           style={{ marginTop: 24 }}
                           speakerPaths={row.speaker}
+                          selectedSpeakers={selectedSpeakers}
                         />
                       </Hidden>
 

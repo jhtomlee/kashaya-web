@@ -8,23 +8,24 @@ const ITEM_HEIGHT = 48;
 
 function Player(props) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [audioMap, setAudioMap] = useState(null);
   const [selectedAudio, setSelectedAudio] = useState(null);
   const open = Boolean(anchorEl);
 
-  const { speakerPaths } = props;
+  const { speakerPaths, selectedSpeakers } = props;
 
   useEffect(() => {
-    const temp = {}
-    speakerPaths.forEach(speakerPath => {
-      temp[speakerPath] = new Audio(speakerPath)
-    })
-    setAudioMap(temp)
     setSelectedAudio(speakerPaths[0])
   }, [speakerPaths]);
 
   const playWord = () =>{
-    audioMap[selectedAudio].play();
+    if (selectedSpeakers.length === 0 ){
+      new Audio(selectedAudio).play()
+    } else {
+      const selected = selectedSpeakers[0]
+      const i = speakerPaths.findIndex(path => path.includes(selected))
+      setSelectedAudio(speakerPaths[[i]])
+      new Audio(speakerPaths[[i]]).play()
+    }
   }
 
   const handleSpeakerClicked = (speakerPath) => {
@@ -42,7 +43,7 @@ function Player(props) {
 
   const getSpeakerName = (path) =>{
     const n = path.length
-    const speaker = path.substring(n-6, n)
+    const speaker = path.substring(n-6, n-4)
     return speaker
   }
 
