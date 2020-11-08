@@ -263,7 +263,7 @@ function AllList() {
     }, 250), []);
   // helper to create combination of queries with possible kashaya characters
   const combination_helper = (queries, query) => {
-    if (['s', 't', 'h', '?'].every((char) => !query.includes(char))) {
+    if (['s', 't', 'h', '?', '\'', '.', ':','a','e','i','o','u'].every((char) => !query.includes(char))) {
       return
     }
     let new_query;
@@ -284,6 +284,46 @@ function AllList() {
     }
     if (query.includes('?')) {
       new_query = query.replace('?', 'ʔ')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('\'')) {
+      new_query = query.replace('\'', '’')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('.')) {
+      new_query = query.replace('.', '·')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes(':')) {
+      new_query = query.replace(':', '·')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('a')) {
+      new_query = query.replace('a', 'á')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('e')) {
+      new_query = query.replace('e', 'é')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('i')) {
+      new_query = query.replace('i', 'í')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('o')) {
+      new_query = query.replace('o', 'ó')
+      queries.add(new_query)
+      combination_helper(queries, new_query)
+    }
+    if (query.includes('u')) {
+      new_query = query.replace('u', 'ú')
       queries.add(new_query)
       combination_helper(queries, new_query)
     }
