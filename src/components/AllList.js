@@ -455,11 +455,21 @@ function AllList() {
                           </div>
                         )}
                       <Hidden smUp>
-                        <Player
+                        {/* <Player
                           style={{ marginTop: 24 }}
                           speakerPaths={row.speaker}
                           selectedSpeakers={selectedSpeakers}
-                        />
+                        /> */}
+                        <Grid container direction="column">
+                          {row.speaker.map(audio =>
+                            <Button
+                              style={{ marginBottom: 5, width: '20%' }}
+                              key={audio} size="small" variant="contained"
+                              color="primary" onClick={() => playWord(audio)}>
+                              ▶ {audio.substring(audio.length - 6, audio.length - 4)}
+                            </Button>
+                          )}
+                        </Grid>
                       </Hidden>
 
                     </TableCell>
@@ -467,14 +477,16 @@ function AllList() {
                     <Hidden xsDown>
                       <TableCell align="left">
                         {/* <Player speakerPaths={row.speaker} /> */}
-                        {row.speaker.map(audio =>
-                          <Button
-                            style={{ marginLeft: 5 }}
-                            key={audio} size="small" variant="contained"
-                            color="primary" onClick={() => playWord(audio)}>
-                            ▶ {audio.substring(audio.length - 6, audio.length - 4)}
-                          </Button>
-                        )}
+                        <Grid container direction="column">
+                          {row.speaker.map(audio =>
+                            <Button
+                              style={{ marginBottom: 5, width: '20%' }}
+                              key={audio} size="small" variant="contained"
+                              color="primary" onClick={() => playWord(audio)}>
+                              ▶ {audio.substring(audio.length - 6, audio.length - 4)}
+                            </Button>
+                          )}
+                        </Grid>
                       </TableCell>
                     </Hidden>
                     {/* <TableCell align="left">{row.category}</TableCell>
