@@ -81,14 +81,27 @@ const useStyles = makeStyles(theme => ({
 /**
  * Table row creation
  */
+const orderAudio = (paths) =>{
+  const newArr = []
+  let speaker
+  for (speaker of ['HJ', 'EP', 'IJ', 'GJ', 'ML', 'AS', 'OP', 'IA', 'FD']){
+    const exists = paths.some(path => path.substring(path.length - 6, path.length - 4) === speaker )
+    if (exists){
+      const path = paths.find(path => path.substring(path.length - 6, path.length - 4) === speaker )
+      newArr.push(path)
+    }
+  }
+  return newArr
+}
 function createData(img, english, kashaya, speaker, category, subcategory) {
-  speaker.sort()
+  speaker = orderAudio(speaker)
   return { img, english, kashaya, speaker, category, subcategory };
 }
 const data_json = Object.values(data)
 const rows = data_json.map(
   i => createData(i["Image"], i["English"], i["Kashaya"], i["Audio"], i["Category"], i["Subcategory"])
 );
+
 
 /**
  * Categories creation
