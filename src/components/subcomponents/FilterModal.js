@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Modal, Backdrop, Fade, Typography, DialogActions, Button } from '@material-ui/core/';
 import Select from "react-select";
@@ -36,14 +36,14 @@ function FilterModal(props) {
     speakers,
     setSelectedCategories,
     setSelectedSubcategories,
-    setSelectedSpeakers
+    setSelectedSpeakers,
+    setFilterCount
   } = props;
   const [subcategoryOptions, setSubcategoryOptions] = useState([])
   const [categoryOptionsTemp, setCategoryOptionsTemp] = useState([])
   const [subcategoryOptionsTemp, setSubCategoryOptionsTemp] = useState([])
   const [speakerOptionsTemp, setSpeakerOptionsTemp] = useState([])
   const handleChangeCategories = (selectedOption) => {
-
     // clear previous
     setCategoryOptionsTemp([])
     setSubcategoryOptions([])
@@ -120,6 +120,29 @@ function FilterModal(props) {
     }
   }
 
+  const clearAllFilters = () => {
+    handleChangeSpeakers([])
+    handleChangeSubcategories([])
+    handleChangeCategories(null)
+  }
+ 
+   //update count
+   useEffect(() => {
+    let count = 0
+    if (!categoryOptionsTemp || categoryOptionsTemp.length===0) {
+      count += 0
+    } else {
+      count += 1
+    }
+    if (subcategoryOptionsTemp) {
+      count += subcategoryOptionsTemp.length
+    }
+    if (speakerOptionsTemp) {
+      count += speakerOptionsTemp.length
+    }
+    setFilterCount(count)
+  }, [categoryOptionsTemp, subcategoryOptionsTemp, speakerOptionsTemp]);
+
   const groupStyles = {
     display: "flex",
     alignItems: "center",
@@ -191,6 +214,9 @@ function FilterModal(props) {
             maxMenuHeight={120}
           />
           <DialogActions className={classes.button}>
+          <Button color="primary" onClick={clearAllFilters}>
+              Clear All
+          </Button>
             <Button color="primary" onClick={handleCloseFilter}>
               Okay
           </Button>

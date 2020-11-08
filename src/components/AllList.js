@@ -4,14 +4,13 @@ import {
   Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
   TableHead, TableRow, FormControl, InputLabel, Select, MenuItem,
-  InputBase, Button, Grid, Hidden
+  InputBase, Button, Grid, Hidden, Badge
 } from '@material-ui/core';
-import { makeStyles, fade } from '@material-ui/core/styles';
+import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
-import Player from './subcomponents/Player'
 
 
 const useStyles = makeStyles(theme => ({
@@ -85,13 +84,13 @@ const useStyles = makeStyles(theme => ({
 /**
  * Table row creation
  */
-const orderAudio = (paths) =>{
+const orderAudio = (paths) => {
   const newArr = []
   let speaker
-  for (speaker of ['HJ', 'EP', 'IJ', 'GJ', 'ML', 'AS', 'OP', 'IA', 'FD']){
-    const exists = paths.some(path => path.substring(path.length - 6, path.length - 4) === speaker )
-    if (exists){
-      const path = paths.find(path => path.substring(path.length - 6, path.length - 4) === speaker )
+  for (speaker of ['HJ', 'EP', 'IJ', 'GJ', 'ML', 'AS', 'OP', 'IA', 'FD']) {
+    const exists = paths.some(path => path.substring(path.length - 6, path.length - 4) === speaker)
+    if (exists) {
+      const path = paths.find(path => path.substring(path.length - 6, path.length - 4) === speaker)
       newArr.push(path)
     }
   }
@@ -195,6 +194,15 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
+const StyledBadge = withStyles((theme) => ({
+  badge: {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}))(Badge);
+
 /**---------------------------------
  * -------AllList Component--------
  * --------------------------------*/
@@ -202,7 +210,6 @@ function AllList() {
   const [rows_state, setRows] = useState(rows);
   const [rows_temp, setRowsTemp] = useState([]);
   const classes = useStyles();
-
 
   /**
    * Sorting table
@@ -228,6 +235,7 @@ function AllList() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSpeakers, setSelectedSpeakers] = useState([]);
   const [selectedSubcategories, setSelectedSubcategories] = useState(null);
+  const [filtersCount, setFilterCount] = useState(0)
   const handleOpenFilter = () => {
     setOpenFilter(true);
   };
@@ -263,7 +271,7 @@ function AllList() {
     }, 250), []);
   // helper to create combination of queries with possible kashaya characters
   const combination_helper = (queries, query) => {
-    if (['s', 't', 'h', '?', '\'', '.', ':','a','e','i','o','u'].every((char) => !query.includes(char))) {
+    if (['s', 't', 'h', '?', '\'', '.', ':', 'a', 'e', 'i', 'o', 'u'].every((char) => !query.includes(char))) {
       return
     }
     let new_query;
@@ -398,9 +406,10 @@ function AllList() {
         setSelectedCategories={setSelectedCategories}
         setSelectedSubcategories={setSelectedSubcategories}
         setSelectedSpeakers={setSelectedSpeakers}
+        setFilterCount={setFilterCount}
       />
       {/*  */}
-      <Container  maxWidth="lg" className={classes.container} >
+      <Container maxWidth="lg" className={classes.container} >
         {/* <Typography variant="h3" component="h1" gutterBottom>
           Kashaya Vocabulary - All
         </Typography> */}
@@ -442,11 +451,17 @@ function AllList() {
           </FormControl>
           <Tooltip title="Filter list">
             <IconButton aria-label="filter list" onClick={() => handleOpenFilter()}>
-              <FilterListIcon />
+              {filtersCount === 0 || !filtersCount?
+                <FilterListIcon />
+                :
+                <StyledBadge badgeContent={filtersCount} color="secondary">
+                  <FilterListIcon />
+                </StyledBadge>
+              }
             </IconButton>
           </Tooltip>
 
-        </Toolbar> 
+        </Toolbar>
         {/* Table Container */}
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
@@ -481,7 +496,7 @@ function AllList() {
                 <TableCell align="left">Subcategories</TableCell> */}
                 </Hidden>
               </TableRow>
-             
+
             </TableHead>
             {/* Table Body */}
             <TableBody>
