@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Modal, Backdrop, Fade, Typography } from '@material-ui/core/';
+import { Modal, Backdrop, Fade, Typography, DialogActions, Button } from '@material-ui/core/';
 import Select from "react-select";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
   categoriesSelect: {
     width: '100%',
     maxWidth: 300
+  },
+  button: {
+    marginTop: theme.spacing(3)
   }
 }));
 
@@ -179,7 +182,7 @@ function FilterModal(props) {
           />
           <h2 id="transition-modal-title">Filter by speaker</h2>
           <Typography>Speaker</Typography>
-          <Select 
+          <Select
             isMulti
             isSearchable={false}
             onChange={handleChangeSpeakers}
@@ -187,6 +190,11 @@ function FilterModal(props) {
             value={speakerOptionsTemp}
             maxMenuHeight={120}
           />
+          <DialogActions className={classes.button}>
+            <Button color="primary" onClick={handleCloseFilter}>
+              Okay
+          </Button>
+          </DialogActions>
         </div>
       </Fade>
     </Modal>

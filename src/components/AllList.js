@@ -24,11 +24,15 @@ const useStyles = makeStyles(theme => ({
     minHeight: '100vh',
   },
   table: {
-    // minWidth: 360,
+    // minWidth: 360,    
   },
   toolbarRoot: {
     paddingLeft: theme.spacing(0),
     paddingRight: theme.spacing(1),
+    // zIndex: theme.zIndex.drawer + 1,
+    // position: "fixed",
+    // width: "100%"
+    // top: 0
     // minWidth: 360,
   },
   formControl: {
@@ -360,7 +364,7 @@ function AllList() {
         {/* <Typography variant="h3" component="h1" gutterBottom>
           Kashaya Vocabulary - All
         </Typography> */}
-        <Toolbar className={classes.toolbarRoot}>
+        <Toolbar position="fixed" className={classes.toolbarRoot}>
           {/* <Typography className={classes.toolbarTitle} variant="h6" id="tableTitle" component="div"> 
           </Typography> */}
           <div className={classes.search}>
@@ -402,15 +406,15 @@ function AllList() {
             </IconButton>
           </Tooltip>
 
-        </Toolbar>
+        </Toolbar> 
         {/* Table Container */}
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             {/* Table Head */}
-            <TableHead>
-              <TableRow>
-                <TableCell></TableCell>
-                <TableCell align="left"
+            <TableHead className={classes.head}>
+              <TableRow className={classes.head}>
+                <TableCell className={classes.head} ></TableCell>
+                <TableCell align="left" className={classes.head}
                   sortDirection={orderBy === 'english' ? order : false}>
                   {orderBy === "english" ? (
                     <TableSortLabel
@@ -432,7 +436,7 @@ function AllList() {
                     )}
                 </TableCell>
                 <Hidden xsDown>
-                  <TableCell align="left">Pronunciation</TableCell>
+                  <TableCell className={classes.head} align="left">Pronunciation</TableCell>
                   {/* <TableCell align="left">Category</TableCell>
                 <TableCell align="left">Subcategories</TableCell> */}
                 </Hidden>
