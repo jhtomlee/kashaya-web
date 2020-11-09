@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { debounce } from 'lodash';
 import {
-  Container, Typography, Table, TableBody, TableCell, TableContainer, TableSortLabel,
+  Container, Typography, Table, TableBody,
+  TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
-  TableHead, TableRow, FormControl, InputLabel, Select, MenuItem,
-  InputBase, Button, Grid, Hidden, Badge
+  TableHead, TableRow, FormControl, InputLabel, 
+  Select, MenuItem, InputBase, Button, Grid, 
+  Hidden, Badge
 } from '@material-ui/core';
 import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
 import FilterModal from './subcomponents/FilterModal'
@@ -19,11 +21,23 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   container: {
+    display: 'flex', 
+    flexDirection: 'column',
     paddingTop: 80,
-    minHeight: '100vh',
+    paddingBottom: 40,
+    maxHeight: '100vh',
+    // minHeight: '100vh',
+    // maxHeight: '100%'
+    // backgroundColor: 'orange'
+    // height: '100%',
+    // width: '100vw',
+    // backgroundColor: 'yellow'
+  },
+  tableContainer:{
+    // backgroundColor: 'green'
   },
   table: {
-    // minWidth: 360,    
+    // backgroundColor: 'blue'
   },
   toolbarRoot: {
     paddingLeft: theme.spacing(0),
@@ -141,16 +155,6 @@ const getCategories = () => {
 const [categories, subcategories] = getCategories();
 
 /**
- * Audio Map
- */
-// const audioMap = {}
-// rows.forEach(row => {
-//   row.speaker.forEach(speaker => {
-//     audioMap[speaker] = new Audio(speaker)
-//   })
-// })
-
-/**
  * Speakers creation
  */
 const speakers_set = new Set()
@@ -177,7 +181,6 @@ function stableSort(array, comparator) {
   });
   return stabilizedThis.map((el) => el[0]);
 }
-
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -187,13 +190,15 @@ function descendingComparator(a, b, orderBy) {
   }
   return 0;
 }
-
 function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
+/**
+ * Functional component: styled-badge
+ */
 const StyledBadge = withStyles((theme) => ({
   badge: {
     right: -3,
@@ -408,8 +413,11 @@ function AllList() {
         setSelectedSpeakers={setSelectedSpeakers}
         setFilterCount={setFilterCount}
       />
-      {/*  */}
-      <Container maxWidth="lg" className={classes.container} >
+      {/* App bar space*/}
+      {/* <Container maxWidth="lg" style={{minHeight: 80,position: '-webkit-sticky', position: "sticky", top:0, backgroundColor:'aqua', zIndex:  5}} >
+      </Container> */}
+      {/* <Container maxWidth="lg" style={{maxHeight: 500, backgroundColor:'yellow'}}>  */}
+      <Container maxWidth="lg" className={classes.container}>
         {/* <Typography variant="h3" component="h1" gutterBottom>
           Kashaya Vocabulary - All
         </Typography> */}
@@ -463,13 +471,13 @@ function AllList() {
 
         </Toolbar>
         {/* Table Container */}
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
+        <TableContainer component={Paper} className={classes.tableContainer}>
+          <Table stickyHeader className={classes.table} aria-label="simple table" >
             {/* Table Head */}
-            <TableHead className={classes.head}>
-              <TableRow className={classes.head}>
-                <TableCell className={classes.head} ></TableCell>
-                <TableCell align="left" className={classes.head}
+            <TableHead >
+              <TableRow >
+                <TableCell ></TableCell>
+                <TableCell align="left" 
                   sortDirection={orderBy === 'english' ? order : false}>
                   {orderBy === "english" ? (
                     <TableSortLabel
@@ -491,7 +499,7 @@ function AllList() {
                     )}
                 </TableCell>
                 <Hidden xsDown>
-                  <TableCell className={classes.head} align="left">Pronunciation</TableCell>
+                  <TableCell  align="left">Pronunciation</TableCell>
                   {/* <TableCell align="left">Category</TableCell>
                 <TableCell align="left">Subcategories</TableCell> */}
                 </Hidden>
@@ -570,6 +578,7 @@ function AllList() {
         </TableContainer>
 
       </Container>
+      {/* </Container> */}
     </div>
   );
 }
