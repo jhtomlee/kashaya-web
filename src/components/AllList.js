@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { debounce } from 'lodash';
 import {
   Container, Typography, Table, TableBody,
-  TableCell, TableContainer, TableSortLabel,
-  Paper, Toolbar, Tooltip, IconButton,
-  TableHead, TableRow, FormControl, InputLabel,
-  Select, MenuItem, InputBase, Button, Grid,
+  TableCell, TableContainer,
+  Paper, Tooltip, IconButton,
+  TableHead, TableRow,
+  InputBase, Button, Grid,
   Hidden, Badge
 } from '@material-ui/core';
 import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
@@ -232,7 +232,7 @@ function AllList() {
   };
   const handleOrderByChange = () => {
     // setOrderBy(event.target.value);
-    if (orderBy==='english'){
+    if (orderBy === 'english') {
       setOrderBy('kashaya')
     } else {
       setOrderBy('english')
@@ -274,79 +274,167 @@ function AllList() {
         const query = event.target.value.toLowerCase()
         const kashayaQueries = new Set()
         kashayaQueries.add(query)
-        combination_helper(kashayaQueries, query)
+        make_queries(kashayaQueries, query, 0)
+        // combination_helper(kashayaQueries, query)
         const kashayaQueriesArr = Array.from(kashayaQueries)
+        console.warn(kashayaQueriesArr)
         const newRows = rows.filter(row => row.english.includes(query) || kashayaQueriesArr.some(q => row.kashaya.includes(q)))
         setRows(newRows)
       }
     }, 250), []);
   // helper to create combination of queries with possible kashaya characters
-  const combination_helper = (queries, query) => {
-    if (['s', 't', 'h', '?', '\'', '.', ':', 'a', 'e', 'i', 'o', 'u'].every((char) => !query.includes(char))) {
-      return
+  const make_queries = (queries, query, i) => {
+    if (query.length === i) {
+      return;
     }
-    let new_query;
-    if (query.includes('s')) {
-      new_query = query.replace('s', 'š')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('t')) {
-      new_query = query.replace('t', 'ṭ')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('h')) {
-      new_query = query.replace('h', 'ʰ')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('?')) {
-      new_query = query.replace('?', 'ʔ')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('\'')) {
-      new_query = query.replace('\'', '’')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('.')) {
-      new_query = query.replace('.', '·')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes(':')) {
-      new_query = query.replace(':', '·')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('a')) {
-      new_query = query.replace('a', 'á')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('e')) {
-      new_query = query.replace('e', 'é')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('i')) {
-      new_query = query.replace('i', 'í')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('o')) {
-      new_query = query.replace('o', 'ó')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
-    }
-    if (query.includes('u')) {
-      new_query = query.replace('u', 'ú')
-      queries.add(new_query)
-      combination_helper(queries, new_query)
+    let new_query = ""
+    switch (query[i]) {
+      case 's':
+        new_query = query.replaceAt(i, 'š')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case 't':
+        new_query = query.replaceAt(i, 'ṭ')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case 'h':
+        new_query = query.replaceAt(i, 'ʰ')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case '?':
+        new_query = query.replaceAt(i, 'ʔ')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case '\'':
+        new_query = query.replaceAt(i, '’')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case '.':
+        new_query = query.replaceAt(i, '·')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case ':':
+        new_query = query.replaceAt(i, '·')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case 'a':
+        new_query = query.replaceAt(i, 'á')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case 'e':
+        new_query = query.replaceAt(i, 'é')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case 'i':
+        new_query = query.replaceAt(i, 'í')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case 'o':
+        new_query = query.replaceAt(i, 'ó')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      case 'u':
+        new_query = query.replaceAt(i, 'ú')
+        queries.add(new_query)
+        make_queries(queries, query, i+1)
+        make_queries(queries, new_query, i+1)
+        break;
+      default:
+        make_queries(queries, query, i+1)
+        break;
     }
   }
+  String.prototype.replaceAt = function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+}
+  // const combination_helper = (queries, query) => {
+  //   if (['s', 't', 'h', '?', '\'', '.', ':', 'a', 'e', 'i', 'o', 'u'].every((char) => !query.includes(char))) {
+  //     return
+  //   }
+  //   let new_query;
+  //   if (query.includes('s')) {
+  //     new_query = query.replace('s', 'š')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('t')) {
+  //     new_query = query.replace('t', 'ṭ')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('h')) {
+  //     new_query = query.replace('h', 'ʰ')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('?')) {
+  //     new_query = query.replace('?', 'ʔ')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('\'')) {
+  //     new_query = query.replace('\'', '’')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('.')) {
+  //     new_query = query.replace('.', '·')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes(':')) {
+  //     new_query = query.replace(':', '·')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('a')) {
+  //     new_query = query.replace('a', 'á')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('e')) {
+  //     new_query = query.replace('e', 'é')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('i')) {
+  //     new_query = query.replace('i', 'í')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('o')) {
+  //     new_query = query.replace('o', 'ó')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  //   if (query.includes('u')) {
+  //     new_query = query.replace('u', 'ú')
+  //     queries.add(new_query)
+  //     combination_helper(queries, new_query)
+  //   }
+  // }
   /**
    * Filter by categories
    */
@@ -516,7 +604,7 @@ function AllList() {
                 </TableCell> */}
                 <TableCell align="left">
                   <Grid container direction="row">
-                  <Typography style={{paddingTop:3}}>Word</Typography>
+                    <Typography style={{ paddingTop: 3 }}>Word</Typography>
                     <IconButton size="small" onClick={() => handleOrderByChange()}>
                       <LoopIcon />
                     </IconButton>
