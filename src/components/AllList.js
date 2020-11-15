@@ -4,8 +4,8 @@ import {
   Container, Typography, Table, TableBody,
   TableCell, TableContainer, TableSortLabel,
   Paper, Toolbar, Tooltip, IconButton,
-  TableHead, TableRow, FormControl, InputLabel, 
-  Select, MenuItem, InputBase, Button, Grid, 
+  TableHead, TableRow, FormControl, InputLabel,
+  Select, MenuItem, InputBase, Button, Grid,
   Hidden, Badge
 } from '@material-ui/core';
 import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
@@ -13,6 +13,7 @@ import FilterModal from './subcomponents/FilterModal'
 import data from '../static/result.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
+import LoopIcon from '@material-ui/icons/Loop';
 
 
 const useStyles = makeStyles(theme => ({
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   container: {
-    display: 'flex', 
+    display: 'flex',
     flexDirection: 'column',
     paddingTop: 80,
     paddingBottom: 40,
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     // width: '100vw',
     // backgroundColor: 'yellow'
   },
-  tableContainer:{
+  tableContainer: {
     // backgroundColor: 'green'
   },
   table: {
@@ -229,8 +230,13 @@ function AllList() {
   const createSortHandler = (property) => (event) => {
     handleRequestSort(event, property);
   };
-  const handleOrderByChange = (event) => {
-    setOrderBy(event.target.value);
+  const handleOrderByChange = () => {
+    // setOrderBy(event.target.value);
+    if (orderBy==='english'){
+      setOrderBy('kashaya')
+    } else {
+      setOrderBy('english')
+    }
   };
 
   /**
@@ -418,12 +424,7 @@ function AllList() {
       </Container> */}
       {/* <Container maxWidth="lg" style={{maxHeight: 500, backgroundColor:'yellow'}}>  */}
       <Container maxWidth="lg" className={classes.container}>
-        {/* <Typography variant="h3" component="h1" gutterBottom>
-          Kashaya Vocabulary - All
-        </Typography> */}
-        <Toolbar position="fixed" className={classes.toolbarRoot}>
-          {/* <Typography className={classes.toolbarTitle} variant="h6" id="tableTitle" component="div"> 
-          </Typography> */}
+        {/* <Toolbar position="fixed" className={classes.toolbarRoot}>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -455,11 +456,10 @@ function AllList() {
               <MenuItem value="english">English</MenuItem>
               <MenuItem value="kashaya">Kashaya</MenuItem>
             </Select>
-
           </FormControl>
           <Tooltip title="Filter list">
             <IconButton aria-label="filter list" onClick={() => handleOpenFilter()}>
-              {filtersCount === 0 || !filtersCount?
+              {filtersCount === 0 || !filtersCount ?
                 <FilterListIcon />
                 :
                 <StyledBadge badgeContent={filtersCount} color="secondary">
@@ -468,16 +468,32 @@ function AllList() {
               }
             </IconButton>
           </Tooltip>
-
-        </Toolbar>
+        </Toolbar> */}
         {/* Table Container */}
         <TableContainer component={Paper} className={classes.tableContainer}>
           <Table stickyHeader className={classes.table} aria-label="simple table" >
             {/* Table Head */}
             <TableHead >
               <TableRow >
-                <TableCell ></TableCell>
-                <TableCell align="left" 
+                <TableCell style={{ width: "40%" }}>
+                  <div className={classes.search}>
+                    <div className={classes.searchIcon}>
+                      <SearchIcon />
+                    </div>
+                    <InputBase
+                      onChange={onChangeSearchInput}
+                      type="search"
+                      placeholder="Search"
+                      classes={{
+                        root: classes.inputRoot,
+                        input: classes.inputInput,
+                      }}
+                      inputProps={{ 'aria-label': 'search' }}
+                      ref={inputRef}
+                    />
+                  </div>
+                </TableCell>
+                {/* <TableCell align="left"
                   sortDirection={orderBy === 'english' ? order : false}>
                   {orderBy === "english" ? (
                     <TableSortLabel
@@ -485,7 +501,7 @@ function AllList() {
                       direction={orderBy === 'english' ? order : 'asc'}
                       onClick={createSortHandler('english')}
                     >
-                      <Typography>English Word</Typography>
+                      <Typography>Word</Typography>
                     </TableSortLabel>
                   ) : (
 
@@ -494,17 +510,38 @@ function AllList() {
                         direction={orderBy === 'kashaya' ? order : 'asc'}
                         onClick={createSortHandler('kashaya')}
                       >
-                        <Typography>Kashaya Word</Typography>
+                        <Typography>Word</Typography>
                       </TableSortLabel>
                     )}
+                </TableCell> */}
+                <TableCell align="left">
+                  <Grid container direction="row">
+                  <Typography style={{paddingTop:3}}>Word</Typography>
+                    <IconButton size="small" onClick={() => handleOrderByChange()}>
+                      <LoopIcon />
+                    </IconButton>
+                  </Grid>
                 </TableCell>
                 <Hidden xsDown>
-                  <TableCell  align="left">Pronunciation</TableCell>
+                  <TableCell align="left"><Typography>Listen</Typography></TableCell>
                   {/* <TableCell align="left">Category</TableCell>
                 <TableCell align="left">Subcategories</TableCell> */}
                 </Hidden>
-              </TableRow>
+                <TableCell style={{ width: 25 }} >
+                  <Tooltip title="Filter list">
+                    <IconButton style={{ padding: 0 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
+                      {filtersCount === 0 || !filtersCount ?
+                        <FilterListIcon />
+                        :
+                        <StyledBadge badgeContent={filtersCount} color="secondary">
+                          <FilterListIcon />
+                        </StyledBadge>
+                      }
+                    </IconButton>
+                  </Tooltip>
 
+                </TableCell>
+              </TableRow>
             </TableHead>
             {/* Table Body */}
             <TableBody>
@@ -512,29 +549,57 @@ function AllList() {
                 .map((row) => (
                   <TableRow key={row.english}>
                     <TableCell component="th" scope="row">
-                      <img src={row.img} width="150" height="150"></img>
+                      <Hidden xsDown>
+                        <img src={row.img} width="150" height="150"></img>
+                      </Hidden>
+                      <Hidden smUp>
+                        <img src={row.img} width="110" height="110"></img>
+                      </Hidden>
                     </TableCell>
-                    <TableCell align="left">
-                      {orderBy === "english" ? (
-                        <div>
-                          <Typography style={{ fontWeight: 700 }}>
-                            {row.english}
-                          </Typography>
-                          <Typography >
-                            {row.kashaya}
-                          </Typography>
-                        </div>
-                      ) : (
+                    <Hidden xsDown>
+                      <TableCell align="left">
+                        {orderBy === "english" ? (
                           <div>
                             <Typography style={{ fontWeight: 700 }}>
-                              {row.kashaya}
-                            </Typography>
-                            <Typography>
                               {row.english}
                             </Typography>
+                            <Typography >
+                              {row.kashaya}
+                            </Typography>
                           </div>
-                        )}
-                      <Hidden smUp>
+                        ) : (
+                            <div>
+                              <Typography style={{ fontWeight: 700 }}>
+                                {row.kashaya}
+                              </Typography>
+                              <Typography>
+                                {row.english}
+                              </Typography>
+                            </div>
+                          )}
+                      </TableCell>
+                    </Hidden>
+                    <Hidden smUp>
+                      <TableCell align="left" colSpan={2}>
+                        {orderBy === "english" ? (
+                          <div>
+                            <Typography style={{ fontWeight: 700 }}>
+                              {row.english}
+                            </Typography>
+                            <Typography >
+                              {row.kashaya}
+                            </Typography>
+                          </div>
+                        ) : (
+                            <div>
+                              <Typography style={{ fontWeight: 700 }}>
+                                {row.kashaya}
+                              </Typography>
+                              <Typography>
+                                {row.english}
+                              </Typography>
+                            </div>
+                          )}
                         {/* <Player
                           style={{ marginTop: 24 }}
                           speakerPaths={row.speaker}
@@ -550,12 +615,11 @@ function AllList() {
                             </Button>
                           )}
                         </Grid>
-                      </Hidden>
-
-                    </TableCell>
+                      </TableCell>
+                    </Hidden>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
                     <Hidden xsDown>
-                      <TableCell align="left">
+                      <TableCell colSpan={2} align="left" >
                         {/* <Player speakerPaths={row.speaker} /> */}
                         <Grid container direction="column">
                           {row.speaker.map(audio =>
@@ -569,6 +633,7 @@ function AllList() {
                         </Grid>
                       </TableCell>
                     </Hidden>
+                    {/* <TableCell > </TableCell> */}
                     {/* <TableCell align="left">{row.category}</TableCell>
                     <TableCell align="left">{row.subcategory}</TableCell> */}
                   </TableRow>
