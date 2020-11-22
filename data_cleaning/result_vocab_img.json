@@ -1,0 +1,2191 @@
+{
+    "abalone_ornament": {
+        "Filename": "abalone_ornament",
+        "English": "abalone ornament",
+        "Kashaya": "ṭʰilel",
+        "Category": "things",
+        "Subcategory": [
+            "traditional"
+        ],
+        "Image": "./static/img/abalone_ornament.jpg",
+        "Audio": [
+            "./static/audio/abalone_ornament-EP.mp3"
+        ]
+    },
+    "abalone": {
+        "Filename": "abalone",
+        "English": "abalone",
+        "Kashaya": "duʔk’aš",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/abalone.jpg",
+        "Audio": [
+            "./static/audio/abalone-ML.mp3"
+        ]
+    },
+    "acorn_mush": {
+        "Filename": "acorn_mush",
+        "English": "acorn mush",
+        "Kashaya": "ṭʰoʔo",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/acorn_mush.jpg",
+        "Audio": [
+            "./static/audio/acorn_mush-EP.mp3"
+        ]
+    },
+    "acorn": {
+        "Filename": "acorn",
+        "English": "acorn",
+        "Kashaya": "biʔdu",
+        "Category": "plants",
+        "Subcategory": [
+            "plant parts"
+        ],
+        "Image": "./static/img/acorn.jpg",
+        "Audio": [
+            "./static/audio/acorn-ML.mp3"
+        ]
+    },
+    "alder_tree": {
+        "Filename": "alder_tree",
+        "English": "alder tree",
+        "Kashaya": "qahcʰiṭi",
+        "Category": "plants",
+        "Subcategory": [
+            "trees"
+        ],
+        "Image": "./static/img/alder_tree.jpg",
+        "Audio": [
+            "./static/audio/alder_tree-EP.mp3"
+        ]
+    },
+    "animal": {
+        "Filename": "animal",
+        "English": "animal",
+        "Kashaya": "šiʔbaši",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/animal.jpg",
+        "Audio": [
+            "./static/audio/animal-ML.mp3"
+        ]
+    },
+    "ant": {
+        "Filename": "ant",
+        "English": "ant",
+        "Kashaya": "biʔk’as",
+        "Category": "animals",
+        "Subcategory": [
+            "insects",
+            "spiders"
+        ],
+        "Image": "./static/img/ant.jpg",
+        "Audio": [
+            "./static/audio/ant-ML.mp3"
+        ]
+    },
+    "arm": {
+        "Filename": "arm",
+        "English": "arm, wing",
+        "Kashaya": "ʔiša·",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/arm.jpg",
+        "Audio": [
+            "./static/audio/arm-ML.mp3"
+        ]
+    },
+    "ball": {
+        "Filename": "ball",
+        "English": "ball",
+        "Kashaya": "pʰiʔk’o",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/ball.jpg",
+        "Audio": [
+            "./static/audio/ball-IJ.mp3"
+        ]
+    },
+    "barnacle": {
+        "Filename": "barnacle",
+        "English": "barnacle",
+        "Kashaya": "qʰac’o·",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/barnacle.jpg",
+        "Audio": [
+            "./static/audio/barnacle-EP.mp3"
+        ]
+    },
+    "bay": {
+        "Filename": "bay",
+        "English": "bay",
+        "Kashaya": "šóhqʰa",
+        "Category": "world",
+        "Subcategory": [
+            "water"
+        ],
+        "Image": "./static/img/bay.jpg",
+        "Audio": [
+            "./static/audio/bay-ML.mp3"
+        ]
+    },
+    "beach_at_ocean": {
+        "Filename": "beach_at_ocean",
+        "English": "beach at ocean",
+        "Kashaya": "qʰaṭʰá·wi",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/beach_at_ocean.jpg",
+        "Audio": [
+            "./static/audio/beach_at_ocean-ML.mp3"
+        ]
+    },
+    "bear": {
+        "Filename": "bear",
+        "English": "bear",
+        "Kashaya": "buṭaqa",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/bear.jpg",
+        "Audio": [
+            "./static/audio/bear-ML.mp3"
+        ]
+    },
+    "belly": {
+        "Filename": "belly",
+        "English": "belly",
+        "Kashaya": "ʔuhqʰa",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/belly.jpg",
+        "Audio": [
+            "./static/audio/belly-ML.mp3"
+        ]
+    },
+    "bird": {
+        "Filename": "bird",
+        "English": "bird",
+        "Kashaya": "s’ihta",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/bird.jpg",
+        "Audio": [
+            "./static/audio/bird-AS.mp3"
+        ]
+    },
+    "black": {
+        "Filename": "black",
+        "English": "black",
+        "Kashaya": "k’ili",
+        "Category": "descriptions",
+        "Subcategory": [
+            "colors"
+        ],
+        "Image": "./static/img/black.jpg",
+        "Audio": [
+            "./static/audio/black-ML.mp3"
+        ]
+    },
+    "blackbird": {
+        "Filename": "blackbird",
+        "English": "blackbird",
+        "Kashaya": "c’ámʔc’aṭa",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/blackbird.jpg",
+        "Audio": [
+            "./static/audio/blackbird-EP.mp3"
+        ]
+    },
+    "bone": {
+        "Filename": "bone",
+        "English": "bone",
+        "Kashaya": "ʔihya·",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/bone.jpg",
+        "Audio": [
+            "./static/audio/bone-IJ.mp3"
+        ]
+    },
+    "bottle": {
+        "Filename": "bottle",
+        "English": "bottle",
+        "Kashaya": "woté·ya",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/bottle.jpg",
+        "Audio": [
+            "./static/audio/bottle-FD.mp3"
+        ]
+    },
+    "brain": {
+        "Filename": "brain",
+        "English": "brain",
+        "Kashaya": "hoʔt’o k’ólomʔ",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/brain.jpg",
+        "Audio": [
+            "./static/audio/brain-IJ.mp3",
+            "./static/audio/brain-AS.mp3"
+        ]
+    },
+    "bullhead": {
+        "Filename": "bullhead",
+        "English": "bullhead",
+        "Kashaya": "qʰabóṭoʔṭo",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/bullhead.jpg",
+        "Audio": [
+            "./static/audio/bullhead-ML.mp3"
+        ]
+    },
+    "burden_basket": {
+        "Filename": "burden_basket",
+        "English": "burden basket",
+        "Kashaya": "buhqʰal",
+        "Category": "things",
+        "Subcategory": [
+            "baskets"
+        ],
+        "Image": "./static/img/burden_basket.jpg",
+        "Audio": [
+            "./static/audio/burden_basket-ML.mp3"
+        ]
+    },
+    "butt": {
+        "Filename": "butt",
+        "English": "butt",
+        "Kashaya": "haṭ’a·",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/butt.jpg",
+        "Audio": [
+            "./static/audio/butt-ML.mp3"
+        ]
+    },
+    "cat": {
+        "Filename": "cat",
+        "English": "cat",
+        "Kashaya": "kúška",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/cat.jpg",
+        "Audio": [
+            "./static/audio/cat-EP.mp3"
+        ]
+    },
+    "center_post": {
+        "Filename": "center_post",
+        "English": "center post",
+        "Kashaya": "hápʰṭʰe",
+        "Category": "things",
+        "Subcategory": [
+            "traditional"
+        ],
+        "Image": "./static/img/center_post.jpg",
+        "Audio": [
+            "./static/audio/center_post-ML.mp3"
+        ]
+    },
+    "chair": {
+        "Filename": "chair",
+        "English": "chair",
+        "Kashaya": "cumátʰmaw",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/chair.jpg",
+        "Audio": [
+            "./static/audio/chair-ML.mp3"
+        ]
+    },
+    "chest": {
+        "Filename": "chest",
+        "English": "chest",
+        "Kashaya": "kunu",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/chest.jpg",
+        "Audio": [
+            "./static/audio/chest-EP.mp3"
+        ]
+    },
+    "chicken_hawk": {
+        "Filename": "chicken_hawk",
+        "English": "chicken hawk",
+        "Kashaya": "ṭʰolol",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/chicken_hawk.jpg",
+        "Audio": [
+            "./static/audio/chicken_hawk-EP.mp3"
+        ]
+    },
+    "chicken": {
+        "Filename": "chicken",
+        "English": "chicken",
+        "Kashaya": "kayi·na",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/chicken.jpg",
+        "Audio": [
+            "./static/audio/chicken-EP.mp3"
+        ]
+    },
+    "child": {
+        "Filename": "child",
+        "English": "child",
+        "Kashaya": "naṭa qáwi",
+        "Category": "people",
+        "Subcategory": [
+            "kinds of people"
+        ],
+        "Image": "./static/img/child.jpg",
+        "Audio": [
+            "./static/audio/child-AS.mp3"
+        ]
+    },
+    "clapper": {
+        "Filename": "clapper",
+        "English": "clapper",
+        "Kashaya": "pʰiʔṭ’áʔṭ’aw",
+        "Category": "things",
+        "Subcategory": [
+            "traditional"
+        ],
+        "Image": "./static/img/clapper.jpg",
+        "Audio": [
+            "./static/audio/clapper-ML.mp3"
+        ]
+    },
+    "cloth": {
+        "Filename": "cloth",
+        "English": "cloth, hide",
+        "Kashaya": "k’aṭa",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/cloth.jpg",
+        "Audio": [
+            "./static/audio/cloth-EP.mp3"
+        ]
+    },
+    "cloud": {
+        "Filename": "cloud",
+        "English": "cloud",
+        "Kashaya": "qʰaba·",
+        "Category": "world",
+        "Subcategory": [
+            "sky"
+        ],
+        "Image": "./static/img/cloud.jpg",
+        "Audio": [
+            "./static/audio/cloud-EP.mp3"
+        ]
+    },
+    "cooking_basket": {
+        "Filename": "cooking_basket",
+        "English": "cooking basket",
+        "Kashaya": "šeʔeʔ",
+        "Category": "things",
+        "Subcategory": [
+            "baskets"
+        ],
+        "Image": "./static/img/cooking_basket.jpg",
+        "Audio": [
+            "./static/audio/cooking_basket-AS.mp3"
+        ]
+    },
+    "cork": {
+        "Filename": "cork",
+        "English": "cork, stopper",
+        "Kashaya": "tapo·n",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/cork.jpg",
+        "Audio": [
+            "./static/audio/cork-AS.mp3"
+        ]
+    },
+    "cow": {
+        "Filename": "cow",
+        "English": "cow",
+        "Kashaya": "wá·ka",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/cow.jpg",
+        "Audio": [
+            "./static/audio/cow-ML.mp3"
+        ]
+    },
+    "coyote": {
+        "Filename": "coyote",
+        "English": "coyote",
+        "Kashaya": "duwi",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/coyote.jpg",
+        "Audio": [
+            "./static/audio/coyote-IJ.mp3",
+            "./static/audio/coyote-AS.mp3",
+            "./static/audio/coyote-ML.mp3"
+        ]
+    },
+    "cracker": {
+        "Filename": "cracker",
+        "English": "cracker",
+        "Kashaya": "kayé·ta",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/cracker.jpg",
+        "Audio": [
+            "./static/audio/cracker-FD.mp3"
+        ]
+    },
+    "crow": {
+        "Filename": "crow",
+        "English": "crow",
+        "Kashaya": "qʰaʔay",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/crow.jpg",
+        "Audio": [
+            "./static/audio/crow-EP.mp3"
+        ]
+    },
+    "deer_mouse": {
+        "Filename": "deer_mouse",
+        "English": "deer mouse",
+        "Kashaya": "hopʰúne",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/deer_mouse.jpg",
+        "Audio": [
+            "./static/audio/deer_mouse-ML.mp3"
+        ]
+    },
+    "dog": {
+        "Filename": "dog",
+        "English": "dog",
+        "Kashaya": "hayu",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/dog.jpg",
+        "Audio": [
+            "./static/audio/dog-FD.mp3"
+        ]
+    },
+    "door": {
+        "Filename": "door",
+        "English": "door, entrance",
+        "Kashaya": "hóhwa",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/door.jpg",
+        "Audio": [
+            "./static/audio/door-ML.mp3"
+        ]
+    },
+    "dove": {
+        "Filename": "dove",
+        "English": "dove",
+        "Kashaya": "ma·yu",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/dove.jpg",
+        "Audio": [
+            "./static/audio/dove-AS.mp3"
+        ]
+    },
+    "duck": {
+        "Filename": "duck",
+        "English": "duck",
+        "Kashaya": "q’ayal",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/duck.jpg",
+        "Audio": [
+            "./static/audio/duck-EP.mp3"
+        ]
+    },
+    "dust": {
+        "Filename": "dust",
+        "English": "dust",
+        "Kashaya": "ʔino",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/dust.jpg",
+        "Audio": [
+            "./static/audio/dust-ML.mp3"
+        ]
+    },
+    "elderberry_tree": {
+        "Filename": "elderberry_tree",
+        "English": "elderberry tree",
+        "Kashaya": "ṭʰeqʰále",
+        "Category": "plants",
+        "Subcategory": [
+            "trees"
+        ],
+        "Image": "./static/img/elderberry_tree.jpg",
+        "Audio": [
+            "./static/audio/elderberry_tree-EP.mp3"
+        ]
+    },
+    "elk_clover": {
+        "Filename": "elk_clover",
+        "English": "elk clover",
+        "Kashaya": "q’asi·sí hso",
+        "Category": "plants",
+        "Subcategory": [
+            "plant parts"
+        ],
+        "Image": "./static/img/elk_clover.jpg",
+        "Audio": [
+            "./static/audio/elk_clover-EP.mp3"
+        ]
+    },
+    "fancy_basket": {
+        "Filename": "fancy_basket",
+        "English": "fancy basket",
+        "Kashaya": "cʰiṭu·",
+        "Category": "things",
+        "Subcategory": [
+            "baskets"
+        ],
+        "Image": "./static/img/fancy_basket.jpg",
+        "Audio": [
+            "./static/audio/fancy_basket-ML.mp3"
+        ]
+    },
+    "feather": {
+        "Filename": "feather",
+        "English": "feather",
+        "Kashaya": "ʔihṭʰe",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/feather.jpg",
+        "Audio": [
+            "./static/audio/feather-EP.mp3"
+        ]
+    },
+    "file": {
+        "Filename": "file",
+        "English": "file",
+        "Kashaya": "lí·ma",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/file.jpg",
+        "Audio": [
+            "./static/audio/file-AS.mp3"
+        ]
+    },
+    "five": {
+        "Filename": "five",
+        "English": "five",
+        "Kashaya": "ṭuhšo",
+        "Category": "descriptions",
+        "Subcategory": [
+            "numbers"
+        ],
+        "Image": "./static/img/five.jpg",
+        "Audio": [
+            "./static/audio/five-ML.mp3"
+        ]
+    },
+    "flea": {
+        "Filename": "flea",
+        "English": "flea",
+        "Kashaya": "ʔimela",
+        "Category": "animals",
+        "Subcategory": [
+            "insects",
+            "spiders"
+        ],
+        "Image": "./static/img/flea.jpg",
+        "Audio": [
+            "./static/audio/flea-AS.mp3",
+            "./static/audio/flea-ML.mp3"
+        ]
+    },
+    "flower": {
+        "Filename": "flower",
+        "English": "flower",
+        "Kashaya": "ciʔdomʔ",
+        "Category": "plants",
+        "Subcategory": [
+            "plant parts"
+        ],
+        "Image": "./static/img/flower.jpg",
+        "Audio": [
+            "./static/audio/flower-ML.mp3"
+        ]
+    },
+    "food": {
+        "Filename": "food",
+        "English": "food",
+        "Kashaya": "maʔa",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/food.jpg",
+        "Audio": [
+            "./static/audio/food-ML.mp3"
+        ]
+    },
+    "foot": {
+        "Filename": "foot",
+        "English": "foot",
+        "Kashaya": "qʰama",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/foot.jpg",
+        "Audio": [
+            "./static/audio/foot-EP.mp3"
+        ]
+    },
+    "four": {
+        "Filename": "four",
+        "English": "four",
+        "Kashaya": "mihca",
+        "Category": "descriptions",
+        "Subcategory": [
+            "numbers"
+        ],
+        "Image": "./static/img/four.jpg",
+        "Audio": [
+            "./static/audio/four-ML.mp3"
+        ]
+    },
+    "frog": {
+        "Filename": "frog",
+        "English": "frog",
+        "Kashaya": "waṭaʔ",
+        "Category": "animals",
+        "Subcategory": [
+            "reptiles",
+            "amphibians"
+        ],
+        "Image": "./static/img/frog.jpg",
+        "Audio": [
+            "./static/audio/frog-EP.mp3"
+        ]
+    },
+    "game_sticks": {
+        "Filename": "game_sticks",
+        "English": "game sticks",
+        "Kashaya": "muláyʔqa",
+        "Category": "things",
+        "Subcategory": [
+            "traditional"
+        ],
+        "Image": "./static/img/game_sticks.jpg",
+        "Audio": [
+            "./static/audio/game_sticks-ML.mp3"
+        ]
+    },
+    "gopher_snake": {
+        "Filename": "gopher_snake",
+        "English": "gopher snake",
+        "Kashaya": "s’uṭi",
+        "Category": "animals",
+        "Subcategory": [
+            "reptiles",
+            "amphibians"
+        ],
+        "Image": "./static/img/gopher_snake.jpg",
+        "Audio": [
+            "./static/audio/gopher_snake-ML.mp3"
+        ]
+    },
+    "gravel": {
+        "Filename": "gravel",
+        "English": "gravel",
+        "Kashaya": "ʔaṭʰa·",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/gravel.jpg",
+        "Audio": [
+            "./static/audio/gravel-EP.mp3"
+        ]
+    },
+    "great_blue_heron": {
+        "Filename": "great_blue_heron",
+        "English": "great blue heron",
+        "Kashaya": "qʰawáʔla",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/great_blue_heron.jpg",
+        "Audio": [
+            "./static/audio/great_blue_heron-EP.mp3"
+        ]
+    },
+    "great_horned_owl": {
+        "Filename": "great_horned_owl",
+        "English": "great horned owl",
+        "Kashaya": "muhṭuṭu",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/great_horned_owl.jpg",
+        "Audio": [
+            "./static/audio/great_horned_owl-EP.mp3"
+        ]
+    },
+    "ground": {
+        "Filename": "ground",
+        "English": "ground",
+        "Kashaya": "ʔama·",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/ground.jpg",
+        "Audio": [
+            "./static/audio/ground-ML.mp3"
+        ]
+    },
+    "hair": {
+        "Filename": "hair",
+        "English": "hair",
+        "Kashaya": "heʔe",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/hair.jpg",
+        "Audio": [
+            "./static/audio/hair-ML.mp3"
+        ]
+    },
+    "handle": {
+        "Filename": "handle",
+        "English": "handle",
+        "Kashaya": "sama",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/handle.jpg",
+        "Audio": [
+            "./static/audio/handle-IJ.mp3"
+        ]
+    },
+    "head": {
+        "Filename": "head",
+        "English": "head",
+        "Kashaya": "hoʔt’o",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/head.jpg",
+        "Audio": [
+            "./static/audio/head-ML.mp3"
+        ]
+    },
+    "horse": {
+        "Filename": "horse",
+        "English": "horse",
+        "Kashaya": "kawa·yu",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/horse.jpg",
+        "Audio": [
+            "./static/audio/horse-EP.mp3"
+        ]
+    },
+    "horse_neck_clam": {
+        "Filename": "horse_neck_clam",
+        "English": "horse-neck clam",
+        "Kashaya": "kú·ṭa",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/horse_neck_clam.jpg",
+        "Audio": [
+            "./static/audio/horse_neck_clam-EP.mp3"
+        ]
+    },
+    "house": {
+        "Filename": "house",
+        "English": "house",
+        "Kashaya": "ʔahca",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/house.jpg",
+        "Audio": [
+            "./static/audio/house-IJ.mp3"
+        ]
+    },
+    "hummingbird": {
+        "Filename": "hummingbird",
+        "English": "hummingbird",
+        "Kashaya": "tule",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/hummingbird.jpg",
+        "Audio": [
+            "./static/audio/hummingbird-EP.mp3"
+        ]
+    },
+    "kelp": {
+        "Filename": "kelp",
+        "English": "kelp",
+        "Kashaya": "cʰanama",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/kelp.jpg",
+        "Audio": [
+            "./static/audio/kelp-ML.mp3"
+        ]
+    },
+    "knife": {
+        "Filename": "knife",
+        "English": "knife",
+        "Kashaya": "qahca",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/knife.jpg",
+        "Audio": [
+            "./static/audio/knife-AS.mp3"
+        ]
+    },
+    "lake": {
+        "Filename": "lake",
+        "English": "lake",
+        "Kashaya": "qʰaʔṭo",
+        "Category": "world",
+        "Subcategory": [
+            "water"
+        ],
+        "Image": "./static/img/lake.jpg",
+        "Audio": [
+            "./static/audio/lake-EP.mp3"
+        ]
+    },
+    "lightning": {
+        "Filename": "lightning",
+        "English": "lightning",
+        "Kashaya": "maʔk’alá ʔoho",
+        "Category": "world",
+        "Subcategory": [
+            "weather"
+        ],
+        "Image": "./static/img/lightning.jpg",
+        "Audio": [
+            "./static/audio/lightning-ML.mp3"
+        ]
+    },
+    "lizard": {
+        "Filename": "lizard",
+        "English": "lizard",
+        "Kashaya": "mutʰu·nu",
+        "Category": "animals",
+        "Subcategory": [
+            "reptiles",
+            "amphibians"
+        ],
+        "Image": "./static/img/lizard.jpg",
+        "Audio": [
+            "./static/audio/lizard-ML.mp3"
+        ]
+    },
+    "madrone": {
+        "Filename": "madrone",
+        "English": "madrone",
+        "Kashaya": "k’abaʔ",
+        "Category": "plants",
+        "Subcategory": [
+            "trees"
+        ],
+        "Image": "./static/img/madrone.jpg",
+        "Audio": [
+            "./static/audio/madrone-EP.mp3"
+        ]
+    },
+    "meat": {
+        "Filename": "meat",
+        "English": "meat",
+        "Kashaya": "bihše",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/meat.jpg",
+        "Audio": [
+            "./static/audio/meat-ML.mp3"
+        ]
+    },
+    "millipede": {
+        "Filename": "millipede",
+        "English": "millipede",
+        "Kashaya": "macʰiṭíʔṭi",
+        "Category": "animals",
+        "Subcategory": [
+            "insects",
+            "spiders"
+        ],
+        "Image": "./static/img/millipede.jpg",
+        "Audio": [
+            "./static/audio/millipede-EP.mp3"
+        ]
+    },
+    "money": {
+        "Filename": "money",
+        "English": "money",
+        "Kashaya": "pé·su",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/money.jpg",
+        "Audio": [
+            "./static/audio/money-IJ.mp3"
+        ]
+    },
+    "moon": {
+        "Filename": "moon",
+        "English": "moon",
+        "Kashaya": "q’ala·ša",
+        "Category": "world",
+        "Subcategory": [
+            "sky"
+        ],
+        "Image": "./static/img/moon.jpg",
+        "Audio": [
+            "./static/audio/moon-EP.mp3"
+        ]
+    },
+    "mortar_basket": {
+        "Filename": "mortar_basket",
+        "English": "mortar basket",
+        "Kashaya": "q’olo·",
+        "Category": "things",
+        "Subcategory": [
+            "baskets"
+        ],
+        "Image": "./static/img/mortar_basket.jpg",
+        "Audio": [
+            "./static/audio/mortar_basket-EP.mp3"
+        ]
+    },
+    "mosquito": {
+        "Filename": "mosquito",
+        "English": "mosquito",
+        "Kashaya": "kó·tayʔ",
+        "Category": "animals",
+        "Subcategory": [
+            "insects",
+            "spiders"
+        ],
+        "Image": "./static/img/mosquito.jpg",
+        "Audio": [
+            "./static/audio/mosquito-EP.mp3"
+        ]
+    },
+    "mountain": {
+        "Filename": "mountain",
+        "English": "mountain, hill",
+        "Kashaya": "dono",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/mountain.jpg",
+        "Audio": [
+            "./static/audio/mountain-ML.mp3"
+        ]
+    },
+    "mudhen": {
+        "Filename": "mudhen",
+        "English": "mudhen, coot",
+        "Kashaya": "s’ihta k’íli",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/mudhen.jpg",
+        "Audio": [
+            "./static/audio/mudhen-EP.mp3"
+        ]
+    },
+    "ocean": {
+        "Filename": "ocean",
+        "English": "ocean",
+        "Kashaya": "qʰamos’",
+        "Category": "world",
+        "Subcategory": [
+            "water"
+        ],
+        "Image": "./static/img/ocean.jpg",
+        "Audio": [
+            "./static/audio/ocean-ML.mp3"
+        ]
+    },
+    "one": {
+        "Filename": "one",
+        "English": "one",
+        "Kashaya": "ku",
+        "Category": "descriptions",
+        "Subcategory": [
+            "numbers"
+        ],
+        "Image": "./static/img/one.jpg",
+        "Audio": [
+            "./static/audio/one-EP.mp3"
+        ]
+    },
+    "onion": {
+        "Filename": "onion",
+        "English": "onion",
+        "Kashaya": "qʰaʔbaʔ",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/onion.jpg",
+        "Audio": [
+            "./static/audio/onion-AS.mp3"
+        ]
+    },
+    "oriole": {
+        "Filename": "oriole",
+        "English": "oriole",
+        "Kashaya": "c’ahtaʔ",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/oriole.jpg",
+        "Audio": [
+            "./static/audio/oriole-EP.mp3"
+        ]
+    },
+    "panther": {
+        "Filename": "panther",
+        "English": "panther",
+        "Kashaya": "yahmoʔ",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/panther.jpg",
+        "Audio": [
+            "./static/audio/panther-EP.mp3"
+        ]
+    },
+    "peas": {
+        "Filename": "peas",
+        "English": "peas",
+        "Kashaya": "biṭe·ṭe",
+        "Category": "plants",
+        "Subcategory": [
+            "smaller plants"
+        ],
+        "Image": "./static/img/peas.jpg",
+        "Audio": [
+            "./static/audio/peas-EP.mp3"
+        ]
+    },
+    "pelican": {
+        "Filename": "pelican",
+        "English": "pelican",
+        "Kashaya": "qʰáyhcʰi",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/pelican.jpg",
+        "Audio": [
+            "./static/audio/pelican-EP.mp3"
+        ]
+    },
+    "people": {
+        "Filename": "people",
+        "English": "people",
+        "Kashaya": "ʔacaʔ yácʰma",
+        "Category": "people",
+        "Subcategory": [
+            "kinds of people"
+        ],
+        "Image": "./static/img/people.jpg",
+        "Audio": [
+            "./static/audio/people-AS.mp3"
+        ]
+    },
+    "person": {
+        "Filename": "person",
+        "English": "person, man",
+        "Kashaya": "ʔacaʔ",
+        "Category": "people",
+        "Subcategory": [
+            "kinds of people"
+        ],
+        "Image": "./static/img/person.jpg",
+        "Audio": [
+            "./static/audio/person-IJ.mp3"
+        ]
+    },
+    "pestle": {
+        "Filename": "pestle",
+        "English": "pestle",
+        "Kashaya": "duhkul",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/pestle.jpg",
+        "Audio": [
+            "./static/audio/pestle-ML.mp3"
+        ]
+    },
+    "pig": {
+        "Filename": "pig",
+        "English": "pig",
+        "Kashaya": "koci·na",
+        "Category": "animals",
+        "Subcategory": [
+            "mammals"
+        ],
+        "Image": "./static/img/pig.jpg",
+        "Audio": [
+            "./static/audio/pig-EP.mp3"
+        ]
+    },
+    "pigeon": {
+        "Filename": "pigeon",
+        "English": "pigeon",
+        "Kashaya": "ṭ’aʔbaṭ’a",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/pigeon.jpg",
+        "Audio": [
+            "./static/audio/pigeon-EP.mp3"
+        ]
+    },
+    "pine_tree": {
+        "Filename": "pine_tree",
+        "English": "pine tree",
+        "Kashaya": "qʰawamʔ",
+        "Category": "plants",
+        "Subcategory": [
+            "trees"
+        ],
+        "Image": "./static/img/pine_tree.jpg",
+        "Audio": [
+            "./static/audio/pine_tree-EP.mp3"
+        ]
+    },
+    "poison_oak": {
+        "Filename": "poison_oak",
+        "English": "poison oak",
+        "Kashaya": "ma·ṭí·ho",
+        "Category": "plants",
+        "Subcategory": [
+            "smaller plants"
+        ],
+        "Image": "./static/img/poison_oak.jpg",
+        "Audio": [
+            "./static/audio/poison_oak-EP.mp3"
+        ]
+    },
+    "potato": {
+        "Filename": "potato",
+        "English": "potato",
+        "Kashaya": "hiʔbu",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/potato.jpg",
+        "Audio": [
+            "./static/audio/potato-AS.mp3"
+        ]
+    },
+    "prune": {
+        "Filename": "prune",
+        "English": "prune",
+        "Kashaya": "hat’",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/prune.jpg",
+        "Audio": [
+            "./static/audio/prune-EP.mp3"
+        ]
+    },
+    "rain": {
+        "Filename": "rain",
+        "English": "rain",
+        "Kashaya": "ʔihcʰe",
+        "Category": "world",
+        "Subcategory": [
+            "weather"
+        ],
+        "Image": "./static/img/rain.jpg",
+        "Audio": [
+            "./static/audio/rain-ML.mp3"
+        ]
+    },
+    "raspberry": {
+        "Filename": "raspberry",
+        "English": "raspberry",
+        "Kashaya": "bá·škʰoṭ’",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/raspberry.jpg",
+        "Audio": [
+            "./static/audio/raspberry-EP.mp3"
+        ]
+    },
+    "rattlesnake": {
+        "Filename": "rattlesnake",
+        "English": "rattlesnake",
+        "Kashaya": "muhtʰi",
+        "Category": "animals",
+        "Subcategory": [
+            "reptiles",
+            "amphibians"
+        ],
+        "Image": "./static/img/rattlesnake.jpg",
+        "Audio": [
+            "./static/audio/rattlesnake-EP.mp3"
+        ]
+    },
+    "red_tailed_hawk": {
+        "Filename": "red_tailed_hawk",
+        "English": "red tailed hawk",
+        "Kashaya": "c’iya·",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/red_tailed_hawk.jpg",
+        "Audio": [
+            "./static/audio/red_tailed_hawk-ML.mp3"
+        ]
+    },
+    "red": {
+        "Filename": "red",
+        "English": "red",
+        "Kashaya": "k’is",
+        "Category": "descriptions",
+        "Subcategory": [
+            "colors"
+        ],
+        "Image": "./static/img/red.jpg",
+        "Audio": [
+            "./static/audio/red-AS.mp3",
+            "./static/audio/red-EP.mp3"
+        ]
+    },
+    "redwood": {
+        "Filename": "redwood",
+        "English": "redwood",
+        "Kashaya": "q’asil",
+        "Category": "plants",
+        "Subcategory": [
+            "trees"
+        ],
+        "Image": "./static/img/redwood.jpg",
+        "Audio": [
+            "./static/audio/redwood-EP.mp3",
+            "./static/audio/redwood-ML.mp3"
+        ]
+    },
+    "river": {
+        "Filename": "river",
+        "English": "river",
+        "Kashaya": "biʔda",
+        "Category": "world",
+        "Subcategory": [
+            "water"
+        ],
+        "Image": "./static/img/river.jpg",
+        "Audio": [
+            "./static/audio/river-ML.mp3"
+        ]
+    },
+    "robin": {
+        "Filename": "robin",
+        "English": "robin",
+        "Kashaya": "si·ṭóṭṭo",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/robin.jpg",
+        "Audio": [
+            "./static/audio/robin-EP.mp3"
+        ]
+    },
+    "rock_kelp": {
+        "Filename": "rock_kelp",
+        "English": "rock kelp",
+        "Kashaya": "qaye",
+        "Category": "plants",
+        "Subcategory": [
+            "smaller plants"
+        ],
+        "Image": "./static/img/rock_kelp.jpg",
+        "Audio": [
+            "./static/audio/rock_kelp-ML.mp3"
+        ]
+    },
+    "rock": {
+        "Filename": "rock",
+        "English": "rock",
+        "Kashaya": "qʰaʔbe",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/rock.jpg",
+        "Audio": [
+            "./static/audio/rock-ML.mp3"
+        ]
+    },
+    "roundhouse": {
+        "Filename": "roundhouse",
+        "English": "roundhouse",
+        "Kashaya": "maʔca",
+        "Category": "things",
+        "Subcategory": [
+            "traditional"
+        ],
+        "Image": "./static/img/roundhouse.jpg",
+        "Audio": [
+            "./static/audio/roundhouse-ML.mp3"
+        ]
+    },
+    "salt": {
+        "Filename": "salt",
+        "English": "salt",
+        "Kashaya": "ṭaʔq’o",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/salt.jpg",
+        "Audio": [
+            "./static/audio/salt-EP.mp3"
+        ]
+    },
+    "sand": {
+        "Filename": "sand",
+        "English": "sand",
+        "Kashaya": "miṭaʔ",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/sand.jpg",
+        "Audio": [
+            "./static/audio/sand-EP.mp3"
+        ]
+    },
+    "sea_urchin": {
+        "Filename": "sea_urchin",
+        "English": "sea urchin",
+        "Kashaya": "qʰá·ṭ’a",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/sea_urchin.jpg",
+        "Audio": [
+            "./static/audio/sea_urchin-EP.mp3"
+        ]
+    },
+    "seal": {
+        "Filename": "seal",
+        "English": "seal",
+        "Kashaya": "qʰa bíhše",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/seal.jpg",
+        "Audio": [
+            "./static/audio/seal-ML.mp3"
+        ]
+    },
+    "seed": {
+        "Filename": "seed",
+        "English": "seed",
+        "Kashaya": "ʔiso·",
+        "Category": "plants",
+        "Subcategory": [
+            "plant parts"
+        ],
+        "Image": "./static/img/seed.jpg",
+        "Audio": [
+            "./static/audio/seed-AS.mp3"
+        ]
+    },
+    "shell_bead": {
+        "Filename": "shell_bead",
+        "English": "shell bead",
+        "Kashaya": "kuhnu",
+        "Category": "things",
+        "Subcategory": [
+            "traditional"
+        ],
+        "Image": "./static/img/shell_bead.jpg",
+        "Audio": [
+            "./static/audio/shell_bead-EP.mp3"
+        ]
+    },
+    "shoulder": {
+        "Filename": "shoulder",
+        "English": "shoulder",
+        "Kashaya": "s’uwa·",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/shoulder.jpg",
+        "Audio": [
+            "./static/audio/shoulder-IJ.mp3"
+        ]
+    },
+    "singer": {
+        "Filename": "singer",
+        "English": "singer",
+        "Kashaya": "ʔihmíncayʔ",
+        "Category": "people",
+        "Subcategory": [
+            "kinds of people"
+        ],
+        "Image": "./static/img/singer.jpg",
+        "Audio": [
+            "./static/audio/singer-ML.mp3"
+        ]
+    },
+    "sky": {
+        "Filename": "sky",
+        "English": "sky",
+        "Kashaya": "qali·",
+        "Category": "world",
+        "Subcategory": [
+            "sky"
+        ],
+        "Image": "./static/img/sky.jpg",
+        "Audio": [
+            "./static/audio/sky-ML.mp3"
+        ]
+    },
+    "smelt": {
+        "Filename": "smelt",
+        "English": "smelt",
+        "Kashaya": "hánta",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/smelt.jpg",
+        "Audio": [
+            "./static/audio/smelt-EP.mp3"
+        ]
+    },
+    "snake": {
+        "Filename": "snake",
+        "English": "snake",
+        "Kashaya": "qʰaboʔ",
+        "Category": "animals",
+        "Subcategory": [
+            "reptiles",
+            "amphibians"
+        ],
+        "Image": "./static/img/snake.jpg",
+        "Audio": [
+            "./static/audio/snake-EP.mp3"
+        ]
+    },
+    "snow": {
+        "Filename": "snow",
+        "English": "snow",
+        "Kashaya": "ʔihyu·",
+        "Category": "world",
+        "Subcategory": [
+            "weather"
+        ],
+        "Image": "./static/img/snow.jpg",
+        "Audio": [
+            "./static/audio/snow-IJ.mp3"
+        ]
+    },
+    "socks": {
+        "Filename": "socks",
+        "English": "socks",
+        "Kashaya": "cú·ki",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/socks.jpg",
+        "Audio": [
+            "./static/audio/socks-AS.mp3"
+        ]
+    },
+    "spider": {
+        "Filename": "spider",
+        "English": "spider",
+        "Kashaya": "ʔicʰa·",
+        "Category": "animals",
+        "Subcategory": [
+            "insects",
+            "spiders"
+        ],
+        "Image": "./static/img/spider.jpg",
+        "Audio": [
+            "./static/audio/spider-AS.mp3",
+            "./static/audio/spider-ML.mp3"
+        ]
+    },
+    "spring": {
+        "Filename": "spring",
+        "English": "spring, pool",
+        "Kashaya": "k’olo·málli",
+        "Category": "world",
+        "Subcategory": [
+            "water"
+        ],
+        "Image": "./static/img/spring.jpg",
+        "Audio": [
+            "./static/audio/spring-ML.mp3"
+        ]
+    },
+    "squash": {
+        "Filename": "squash",
+        "English": "squash",
+        "Kashaya": "kaliwá·sa",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/squash.jpg",
+        "Audio": [
+            "./static/audio/squash-EP.mp3"
+        ]
+    },
+    "star": {
+        "Filename": "star",
+        "English": "star",
+        "Kashaya": "qʰá·mos’",
+        "Category": "world",
+        "Subcategory": [
+            "sky"
+        ],
+        "Image": "./static/img/star.jpg",
+        "Audio": [
+            "./static/audio/star-EP.mp3"
+        ]
+    },
+    "strawberry": {
+        "Filename": "strawberry",
+        "English": "strawberry",
+        "Kashaya": "qʰámʔs’udu",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/strawberry.jpg",
+        "Audio": [
+            "./static/audio/strawberry-EP.mp3"
+        ]
+    },
+    "sugar": {
+        "Filename": "sugar",
+        "English": "sugar",
+        "Kashaya": "túyʔtu",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/sugar.jpg",
+        "Audio": [
+            "./static/audio/sugar-IJ.mp3"
+        ]
+    },
+    "sun": {
+        "Filename": "sun",
+        "English": "sun",
+        "Kashaya": "haʔda",
+        "Category": "world",
+        "Subcategory": [
+            "sky"
+        ],
+        "Image": "./static/img/sun.jpg",
+        "Audio": [
+            "./static/audio/sun-ML.mp3"
+        ]
+    },
+    "swallow": {
+        "Filename": "swallow",
+        "English": "swallow",
+        "Kashaya": "qalala",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/swallow.jpg",
+        "Audio": [
+            "./static/audio/swallow-EP.mp3"
+        ]
+    },
+    "swordfish": {
+        "Filename": "swordfish",
+        "English": "swordfish",
+        "Kashaya": "tʰiwíns’u·s’u",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/swordfish.jpg",
+        "Audio": [
+            "./static/audio/swordfish-EP.mp3"
+        ]
+    },
+    "table": {
+        "Filename": "table",
+        "English": "table",
+        "Kashaya": "lamé·sa",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/table.jpg",
+        "Audio": [
+            "./static/audio/table-ML.mp3"
+        ]
+    },
+    "tarantula": {
+        "Filename": "tarantula",
+        "English": "tarantula",
+        "Kashaya": "cohṭʰoʔ",
+        "Category": "animals",
+        "Subcategory": [
+            "insects",
+            "spiders"
+        ],
+        "Image": "./static/img/tarantula.jpg",
+        "Audio": [
+            "./static/audio/tarantula-EP.mp3"
+        ]
+    },
+    "tea": {
+        "Filename": "tea",
+        "English": "tea",
+        "Kashaya": "cá·yo",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/tea.jpg",
+        "Audio": [
+            "./static/audio/tea-ML.mp3"
+        ]
+    },
+    "ten": {
+        "Filename": "ten",
+        "English": "ten",
+        "Kashaya": "c’ašoṭ’o",
+        "Category": "descriptions",
+        "Subcategory": [
+            "numbers"
+        ],
+        "Image": "./static/img/ten.jpg",
+        "Audio": [
+            "./static/audio/ten-EP.mp3"
+        ]
+    },
+    "thunder": {
+        "Filename": "thunder",
+        "English": "thunder",
+        "Kashaya": "maʔk’ala",
+        "Category": "world",
+        "Subcategory": [
+            "weather"
+        ],
+        "Image": "./static/img/thunder.jpg",
+        "Audio": [
+            "./static/audio/thunder-ML.mp3"
+        ]
+    },
+    "tide": {
+        "Filename": "tide",
+        "English": "tide",
+        "Kashaya": "cʰuliw",
+        "Category": "world",
+        "Subcategory": [
+            "water"
+        ],
+        "Image": "./static/img/tide.jpg",
+        "Audio": [
+            "./static/audio/tide-ML.mp3"
+        ]
+    },
+    "toad": {
+        "Filename": "toad",
+        "English": "toad",
+        "Kashaya": "mašánhqʰoṭi",
+        "Category": "animals",
+        "Subcategory": [
+            "reptiles",
+            "amphibians"
+        ],
+        "Image": "./static/img/toad.jpg",
+        "Audio": [
+            "./static/audio/toad-EP.mp3"
+        ]
+    },
+    "tomato": {
+        "Filename": "tomato",
+        "English": "tomato",
+        "Kashaya": "tomá·te",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/tomato.jpg",
+        "Audio": [
+            "./static/audio/tomato-EP.mp3"
+        ]
+    },
+    "topknot": {
+        "Filename": "topknot",
+        "English": "topknot",
+        "Kashaya": "kʰeya",
+        "Category": "things",
+        "Subcategory": [
+            "traditional"
+        ],
+        "Image": "./static/img/topknot.jpg",
+        "Audio": [
+            "./static/audio/topknot-EP.mp3"
+        ]
+    },
+    "toyon_berry": {
+        "Filename": "toyon_berry",
+        "English": "toyon berry",
+        "Kashaya": "budu",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/toyon_berry.jpg",
+        "Audio": [
+            "./static/audio/toyon_berry-ML.mp3"
+        ]
+    },
+    "tree": {
+        "Filename": "tree",
+        "English": "tree",
+        "Kashaya": "qʰale",
+        "Category": "plants",
+        "Subcategory": [
+            "trees"
+        ],
+        "Image": "./static/img/tree.jpg",
+        "Audio": [
+            "./static/audio/tree-EP.mp3"
+        ]
+    },
+    "tree_branch": {
+        "Filename": "tree_branch",
+        "English": "tree branch",
+        "Kashaya": "qʰale ʔíša·",
+        "Category": "plants",
+        "Subcategory": [
+            "plant parts"
+        ],
+        "Image": "./static/img/tree_branch.jpg",
+        "Audio": [
+            "./static/audio/tree_branch-ML.mp3"
+        ]
+    },
+    "trout": {
+        "Filename": "trout",
+        "English": "trout",
+        "Kashaya": "maṭáʔša",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/trout.jpg",
+        "Audio": [
+            "./static/audio/trout-EP.mp3"
+        ]
+    },
+    "two": {
+        "Filename": "two",
+        "English": "two",
+        "Kashaya": "qʰo·",
+        "Category": "descriptions",
+        "Subcategory": [
+            "numbers"
+        ],
+        "Image": "./static/img/two.jpg",
+        "Audio": [
+            "./static/audio/two-EP.mp3"
+        ]
+    },
+    "vulture": {
+        "Filename": "vulture",
+        "English": "turkey vulture",
+        "Kashaya": "cuhcʰi",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/vulture.jpg",
+        "Audio": [
+            "./static/audio/vulture-HJ.mp3"
+        ]
+    },
+    "waist": {
+        "Filename": "waist",
+        "English": "waist",
+        "Kashaya": "k’iwili",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/waist.jpg",
+        "Audio": [
+            "./static/audio/waist-EP.mp3"
+        ]
+    },
+    "washboard": {
+        "Filename": "washboard",
+        "English": "washboard",
+        "Kashaya": "cukikiʔ",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/washboard.jpg",
+        "Audio": [
+            "./static/audio/washboard-AS.mp3"
+        ]
+    },
+    "water": {
+        "Filename": "water",
+        "English": "water",
+        "Kashaya": "ʔahqʰa",
+        "Category": "world",
+        "Subcategory": [
+            "water"
+        ],
+        "Image": "./static/img/water.jpg",
+        "Audio": [
+            "./static/audio/water-IJ.mp3"
+        ]
+    },
+    "whale": {
+        "Filename": "whale",
+        "English": "whale",
+        "Kashaya": "pú·šu",
+        "Category": "animals",
+        "Subcategory": [
+            "fish",
+            "sea creatures"
+        ],
+        "Image": "./static/img/whale.jpg",
+        "Audio": [
+            "./static/audio/whale-ML.mp3"
+        ]
+    },
+    "whistle": {
+        "Filename": "whistle",
+        "English": "whistle",
+        "Kashaya": "libu·",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/whistle.jpg",
+        "Audio": [
+            "./static/audio/whistle-IJ.mp3",
+            "./static/audio/whistle-AS.mp3"
+        ]
+    },
+    "white_crowned_sparrow": {
+        "Filename": "white_crowned_sparrow",
+        "English": "white crowned sparrow",
+        "Kashaya": "s’úmʔ s’ihta",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/white_crowned_sparrow.jpg",
+        "Audio": [
+            "./static/audio/white_crowned_sparrow-EP.mp3"
+        ]
+    },
+    "white_woman": {
+        "Filename": "white_woman",
+        "English": "white woman",
+        "Kashaya": "pʰaláʔcayʔ ʔima·ta",
+        "Category": "people",
+        "Subcategory": [
+            "kinds of people"
+        ],
+        "Image": "./static/img/white_woman.jpg",
+        "Audio": [
+            "./static/audio/white_woman-ML.mp3"
+        ]
+    },
+    "white": {
+        "Filename": "white",
+        "English": "white",
+        "Kashaya": "qahle",
+        "Category": "descriptions",
+        "Subcategory": [
+            "colors"
+        ],
+        "Image": "./static/img/white.jpg",
+        "Audio": [
+            "./static/audio/white-EP.mp3"
+        ]
+    },
+    "wild_blackberry": {
+        "Filename": "wild_blackberry",
+        "English": "wild blackberry",
+        "Kashaya": "ṭ’í·bahqay",
+        "Category": "things",
+        "Subcategory": [
+            "food"
+        ],
+        "Image": "./static/img/wild_blackberry.jpg",
+        "Audio": [
+            "./static/audio/wild_blackberry-EP.mp3"
+        ]
+    },
+    "willow": {
+        "Filename": "willow",
+        "English": "willow",
+        "Kashaya": "cuṭ’a·",
+        "Category": "plants",
+        "Subcategory": [
+            "trees"
+        ],
+        "Image": "./static/img/willow.jpg",
+        "Audio": [
+            "./static/audio/willow-IJ.mp3"
+        ]
+    },
+    "wind": {
+        "Filename": "wind",
+        "English": "wind",
+        "Kashaya": "ʔihya",
+        "Category": "world",
+        "Subcategory": [
+            "weather"
+        ],
+        "Image": "./static/img/wind.jpg",
+        "Audio": [
+            "./static/audio/wind-ML.mp3"
+        ]
+    },
+    "window": {
+        "Filename": "window",
+        "English": "window",
+        "Kashaya": "wentá·na",
+        "Category": "things",
+        "Subcategory": [
+            "household"
+        ],
+        "Image": "./static/img/window.jpg",
+        "Audio": [
+            "./static/audio/window-ML.mp3"
+        ]
+    },
+    "windpipe": {
+        "Filename": "windpipe",
+        "English": "windpipe",
+        "Kashaya": "k’uyu",
+        "Category": "people",
+        "Subcategory": [
+            "body parts"
+        ],
+        "Image": "./static/img/windpipe.jpg",
+        "Audio": [
+            "./static/audio/windpipe-EP.mp3"
+        ]
+    },
+    "woods": {
+        "Filename": "woods",
+        "English": "woods",
+        "Kashaya": "kulu·",
+        "Category": "world",
+        "Subcategory": [
+            "land"
+        ],
+        "Image": "./static/img/woods.jpg",
+        "Audio": [
+            "./static/audio/woods-EP.mp3"
+        ]
+    },
+    "work_tray_basket": {
+        "Filename": "work_tray_basket",
+        "English": "work tray basket",
+        "Kashaya": "šamʔ",
+        "Category": "things",
+        "Subcategory": [
+            "baskets"
+        ],
+        "Image": "./static/img/work_tray_basket.jpg",
+        "Audio": [
+            "./static/audio/work_tray_basket-ML.mp3"
+        ]
+    },
+    "worm": {
+        "Filename": "worm",
+        "English": "worm",
+        "Kashaya": "ʔicʰo·",
+        "Category": "animals",
+        "Subcategory": [
+            "insects",
+            "spiders"
+        ],
+        "Image": "./static/img/worm.jpg",
+        "Audio": [
+            "./static/audio/worm-ML.mp3"
+        ]
+    },
+    "yellowhammer": {
+        "Filename": "yellowhammer",
+        "English": "yellowhammer",
+        "Kashaya": "koʔc’iya",
+        "Category": "animals",
+        "Subcategory": [
+            "birds"
+        ],
+        "Image": "./static/img/yellowhammer.jpg",
+        "Audio": [
+            "./static/audio/yellowhammer-EP.mp3"
+        ]
+    },
+    "young_woman": {
+        "Filename": "young_woman",
+        "English": "young woman",
+        "Kashaya": "qá·šenʔ",
+        "Category": "people",
+        "Subcategory": [
+            "kinds of people"
+        ],
+        "Image": "./static/img/young_woman.jpg",
+        "Audio": [
+            "./static/audio/young_woman-EP.mp3"
+        ]
+    }
+}

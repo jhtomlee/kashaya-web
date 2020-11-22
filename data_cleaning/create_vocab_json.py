@@ -4,10 +4,10 @@ import numpy as np
 from os import walk
 import json
 
-with open('vocab.csv', 'r') as file:
+with open('vocab-images.csv', 'r') as file:
     
     # reads all data from vocab.csv into a dataframe
-    words_df = pd.read_csv("vocab.csv") 
+    words_df = pd.read_csv("vocab-images.csv") 
 
     # create json_obj for each row in words_df
     json_obj = {}
@@ -39,7 +39,7 @@ with open('vocab.csv', 'r') as file:
     path = './static/audio/'
     for mp3_file in mp3_files:
         temp = mp3_file[:-4]
-        file_name=temp.split('-')[0]
+        file_name=temp[:-3]
         if file_name in json_obj:
             json_obj[file_name]['Audio'].append(path+mp3_file)
 
@@ -65,7 +65,7 @@ with open('vocab.csv', 'r') as file:
         del json_obj[key]
 
     #export into json file
-    with open('result.json', 'w') as fp :
+    with open('result_vocab_img.json', 'w') as fp :
        json.dump(json_obj, fp, ensure_ascii=False)
 
     
