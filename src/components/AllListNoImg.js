@@ -6,11 +6,11 @@ import {
   Paper, Tooltip, IconButton,
   TableHead, TableRow,
   InputBase, Button, Grid,
-  Hidden, Badge
+  Hidden, Badge, Chip
 } from '@material-ui/core';
 import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
-import FilterModal from './subcomponents/FilterModal'
-import data from '../static/result_vocab_img.json'
+import FilterModal2 from './subcomponents/FilterModal2'
+import data from '../static/result_vocab_noimg.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
 import LoopIcon from '@material-ui/icons/Loop';
@@ -27,12 +27,6 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 80,
     paddingBottom: 40,
     maxHeight: '100vh',
-    // minHeight: '100vh',
-    // maxHeight: '100%'
-    // backgroundColor: 'orange'
-    // height: '100%',
-    // width: '100vw',
-    // backgroundColor: 'yellow'
   },
   tableContainer: {
     // backgroundColor: 'green'
@@ -111,13 +105,14 @@ const orderAudio = (paths) => {
   }
   return newArr
 }
+
 function createData(img, english, kashaya, speaker, category, subcategory) {
   speaker = orderAudio(speaker)
   return { img, english, kashaya, speaker, category, subcategory };
 }
 const data_json = Object.values(data)
 const rows = data_json.map(
-  i => createData(i["Image"], i["English"], i["Kashaya"], i["Audio"], i["Category"], i["Subcategory"])
+  i => createData(i["Image"], i["English"], i["Kashaya"], i["Audio"], i["Categories"])
 );
 
 
@@ -126,34 +121,19 @@ const rows = data_json.map(
  */
 const getCategories = () => {
   const categories = new Set()
-  const subcategories = {}
-  let category;
-  let subcategoryArr;
+  let categoryArr;
   data_json.forEach((row) => {
-    category = row['Category'];
-    subcategoryArr = row['Subcategory']
-    if (category in subcategories) {
-      subcategoryArr.forEach(subcategory => subcategories[category].add(subcategory))
-    } else {
-      categories.add(category)
-      subcategories[category] = new Set()
-    }
+    categoryArr = row['Categories']
+    categoryArr.forEach(category => categories.add(category))
   })
 
-  const categoriesArr = Array.from(categories)
-  categoriesArr.sort();
-  const categoriesFinal = categoriesArr.map(category => { return { value: category, label: category } })
+  const temp = Array.from(categories)
+  temp.sort();
+  const categoriesFinal = temp.map(category => { return { value: category, label: category } })
 
-  categories.forEach(category => {
-    const subcategoryArr = Array.from(subcategories[category])
-    subcategoryArr.sort();
-    subcategories[category] = subcategoryArr.map(subcategory => {
-      return { value: subcategory, label: subcategory, category: category }
-    })
-  })
-  return [categoriesFinal, subcategories]
+  return categoriesFinal
 }
-const [categories, subcategories] = getCategories();
+const categories = getCategories();
 
 /**
  * Speakers creation
@@ -245,7 +225,7 @@ function AllList() {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSpeakers, setSelectedSpeakers] = useState([]);
-  const [selectedSubcategories, setSelectedSubcategories] = useState(null);
+  //   const [selectedSubcategories, setSelectedSubcategories] = useState(null);
   const [filtersCount, setFilterCount] = useState(0)
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -275,10 +255,8 @@ function AllList() {
         const kashayaQueries = new Set()
         kashayaQueries.add(query)
         make_queries(kashayaQueries, query, 0)
-        // combination_helper(kashayaQueries, query)
         const kashayaQueriesArr = Array.from(kashayaQueries)
-        console.warn(kashayaQueriesArr)
-        const newRows = rows.filter(row => row.english.includes(query) || kashayaQueriesArr.some(q => row.kashaya.includes(q)))
+        const newRows = rows.filter(row => row.english.toLowerCase().includes(query) || kashayaQueriesArr.some(q => row.kashaya.includes(q)))
         setRows(newRows)
       }
     }, 250), []);
@@ -292,149 +270,84 @@ function AllList() {
       case 's':
         new_query = query.replaceAt(i, 'š')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 't':
         new_query = query.replaceAt(i, 'ṭ')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'h':
         new_query = query.replaceAt(i, 'ʰ')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case '?':
         new_query = query.replaceAt(i, 'ʔ')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case '\'':
         new_query = query.replaceAt(i, '’')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case '.':
         new_query = query.replaceAt(i, '·')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case ':':
         new_query = query.replaceAt(i, '·')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'a':
         new_query = query.replaceAt(i, 'á')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'e':
         new_query = query.replaceAt(i, 'é')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'i':
         new_query = query.replaceAt(i, 'í')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'o':
         new_query = query.replaceAt(i, 'ó')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'u':
         new_query = query.replaceAt(i, 'ú')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       default:
-        make_queries(queries, query, i+1)
+        make_queries(queries, query, i + 1)
         break;
     }
   }
-  String.prototype.replaceAt = function(index, replacement) {
+  String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-}
-  // const combination_helper = (queries, query) => {
-  //   if (['s', 't', 'h', '?', '\'', '.', ':', 'a', 'e', 'i', 'o', 'u'].every((char) => !query.includes(char))) {
-  //     return
-  //   }
-  //   let new_query;
-  //   if (query.includes('s')) {
-  //     new_query = query.replace('s', 'š')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('t')) {
-  //     new_query = query.replace('t', 'ṭ')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('h')) {
-  //     new_query = query.replace('h', 'ʰ')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('?')) {
-  //     new_query = query.replace('?', 'ʔ')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('\'')) {
-  //     new_query = query.replace('\'', '’')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('.')) {
-  //     new_query = query.replace('.', '·')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes(':')) {
-  //     new_query = query.replace(':', '·')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('a')) {
-  //     new_query = query.replace('a', 'á')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('e')) {
-  //     new_query = query.replace('e', 'é')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('i')) {
-  //     new_query = query.replace('i', 'í')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('o')) {
-  //     new_query = query.replace('o', 'ó')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('u')) {
-  //     new_query = query.replace('u', 'ú')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  // }
+  }
+
   /**
    * Filter by categories
    */
@@ -445,20 +358,9 @@ function AllList() {
       if (selectedCategories.length === 0) {
         return true;
       } else {
-        if (selectedCategories.includes(row.category)) {
-          if (selectedSubcategories && selectedSubcategories[row.category]) {
-            if (selectedSubcategories[row.category].length === 0) {
-              return true;
-            }
-            let intersection = row.subcategory.filter(x => selectedSubcategories[row.category].includes(x));
-            if (intersection.length > 0) {
-              return true;
-            } else {
-              return false;
-            }
-          } else {
-            return true
-          }
+        let intersection = row.category.filter(x => selectedCategories.includes(x));
+        if (intersection.length > 0) {
+          return true;
         } else {
           return false;
         }
@@ -481,7 +383,7 @@ function AllList() {
     })
     setRows(newRows2)
     setRowsTemp(newRows2)
-  }, [selectedCategories, selectedSubcategories, selectedSpeakers]);
+  }, [selectedCategories, selectedSpeakers]);
 
   /**
    * Audio
@@ -496,14 +398,12 @@ function AllList() {
    */
   return (
     <div className={classes.root}>
-      <FilterModal
+      <FilterModal2
         categories={categories}
-        subcategories={subcategories}
         openFilter={openFilter}
         speakers={speakers}
         handleCloseFilter={handleCloseFilter}
         setSelectedCategories={setSelectedCategories}
-        setSelectedSubcategories={setSelectedSubcategories}
         setSelectedSpeakers={setSelectedSpeakers}
         setFilterCount={setFilterCount}
       />
@@ -512,58 +412,13 @@ function AllList() {
       </Container> */}
       {/* <Container maxWidth="lg" style={{maxHeight: 500, backgroundColor:'yellow'}}>  */}
       <Container maxWidth="lg" className={classes.container}>
-        {/* <Toolbar position="fixed" className={classes.toolbarRoot}>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              onChange={onChangeSearchInput}
-              type="search"
-              placeholder="Search"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              ref={inputRef}
-            />
-          </div>
-          <FormControl className={classes.formControl}>
-            <InputLabel shrink id="select-placeholder-label-label">
-              Order by
-              </InputLabel>
-            <Select
-              labelId="select-placeholder-label-label"
-              id="select-placeholder-label"
-              value={orderBy}
-              onChange={handleOrderByChange}
-              displayEmpty
-              className={classes.selectEmpty}
-            >
-              <MenuItem value="english">English</MenuItem>
-              <MenuItem value="kashaya">Kashaya</MenuItem>
-            </Select>
-          </FormControl>
-          <Tooltip title="Filter list">
-            <IconButton aria-label="filter list" onClick={() => handleOpenFilter()}>
-              {filtersCount === 0 || !filtersCount ?
-                <FilterListIcon />
-                :
-                <StyledBadge badgeContent={filtersCount} color="secondary">
-                  <FilterListIcon />
-                </StyledBadge>
-              }
-            </IconButton>
-          </Tooltip>
-        </Toolbar> */}
         {/* Table Container */}
         <TableContainer component={Paper} className={classes.tableContainer}>
           <Table stickyHeader className={classes.table} aria-label="simple table" >
             {/* Table Head */}
             <TableHead >
               <TableRow >
-                <TableCell style={{ width: "40%" }}>
+                <TableCell style={{ width: '40%' }}>
                   <div className={classes.search}>
                     <div className={classes.searchIcon}>
                       <SearchIcon />
@@ -581,27 +436,6 @@ function AllList() {
                     />
                   </div>
                 </TableCell>
-                {/* <TableCell align="left"
-                  sortDirection={orderBy === 'english' ? order : false}>
-                  {orderBy === "english" ? (
-                    <TableSortLabel
-                      active={orderBy === 'english'}
-                      direction={orderBy === 'english' ? order : 'asc'}
-                      onClick={createSortHandler('english')}
-                    >
-                      <Typography>Word</Typography>
-                    </TableSortLabel>
-                  ) : (
-
-                      <TableSortLabel
-                        active={orderBy === 'kashaya'}
-                        direction={orderBy === 'kashaya' ? order : 'asc'}
-                        onClick={createSortHandler('kashaya')}
-                      >
-                        <Typography>Word</Typography>
-                      </TableSortLabel>
-                    )}
-                </TableCell> */}
                 <TableCell align="left">
                   <Grid container direction="row">
                     <Typography style={{ paddingTop: 3 }}>Word</Typography>
@@ -612,8 +446,6 @@ function AllList() {
                 </TableCell>
                 <Hidden xsDown>
                   <TableCell align="left"><Typography>Listen</Typography></TableCell>
-                  {/* <TableCell align="left">Category</TableCell>
-                <TableCell align="left">Subcategories</TableCell> */}
                 </Hidden>
                 <TableCell style={{ width: 25 }} >
                   <Tooltip title="Filter list">
@@ -636,13 +468,15 @@ function AllList() {
               {stableSort(rows_state, getComparator(order, orderBy))
                 .map((row) => (
                   <TableRow key={row.english}>
-                    <TableCell component="th" scope="row">
-                      <Hidden xsDown>
-                        <img src={row.img} width="150" height="150"></img>
-                      </Hidden>
-                      <Hidden smUp>
-                        <img src={row.img} width="110" height="110"></img>
-                      </Hidden>
+                    <TableCell align="left">
+                      {row.category.map(cat =>
+                        <Chip
+                          size="small"
+                          label={cat}
+                          color="secondary"
+                          style={{ marginRight: 5, marginBottom: 5}} />
+                      )}
+
                     </TableCell>
                     <Hidden xsDown>
                       <TableCell align="left">
@@ -688,11 +522,6 @@ function AllList() {
                               </Typography>
                             </div>
                           )}
-                        {/* <Player
-                          style={{ marginTop: 24 }}
-                          speakerPaths={row.speaker}
-                          selectedSpeakers={selectedSpeakers}
-                        /> */}
                         <Grid container direction="column">
                           {row.speaker.map(audio =>
                             <Button

@@ -88,7 +88,11 @@ export default function ButtonAppBar() {
           <Divider />
           <ListItem button component="a" href="#/all" onClick={() => toggleSideNav()}>
             <ListItemIcon> <InboxIcon /></ListItemIcon>
-            <ListItemText primary={'All List'} />
+            <ListItemText primary={'Vocab List 1'} />
+          </ListItem>
+          <ListItem button component="a" href="#/all2" onClick={() => toggleSideNav()}>
+            <ListItemIcon> <InboxIcon /></ListItemIcon>
+            <ListItemText primary={'Vocab List 2'} />
           </ListItem>
           {/* <ListItem button >
             <ListItemIcon> <InboxIcon /></ListItemIcon>

@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import User from './components/User';
 import AllList from './components/AllList';
+import AllListNoImg from './components/AllListNoImg';
 import AppBar from './components/subcomponents/AppBar'
 
 
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/all">
           <AllList />
+        </Route>
+        <Route path="/all2">
+          <AllListNoImg />
         </Route>
         <Route path="/profile">
           <User />
