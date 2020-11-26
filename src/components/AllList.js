@@ -9,6 +9,7 @@ import {
   Hidden, Badge
 } from '@material-ui/core';
 import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
+import AppBar from '../components/subcomponents/AppBar'
 import FilterModal from './subcomponents/FilterModal'
 import data from '../static/result_vocab_img.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
@@ -369,72 +370,7 @@ function AllList() {
   String.prototype.replaceAt = function(index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 }
-  // const combination_helper = (queries, query) => {
-  //   if (['s', 't', 'h', '?', '\'', '.', ':', 'a', 'e', 'i', 'o', 'u'].every((char) => !query.includes(char))) {
-  //     return
-  //   }
-  //   let new_query;
-  //   if (query.includes('s')) {
-  //     new_query = query.replace('s', 'š')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('t')) {
-  //     new_query = query.replace('t', 'ṭ')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('h')) {
-  //     new_query = query.replace('h', 'ʰ')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('?')) {
-  //     new_query = query.replace('?', 'ʔ')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('\'')) {
-  //     new_query = query.replace('\'', '’')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('.')) {
-  //     new_query = query.replace('.', '·')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes(':')) {
-  //     new_query = query.replace(':', '·')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('a')) {
-  //     new_query = query.replace('a', 'á')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('e')) {
-  //     new_query = query.replace('e', 'é')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('i')) {
-  //     new_query = query.replace('i', 'í')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('o')) {
-  //     new_query = query.replace('o', 'ó')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  //   if (query.includes('u')) {
-  //     new_query = query.replace('u', 'ú')
-  //     queries.add(new_query)
-  //     combination_helper(queries, new_query)
-  //   }
-  // }
+ 
   /**
    * Filter by categories
    */
@@ -507,10 +443,7 @@ function AllList() {
         setSelectedSpeakers={setSelectedSpeakers}
         setFilterCount={setFilterCount}
       />
-      {/* App bar space*/}
-      {/* <Container maxWidth="lg" style={{minHeight: 80,position: '-webkit-sticky', position: "sticky", top:0, backgroundColor:'aqua', zIndex:  5}} >
-      </Container> */}
-      {/* <Container maxWidth="lg" style={{maxHeight: 500, backgroundColor:'yellow'}}>  */}
+      <AppBar onChangeSearchInput={onChangeSearchInput} inputRef={inputRef} handleOpenFilter={handleOpenFilter} filtersCount={filtersCount} version="/all"/>
       <Container maxWidth="lg" className={classes.container}>
         {/* <Toolbar position="fixed" className={classes.toolbarRoot}>
           <div className={classes.search}>

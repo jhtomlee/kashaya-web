@@ -1,31 +1,36 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Container, Typography, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Intro from './Home/Intro'
+import AppBar from '../components/subcomponents/AppBar'
+import '../style/style.css'
 
 const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-    height: '100vh',
-  },
   container: {
-    paddingTop: 80,
+    paddingTop: 120,
     minHeight: '100vh',
+
   },
 });
 
 function Home() {
   const classes = useStyles();
-  
+
   return (
-    <div className={classes.root}>
+    <section id="hero">
+      <AppBar version="/"/>
       <Container maxWidth="lg" className={classes.container} >
-        <Typography variant="h3" component="h1" gutterBottom>
-          Kashaya
+        <Hidden xsDown>
+          <Typography variant="h3" component="h3" gutterBottom>
+            Kashaya Vocabulary
         </Typography>
-        <Intro />
+        </Hidden>
+        <Hidden smUp>
+          <Typography variant="h4" component="h4" gutterBottom>
+            Kashaya Vocabulary
+        </Typography>
+        </Hidden>
       </Container>
-    </div>
+    </section>
   );
 }
 

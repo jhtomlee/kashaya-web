@@ -9,6 +9,7 @@ import {
   Hidden, Badge, Chip
 } from '@material-ui/core';
 import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
+import AppBar from '../components/subcomponents/AppBar'
 import FilterModal2 from './subcomponents/FilterModal2'
 import data from '../static/result_vocab_noimg.json'
 import FilterListIcon from '@material-ui/icons/FilterList';
@@ -407,10 +408,7 @@ function AllList() {
         setSelectedSpeakers={setSelectedSpeakers}
         setFilterCount={setFilterCount}
       />
-      {/* App bar space*/}
-      {/* <Container maxWidth="lg" style={{minHeight: 80,position: '-webkit-sticky', position: "sticky", top:0, backgroundColor:'aqua', zIndex:  5}} >
-      </Container> */}
-      {/* <Container maxWidth="lg" style={{maxHeight: 500, backgroundColor:'yellow'}}>  */}
+      <AppBar onChangeSearchInput={onChangeSearchInput} inputRef={inputRef} handleOpenFilter={handleOpenFilter} filtersCount={filtersCount} version="/all2"/>
       <Container maxWidth="lg" className={classes.container}>
         {/* Table Container */}
         <TableContainer component={Paper} className={classes.tableContainer}>

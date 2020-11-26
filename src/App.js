@@ -4,14 +4,10 @@ import Home from './components/Home';
 import User from './components/User';
 import AllList from './components/AllList';
 import AllListNoImg from './components/AllListNoImg';
-import AppBar from './components/subcomponents/AppBar'
-
 
 function App() {
   return (
     <Router >
-      <AppBar/>
-      
       <Switch>
         <Route exact path="/"> 
           <Home />

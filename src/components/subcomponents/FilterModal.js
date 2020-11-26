@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     minWidth: 300,
     marginTop: 64
-    // maxWidth: 500
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
