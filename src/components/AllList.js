@@ -26,29 +26,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     paddingTop: 80,
-    paddingBottom: 40,
-    maxHeight: '100vh',
-    // minHeight: '100vh',
-    // maxHeight: '100%'
-    // backgroundColor: 'orange'
-    // height: '100%',
-    // width: '100vw',
-    // backgroundColor: 'yellow'
-  },
-  tableContainer: {
-    // backgroundColor: 'green'
-  },
-  table: {
-    // backgroundColor: 'blue'
+    paddingBottom: 40
   },
   toolbarRoot: {
     paddingLeft: theme.spacing(0),
     paddingRight: theme.spacing(1),
-    // zIndex: theme.zIndex.drawer + 1,
-    // position: "fixed",
-    // width: "100%"
-    // top: 0
-    // minWidth: 360,
   },
   formControl: {
     margin: theme.spacing(1),
@@ -293,84 +275,84 @@ function AllList() {
       case 's':
         new_query = query.replaceAt(i, 'š')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 't':
         new_query = query.replaceAt(i, 'ṭ')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'h':
         new_query = query.replaceAt(i, 'ʰ')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case '?':
         new_query = query.replaceAt(i, 'ʔ')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case '\'':
         new_query = query.replaceAt(i, '’')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case '.':
         new_query = query.replaceAt(i, '·')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case ':':
         new_query = query.replaceAt(i, '·')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'a':
         new_query = query.replaceAt(i, 'á')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'e':
         new_query = query.replaceAt(i, 'é')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'i':
         new_query = query.replaceAt(i, 'í')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'o':
         new_query = query.replaceAt(i, 'ó')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       case 'u':
         new_query = query.replaceAt(i, 'ú')
         queries.add(new_query)
-        make_queries(queries, query, i+1)
-        make_queries(queries, new_query, i+1)
+        make_queries(queries, query, i + 1)
+        make_queries(queries, new_query, i + 1)
         break;
       default:
-        make_queries(queries, query, i+1)
+        make_queries(queries, query, i + 1)
         break;
     }
   }
-  String.prototype.replaceAt = function(index, replacement) {
+  String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
-}
- 
+  }
+
   /**
    * Filter by categories
    */
@@ -443,101 +425,25 @@ function AllList() {
         setSelectedSpeakers={setSelectedSpeakers}
         setFilterCount={setFilterCount}
       />
-      <AppBar onChangeSearchInput={onChangeSearchInput} inputRef={inputRef} handleOpenFilter={handleOpenFilter} filtersCount={filtersCount} version="/all"/>
+      <AppBar onChangeSearchInput={onChangeSearchInput}
+        inputRef={inputRef}
+        handleOpenFilter={handleOpenFilter}
+        filtersCount={filtersCount}
+        version="/all" />
       <Container maxWidth="lg" className={classes.container}>
-        {/* <Toolbar position="fixed" className={classes.toolbarRoot}>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              onChange={onChangeSearchInput}
-              type="search"
-              placeholder="Search"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              ref={inputRef}
-            />
-          </div>
-          <FormControl className={classes.formControl}>
-            <InputLabel shrink id="select-placeholder-label-label">
-              Order by
-              </InputLabel>
-            <Select
-              labelId="select-placeholder-label-label"
-              id="select-placeholder-label"
-              value={orderBy}
-              onChange={handleOrderByChange}
-              displayEmpty
-              className={classes.selectEmpty}
-            >
-              <MenuItem value="english">English</MenuItem>
-              <MenuItem value="kashaya">Kashaya</MenuItem>
-            </Select>
-          </FormControl>
-          <Tooltip title="Filter list">
-            <IconButton aria-label="filter list" onClick={() => handleOpenFilter()}>
-              {filtersCount === 0 || !filtersCount ?
-                <FilterListIcon />
-                :
-                <StyledBadge badgeContent={filtersCount} color="secondary">
-                  <FilterListIcon />
-                </StyledBadge>
-              }
-            </IconButton>
-          </Tooltip>
-        </Toolbar> */}
-        {/* Table Container */}
-        <TableContainer component={Paper} className={classes.tableContainer}>
-          <Table stickyHeader className={classes.table} aria-label="simple table" >
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table" >
             {/* Table Head */}
             <TableHead >
               <TableRow >
-                <TableCell style={{ width: "40%" }}>
-                  <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                      <SearchIcon />
-                    </div>
-                    <InputBase
-                      onChange={onChangeSearchInput}
-                      type="search"
-                      placeholder="Search"
-                      classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                      }}
-                      inputProps={{ 'aria-label': 'search' }}
-                      ref={inputRef}
-                    />
-                  </div>
-                </TableCell>
-                {/* <TableCell align="left"
-                  sortDirection={orderBy === 'english' ? order : false}>
-                  {orderBy === "english" ? (
-                    <TableSortLabel
-                      active={orderBy === 'english'}
-                      direction={orderBy === 'english' ? order : 'asc'}
-                      onClick={createSortHandler('english')}
-                    >
-                      <Typography>Word</Typography>
-                    </TableSortLabel>
-                  ) : (
-
-                      <TableSortLabel
-                        active={orderBy === 'kashaya'}
-                        direction={orderBy === 'kashaya' ? order : 'asc'}
-                        onClick={createSortHandler('kashaya')}
-                      >
-                        <Typography>Word</Typography>
-                      </TableSortLabel>
-                    )}
-                </TableCell> */}
+                <TableCell> </TableCell>
                 <TableCell align="left">
                   <Grid container direction="row">
-                    <Typography style={{ paddingTop: 3 }}>Word</Typography>
+                    {orderBy === "english" ?
+                      <Typography style={{ paddingTop: 3 }}>English Word</Typography>
+                      :
+                      <Typography style={{ paddingTop: 3 }}>Kashaya Word</Typography>
+                    }
                     <IconButton size="small" onClick={() => handleOrderByChange()}>
                       <LoopIcon />
                     </IconButton>
@@ -545,23 +451,7 @@ function AllList() {
                 </TableCell>
                 <Hidden xsDown>
                   <TableCell align="left"><Typography>Listen</Typography></TableCell>
-                  {/* <TableCell align="left">Category</TableCell>
-                <TableCell align="left">Subcategories</TableCell> */}
                 </Hidden>
-                <TableCell style={{ width: 25 }} >
-                  <Tooltip title="Filter list">
-                    <IconButton style={{ padding: 0 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
-                      {filtersCount === 0 || !filtersCount ?
-                        <FilterListIcon />
-                        :
-                        <StyledBadge badgeContent={filtersCount} color="secondary">
-                          <FilterListIcon />
-                        </StyledBadge>
-                      }
-                    </IconButton>
-                  </Tooltip>
-
-                </TableCell>
               </TableRow>
             </TableHead>
             {/* Table Body */}
@@ -640,7 +530,7 @@ function AllList() {
                     </Hidden>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
                     <Hidden xsDown>
-                      <TableCell colSpan={2} align="left" >
+                      <TableCell align="left" >
                         {/* <Player speakerPaths={row.speaker} /> */}
                         <Grid container direction="column">
                           {row.speaker.map(audio =>

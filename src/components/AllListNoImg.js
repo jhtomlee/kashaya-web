@@ -12,8 +12,6 @@ import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
 import AppBar from '../components/subcomponents/AppBar'
 import FilterModal2 from './subcomponents/FilterModal2'
 import data from '../static/result_vocab_noimg.json'
-import FilterListIcon from '@material-ui/icons/FilterList';
-import SearchIcon from '@material-ui/icons/Search';
 import LoopIcon from '@material-ui/icons/Loop';
 
 
@@ -26,14 +24,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     paddingTop: 80,
-    paddingBottom: 40,
-    maxHeight: '100vh',
-  },
-  tableContainer: {
-    // backgroundColor: 'green'
-  },
-  table: {
-    // backgroundColor: 'blue'
+    paddingBottom: 40
   },
   toolbarRoot: {
     paddingLeft: theme.spacing(0),
@@ -408,35 +399,20 @@ function AllList() {
         setSelectedSpeakers={setSelectedSpeakers}
         setFilterCount={setFilterCount}
       />
-      <AppBar onChangeSearchInput={onChangeSearchInput} inputRef={inputRef} handleOpenFilter={handleOpenFilter} filtersCount={filtersCount} version="/all2"/>
+      <AppBar onChangeSearchInput={onChangeSearchInput} inputRef={inputRef} handleOpenFilter={handleOpenFilter} filtersCount={filtersCount} version="/all2" />
       <Container maxWidth="lg" className={classes.container}>
         {/* Table Container */}
-        <TableContainer component={Paper} className={classes.tableContainer}>
-          <Table stickyHeader className={classes.table} aria-label="simple table" >
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table" >
             {/* Table Head */}
             <TableHead >
               <TableRow >
-                <TableCell style={{ width: '40%' }}>
-                  <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                      <SearchIcon />
-                    </div>
-                    <InputBase
-                      onChange={onChangeSearchInput}
-                      type="search"
-                      placeholder="Search"
-                      classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                      }}
-                      inputProps={{ 'aria-label': 'search' }}
-                      ref={inputRef}
-                    />
-                  </div>
-                </TableCell>
                 <TableCell align="left">
                   <Grid container direction="row">
-                    <Typography style={{ paddingTop: 3 }}>Word</Typography>
+                    {orderBy === "english" ?
+                      <Typography style={{ paddingTop: 3 }} >English Phrase</Typography>
+                      :
+                      <Typography style={{ paddingTop: 4, fontSize:"100%" }} >Kashaya Phrase</Typography>}
                     <IconButton size="small" onClick={() => handleOrderByChange()}>
                       <LoopIcon />
                     </IconButton>
@@ -445,37 +421,15 @@ function AllList() {
                 <Hidden xsDown>
                   <TableCell align="left"><Typography>Listen</Typography></TableCell>
                 </Hidden>
-                <TableCell style={{ width: 25 }} >
-                  <Tooltip title="Filter list">
-                    <IconButton style={{ padding: 0 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
-                      {filtersCount === 0 || !filtersCount ?
-                        <FilterListIcon />
-                        :
-                        <StyledBadge badgeContent={filtersCount} color="secondary">
-                          <FilterListIcon />
-                        </StyledBadge>
-                      }
-                    </IconButton>
-                  </Tooltip>
-
-                </TableCell>
+                <TableCell style={{width: "30%"}}><Typography>Category</Typography></TableCell>
               </TableRow>
+              
             </TableHead>
             {/* Table Body */}
             <TableBody>
               {stableSort(rows_state, getComparator(order, orderBy))
                 .map((row) => (
                   <TableRow key={row.english}>
-                    <TableCell align="left">
-                      {row.category.map(cat =>
-                        <Chip
-                          size="small"
-                          label={cat}
-                          color="secondary"
-                          style={{ marginRight: 5, marginBottom: 5}} />
-                      )}
-
-                    </TableCell>
                     <Hidden xsDown>
                       <TableCell align="left">
                         {orderBy === "english" ? (
@@ -500,7 +454,7 @@ function AllList() {
                       </TableCell>
                     </Hidden>
                     <Hidden smUp>
-                      <TableCell align="left" colSpan={2}>
+                      <TableCell align="left" >
                         {orderBy === "english" ? (
                           <div>
                             <Typography style={{ fontWeight: 700 }}>
@@ -534,7 +488,7 @@ function AllList() {
                     </Hidden>
                     {/* <TableCell align="right">{row.speaker}</TableCell> */}
                     <Hidden xsDown>
-                      <TableCell colSpan={2} align="left" >
+                      <TableCell align="left" >
                         {/* <Player speakerPaths={row.speaker} /> */}
                         <Grid container direction="column">
                           {row.speaker.map(audio =>
@@ -548,6 +502,18 @@ function AllList() {
                         </Grid>
                       </TableCell>
                     </Hidden>
+                    <TableCell align="left">
+                    {/* <Grid container direction="column"> */}
+                      {row.category.map(cat =>
+                        <Chip
+                          size="small"
+                          label={cat}
+                          color="secondary"
+                          style={{ marginRight: 5, marginBottom: 5 }} />
+                      )}
+                    {/* </Grid> */}
+
+                    </TableCell>
                     {/* <TableCell > </TableCell> */}
                     {/* <TableCell align="left">{row.category}</TableCell>
                     <TableCell align="left">{row.subcategory}</TableCell> */}

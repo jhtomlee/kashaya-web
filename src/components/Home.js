@@ -6,7 +6,13 @@ import '../style/style.css'
 
 const useStyles = makeStyles(theme => ({
   container: {
-    paddingTop: theme.spacing(10),
+    // paddingTop: theme.spacing(10),
+    flex:1,
+    display:"flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    // alignItems: "center",
+    height: "70vh"
   },
   text: {
     marginBottom: theme.spacing(1)

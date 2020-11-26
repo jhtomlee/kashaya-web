@@ -122,7 +122,7 @@ export default function TopBar(props) {
           </Hidden>
           <Hidden smUp>
             <Typography variant="h6" className={classes.title}>
-              Kashaya
+              {' '}
           </Typography>
           </Hidden>
           {version == '/all' ?
@@ -147,7 +147,7 @@ export default function TopBar(props) {
             :
             <div></div>}
           {version == '/all' ?
-            <IconButton style={{ padding: 0 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
+            <IconButton style={{ padding: 0, marginLeft: 15 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
               {filtersCount === 0 || !filtersCount ?
                 <FilterListIcon />
                 :
@@ -181,7 +181,7 @@ export default function TopBar(props) {
             <div></div>
           }
           {version == '/all2' ?
-            <IconButton style={{ padding: 0 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
+            <IconButton style={{ padding: 0, marginLeft: 15 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
               {filtersCount === 0 || !filtersCount ?
                 <FilterListIcon />
                 :
