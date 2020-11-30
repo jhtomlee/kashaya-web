@@ -1,7 +1,8 @@
 import React from 'react';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
-import User from './components/User';
+import About from './components/About';
+import How from './components/How';
 import AllList from './components/AllList';
 import AllListNoImg from './components/AllListNoImg';
 
@@ -18,8 +19,11 @@ function App() {
         <Route path="/all2">
           <AllListNoImg />
         </Route>
-        <Route path="/profile">
-          <User />
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/how">
+          <How />
         </Route>
       </Switch>
     </Router>

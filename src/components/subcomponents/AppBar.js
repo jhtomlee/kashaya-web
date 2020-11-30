@@ -101,28 +101,46 @@ export default function TopBar(props) {
       {/* App Bar */}
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-            onClick={() => toggleSideNav()}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <IconButton edge="start" color="inherit" aria-label="home" href="#/">
             <HomeIcon />
           </IconButton>
 
           <Hidden xsDown>
-            <Typography variant="h6" className={classes.title}>
-              Kashaya Vocabulary
-          </Typography>
+            {version === '/all' ?
+              <Typography variant="h6" className={classes.title}>
+                Vocabulary (with images)
+            </Typography> : <div></div>
+            }
+            {version === '/all2' ?
+              <Typography variant="h6" className={classes.title}>
+                Wrods and Phrases
+            </Typography> : <div></div>
+            }
+            {version === '/how' ?
+              <Typography variant="h6" className={classes.title}>
+                How to use this website
+            </Typography> : <div></div>
+            }
+            {version === '/about' ?
+              <Typography variant="h6" className={classes.title}>
+                About Kashaya
+            </Typography> : <div></div>
+            }
           </Hidden>
           <Hidden smUp>
+            {version === '/how' ?
+              <Typography variant="h6" className={classes.title}>
+                How to use this website
+              </Typography> : <div></div>
+            }
+            {version === '/about' ?
+              <Typography variant="h6" className={classes.title}>
+                About Kashaya
+            </Typography> : <div></div>
+            }
             <Typography variant="h6" className={classes.title}>
               {' '}
-          </Typography>
+            </Typography>
           </Hidden>
           {version === '/all' ?
             <div>
