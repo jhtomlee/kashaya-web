@@ -7,7 +7,6 @@ import {
   Divider, SwipeableDrawer, InputBase, Hidden, Badge
 } from '@material-ui/core';
 import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import SearchIcon from '@material-ui/icons/Search';
@@ -125,7 +124,7 @@ export default function TopBar(props) {
               {' '}
           </Typography>
           </Hidden>
-          {version == '/all' ?
+          {version === '/all' ?
             <div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
@@ -146,7 +145,7 @@ export default function TopBar(props) {
             </div>
             :
             <div></div>}
-          {version == '/all' ?
+          {version === '/all' ?
             <IconButton style={{ padding: 0, marginLeft: 15 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
               {filtersCount === 0 || !filtersCount ?
                 <FilterListIcon />
@@ -158,7 +157,7 @@ export default function TopBar(props) {
             </IconButton>
             :
             <div></div>}
-          {version == '/all2' ?
+          {version === '/all2' ?
             <div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
@@ -180,7 +179,7 @@ export default function TopBar(props) {
             :
             <div></div>
           }
-          {version == '/all2' ?
+          {version === '/all2' ?
             <IconButton style={{ padding: 0, marginLeft: 15 }} aria-label="filter list" onClick={() => handleOpenFilter()}>
               {filtersCount === 0 || !filtersCount ?
                 <FilterListIcon />

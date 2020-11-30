@@ -36,7 +36,7 @@ function Home() {
         <Hidden smUp>
           <Typography variant="h4" component="h4" color="textPrimary" gutterBottom>Kashaya Vocabulary</Typography>
         </Hidden>
-        <Typography boxShadow={1} className={classes.text} align="left" variant="body1" color="textPrimary">
+        <Typography className={classes.text} align="left" variant="body1" color="textPrimary">
           {`Kashaya, also spelled Kashia by the tribe, is one 
           of seven languages in the Pomoan family. It is the language 
           of the Kashia Band of Pomo Indians of the Stewarts Point Rancheria.`}

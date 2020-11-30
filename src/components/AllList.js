@@ -3,19 +3,16 @@ import { debounce } from 'lodash';
 import {
   Container, Typography, Table, TableBody,
   TableCell, TableContainer,
-  Paper, Tooltip, IconButton,
+  Paper, IconButton,
   TableHead, TableRow,
-  InputBase, Button, Grid,
-  Hidden, Badge
+  Button, Grid,
+  Hidden
 } from '@material-ui/core';
-import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import AppBar from '../components/subcomponents/AppBar'
 import FilterModal from './subcomponents/FilterModal'
 import data from '../static/result_vocab_img.json'
-import FilterListIcon from '@material-ui/icons/FilterList';
-import SearchIcon from '@material-ui/icons/Search';
 import LoopIcon from '@material-ui/icons/Loop';
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -86,8 +83,10 @@ const orderAudio = (paths) => {
   const newArr = []
   let speaker
   for (speaker of ['HJ', 'EP', 'IJ', 'GJ', 'ML', 'AS', 'OP', 'IA', 'FD']) {
+    // eslint-disable-next-line
     const exists = paths.some(path => path.substring(path.length - 6, path.length - 4) === speaker)
     if (exists) {
+      // eslint-disable-next-line
       const path = paths.find(path => path.substring(path.length - 6, path.length - 4) === speaker)
       newArr.push(path)
     }
@@ -180,18 +179,6 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-/**
- * Functional component: styled-badge
- */
-const StyledBadge = withStyles((theme) => ({
-  badge: {
-    right: -3,
-    top: 13,
-    border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
-  },
-}))(Badge);
-
 /**---------------------------------
  * -------AllList Component--------
  * --------------------------------*/
@@ -203,16 +190,9 @@ function AllList() {
   /**
    * Sorting table
    */
+  // eslint-disable-next-line
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('english');
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
-  const createSortHandler = (property) => (event) => {
-    handleRequestSort(event, property);
-  };
   const handleOrderByChange = () => {
     // setOrderBy(event.target.value);
     if (orderBy === 'english') {
@@ -349,6 +329,7 @@ function AllList() {
         break;
     }
   }
+  // eslint-disable-next-line
   String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
   }
@@ -461,10 +442,10 @@ function AllList() {
                   <TableRow key={row.english}>
                     <TableCell component="th" scope="row">
                       <Hidden xsDown>
-                        <img src={row.img} width="150" height="150"></img>
+                        <img src={row.img} width="150" height="150" alt={'unable to load'}></img>
                       </Hidden>
                       <Hidden smUp>
-                        <img src={row.img} width="110" height="110"></img>
+                        <img src={row.img} width="110" height="110" alt={'unable to load'}></img>
                       </Hidden>
                     </TableCell>
                     <Hidden xsDown>

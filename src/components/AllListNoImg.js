@@ -3,12 +3,12 @@ import { debounce } from 'lodash';
 import {
   Container, Typography, Table, TableBody,
   TableCell, TableContainer,
-  Paper, Tooltip, IconButton,
+  Paper, IconButton,
   TableHead, TableRow,
-  InputBase, Button, Grid,
-  Hidden, Badge, Chip
+  Button, Grid,
+  Hidden, Chip
 } from '@material-ui/core';
-import { makeStyles, fade, withStyles } from '@material-ui/core/styles';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import AppBar from '../components/subcomponents/AppBar'
 import FilterModal2 from './subcomponents/FilterModal2'
 import data from '../static/result_vocab_noimg.json'
@@ -29,11 +29,6 @@ const useStyles = makeStyles(theme => ({
   toolbarRoot: {
     paddingLeft: theme.spacing(0),
     paddingRight: theme.spacing(1),
-    // zIndex: theme.zIndex.drawer + 1,
-    // position: "fixed",
-    // width: "100%"
-    // top: 0
-    // minWidth: 360,
   },
   formControl: {
     margin: theme.spacing(1),
@@ -89,8 +84,10 @@ const orderAudio = (paths) => {
   const newArr = []
   let speaker
   for (speaker of ['HJ', 'EP', 'IJ', 'GJ', 'ML', 'AS', 'OP', 'IA', 'FD']) {
+    // eslint-disable-next-line
     const exists = paths.some(path => path.substring(path.length - 6, path.length - 4) === speaker)
     if (exists) {
+      // eslint-disable-next-line
       const path = paths.find(path => path.substring(path.length - 6, path.length - 4) === speaker)
       newArr.push(path)
     }
@@ -169,18 +166,6 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-/**
- * Functional component: styled-badge
- */
-const StyledBadge = withStyles((theme) => ({
-  badge: {
-    right: -3,
-    top: 13,
-    border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
-  },
-}))(Badge);
-
 /**---------------------------------
  * -------AllList Component--------
  * --------------------------------*/
@@ -192,18 +177,18 @@ function AllList() {
   /**
    * Sorting table
    */
+  // eslint-disable-next-line
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('english');
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
-  const createSortHandler = (property) => (event) => {
-    handleRequestSort(event, property);
-  };
+  // const handleRequestSort = (event, property) => {
+  //   const isAsc = orderBy === property && order === 'asc';
+  //   setOrder(isAsc ? 'desc' : 'asc');
+  //   setOrderBy(property);
+  // };
+  // const createSortHandler = (property) => (event) => {
+  //   handleRequestSort(event, property);
+  // };
   const handleOrderByChange = () => {
-    // setOrderBy(event.target.value);
     if (orderBy === 'english') {
       setOrderBy('kashaya')
     } else {
@@ -336,6 +321,7 @@ function AllList() {
         break;
     }
   }
+  // eslint-disable-next-line
   String.prototype.replaceAt = function (index, replacement) {
     return this.substr(0, index) + replacement + this.substr(index + replacement.length);
   }

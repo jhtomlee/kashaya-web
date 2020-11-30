@@ -140,6 +140,7 @@ function FilterModal(props) {
       count += speakerOptionsTemp.length
     }
     setFilterCount(count)
+  // eslint-disable-next-line
   }, [categoryOptionsTemp, subcategoryOptionsTemp, speakerOptionsTemp]);
 
   const groupStyles = {
