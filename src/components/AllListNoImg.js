@@ -396,9 +396,9 @@ function AllList() {
                 <TableCell align="left">
                   <Grid container direction="row">
                     {orderBy === "english" ?
-                      <Typography style={{ paddingTop: 3 }} >English Phrase</Typography>
+                      <Typography style={{ paddingTop: 3 }} >English Word / Phrase</Typography>
                       :
-                      <Typography style={{ paddingTop: 4, fontSize:"100%" }} >Kashaya Phrase</Typography>}
+                      <Typography style={{ paddingTop: 3 }} >Kashaya Word / Phrase</Typography>}
                     <IconButton size="small" onClick={() => handleOrderByChange()}>
                       <LoopIcon />
                     </IconButton>
@@ -407,7 +407,7 @@ function AllList() {
                 <Hidden xsDown>
                   <TableCell align="left"><Typography>Listen</Typography></TableCell>
                 </Hidden>
-                <TableCell style={{width: "30%"}}><Typography>Category</Typography></TableCell>
+                {/* <TableCell style={{width: "30%"}}><Typography>Category</Typography></TableCell> */}
               </TableRow>
               
             </TableHead>
@@ -488,8 +488,7 @@ function AllList() {
                         </Grid>
                       </TableCell>
                     </Hidden>
-                    <TableCell align="left">
-                    {/* <Grid container direction="column"> */}
+                    {/* <TableCell align="left">
                       {row.category.map(cat =>
                         <Chip
                           size="small"
@@ -497,12 +496,7 @@ function AllList() {
                           color="secondary"
                           style={{ marginRight: 5, marginBottom: 5 }} />
                       )}
-                    {/* </Grid> */}
-
-                    </TableCell>
-                    {/* <TableCell > </TableCell> */}
-                    {/* <TableCell align="left">{row.category}</TableCell>
-                    <TableCell align="left">{row.subcategory}</TableCell> */}
+                    </TableCell> */}
                   </TableRow>
                 ))}
             </TableBody>
