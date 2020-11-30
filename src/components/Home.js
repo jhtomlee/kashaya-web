@@ -54,6 +54,11 @@ function Home() {
             rel="noopener noreferrer" href="https://www.ling.upenn.edu/~gene/home.html">
             <u>Gene Buckley</u>
           </a>
+          {` and developed by `}
+          <a style={{color:"#A8A8A8"}}target="_blank"
+            rel="noopener noreferrer" href="https://www.linkedin.com/in/jhtomlee/">
+            <u>Tom Lee</u>
+          </a>
           {`. Click on one of the following to continue:`}
         </Typography>
         </div>

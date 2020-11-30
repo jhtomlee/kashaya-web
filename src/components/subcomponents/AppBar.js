@@ -113,7 +113,7 @@ export default function TopBar(props) {
             }
             {version === '/all2' ?
               <Typography variant="h6" className={classes.title}>
-                Wrods and Phrases
+                Words and Phrases
             </Typography> : <div></div>
             }
             {version === '/how' ?

@@ -6,7 +6,7 @@ import {
   Paper, IconButton,
   TableHead, TableRow,
   Button, Grid,
-  Hidden, Chip
+  Hidden
 } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import AppBar from '../components/subcomponents/AppBar'
