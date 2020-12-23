@@ -64,24 +64,24 @@ function Home() {
         </div>
         <Grid container direction="row" justify="flex-start" alignItems="center" spacing={3} className={classes.buttonsContainer}>
           <Grid item >
-            <Button variant="contained" color="primary" href="#/all">
+            <Button variant="contained" color="primary" href="/all">
               Vocabulary (with images)
           </Button>
           </Grid>
           <Grid item >
-            <Button variant="contained" color="primary" href="#/all2">
+            <Button variant="contained" color="primary" href="/all2">
               Words and Phrases
           </Button>
           </Grid>
         </Grid>
         <Grid container direction="row" justify="flex-start" alignItems="center" spacing={3} className={classes.buttonsContainer}>
           <Grid item >
-            <Button variant="contained" color="secondary" href="#/how">
+            <Button variant="contained" color="secondary" href="/how">
               How to use this website
           </Button>
           </Grid>
           <Grid item >
-            <Button variant="contained" color="secondary" href="#/about">
+            <Button variant="contained" color="secondary" href="/about">
               About Kashaya
           </Button>
           </Grid>

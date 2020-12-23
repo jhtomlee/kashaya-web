@@ -101,7 +101,7 @@ export default function TopBar(props) {
       {/* App Bar */}
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="home" href="#/">
+          <IconButton edge="start" color="inherit" aria-label="home" href="/">
             <HomeIcon />
           </IconButton>
 
