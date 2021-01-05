@@ -41,7 +41,7 @@ with open('vocab-images.csv', 'r') as file:
     jpg_files = list(filter(lambda x: x.endswith('.jpg'), files))  
 
     # add mp3 file path into json_obj
-    path = './static/files/'
+    path = './static/Files/'
     for mp3_file in mp3_files:
         # temp = mp3_file[:-4]
         # file_name=temp[:-3]
@@ -53,7 +53,7 @@ with open('vocab-images.csv', 'r') as file:
             json_obj[file_name]['Audio'].append(path+mp3_file)
 
     # add img file path into json_obj
-    path = './static/files/'
+    path = './static/Files/'
     for jpg_file in jpg_files:
         file_name = jpg_file[:-4]
         if file_name in json_obj:

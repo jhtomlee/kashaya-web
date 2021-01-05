@@ -33,7 +33,7 @@ with open('vocab-no-images.csv', 'r') as file:
     mp3_files = list(filter(lambda x: x.endswith('.mp3'), files)) 
 
     # add mp3 file path into json_obj
-    path = './static/files/'
+    path = './static/Files/'
     for mp3_file in mp3_files:
         temp = mp3_file.split("=")
         file_name = temp[0]
