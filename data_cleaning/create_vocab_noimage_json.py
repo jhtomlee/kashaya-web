@@ -33,12 +33,14 @@ with open('vocab-no-images.csv', 'r') as file:
     mp3_files = list(filter(lambda x: x.endswith('.mp3'), files)) 
 
     # add mp3 file path into json_obj
-    path = './static/audio/'
+    path = './static/files/'
     for mp3_file in mp3_files:
-        temp = mp3_file[:-4]
-        file_name=temp[:-3]
+        temp = mp3_file.split("=")
+        file_name = temp[0]
         if file_name in json_obj:
             json_obj[file_name]['Audio'].append(path+mp3_file)
+        # else:
+        #     print(mp3_file, file_name)
 
     # get words with no image 
     keys_to_delete = set()
