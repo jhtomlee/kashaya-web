@@ -117,16 +117,16 @@ export default function TopBar(props) {
           </IconButton>
 
           <Hidden xsDown>
-            {version === '/all' ? (
+            {version === 'words' ? (
               <Typography variant="h6" className={classes.title}>
-                Vocabulary (with images)
+                Words (with images)
               </Typography>
             ) : (
               <div />
             )}
-            {version === '/all2' ? (
+            {version === 'words2' ? (
               <Typography variant="h6" className={classes.title}>
-                Words and Phrases
+                Words (without images)
               </Typography>
             ) : (
               <div />
@@ -165,7 +165,7 @@ export default function TopBar(props) {
               {' '}
             </Typography>
           </Hidden>
-          {version === '/all' ? (
+          {version === 'words' || version === 'words2' ? (
             <div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
@@ -187,46 +187,7 @@ export default function TopBar(props) {
           ) : (
             <div />
           )}
-          {version === '/all' ? (
-            <IconButton
-              style={{ padding: 0, marginLeft: 15 }}
-              aria-label="filter list"
-              onClick={() => handleOpenFilter()}
-            >
-              {filtersCount === 0 || !filtersCount ? (
-                <FilterListIcon />
-              ) : (
-                <StyledBadge badgeContent={filtersCount} color="secondary">
-                  <FilterListIcon />
-                </StyledBadge>
-              )}
-            </IconButton>
-          ) : (
-            <div />
-          )}
-          {version === '/all2' ? (
-            <div>
-              <div className={classes.search}>
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase
-                  onChange={onChangeSearchInput}
-                  type="search"
-                  placeholder="Search"
-                  classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                  }}
-                  inputProps={{ 'aria-label': 'search' }}
-                  ref={inputRef}
-                />
-              </div>
-            </div>
-          ) : (
-            <div />
-          )}
-          {version === '/all2' ? (
+          {version === 'words' || version === 'words2' ? (
             <IconButton
               style={{ padding: 0, marginLeft: 15 }}
               aria-label="filter list"

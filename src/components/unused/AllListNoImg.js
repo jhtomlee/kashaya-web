@@ -17,9 +17,9 @@ import {
 } from '@material-ui/core';
 import { makeStyles, fade } from '@material-ui/core/styles';
 import LoopIcon from '@material-ui/icons/Loop';
-import AppBar from './subcomponents/AppBar';
-import FilterModal2 from './subcomponents/FilterModal2';
-import data from '../static/result_vocab_noimg.json';
+import AppBar from '../subcomponents/AppBar';
+import FilterModal2 from '../subcomponents/FilterModal2';
+import data from '../../static/result_vocab_noimg.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {

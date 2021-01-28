@@ -94,13 +94,13 @@ function Home() {
           className={classes.buttonsContainer}
         >
           <Grid item>
-            <Button variant="contained" color="primary" href="/all">
-              Vocabulary (with images)
+            <Button variant="contained" color="primary" href="/words">
+              Words (with images)
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="primary" href="/all2">
-              Words and Phrases
+            <Button variant="contained" color="primary" href="/words2">
+              Words (without images)
             </Button>
           </Grid>
         </Grid>

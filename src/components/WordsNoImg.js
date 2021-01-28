@@ -18,8 +18,8 @@ import {
 import { makeStyles, fade } from '@material-ui/core/styles';
 import LoopIcon from '@material-ui/icons/Loop';
 import AppBar from './subcomponents/AppBar';
-import FilterModal from './subcomponents/FilterModal';
-import data from '../static/result_vocab_img.json';
+import FilterModal2 from './subcomponents/FilterModal2';
+import data from '../static/result_words_noimg.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -100,17 +101,9 @@ const orderAudio = (paths) => {
       newArr.push(pathAppend);
     }
   });
-  // for (let speaker of ['HJ', 'EP', 'IJ', 'GJ', 'ML', 'AS', 'OP', 'IA', 'FD']) {
-  //   // eslint-disable-next-line
-  //   const exists = paths.some(path => path.substring(path.length - 6, path.length - 4) === speaker)
-  //   if (exists) {
-  //     // eslint-disable-next-line
-  //     const pathAppend = paths.find(path => path.substring(path.length - 6, path.length - 4) === speaker)
-  //     newArr.push(pathAppend)
-  //   }
-  // }
   return newArr;
 };
+
 const createData = (img, english, kashaya, speaker, category, subcategory) => {
   const speakerOrdered = orderAudio(speaker);
   return {
@@ -124,7 +117,7 @@ const createData = (img, english, kashaya, speaker, category, subcategory) => {
 };
 const dataJson = Object.values(data);
 const rows = dataJson.map((i) =>
-  createData(i.Image, i.English, i.Kashaya, i.Audio, i.Category, i.Subcategory)
+  createData(i.Image, i.English, i.Kashaya, i.Audio, i.Categories)
 );
 
 /**
@@ -132,38 +125,21 @@ const rows = dataJson.map((i) =>
  */
 const getCategories = () => {
   const categories = new Set();
-  const subcategories = {};
-  let category;
-  let subcategoryArr;
+  let categoryArr;
   dataJson.forEach((row) => {
-    category = row.Category;
-    subcategoryArr = row.Subcategory;
-    if (category in subcategories) {
-      subcategoryArr.forEach((subcategory) =>
-        subcategories[category].add(subcategory)
-      );
-    } else {
-      categories.add(category);
-      subcategories[category] = new Set();
-    }
+    categoryArr = row.Categories;
+    categoryArr.forEach((category) => categories.add(category));
   });
 
-  const categoriesArr = Array.from(categories);
-  categoriesArr.sort();
-  const categoriesFinal = categoriesArr.map((cat) => {
-    return { value: cat, label: cat };
+  const temp = Array.from(categories);
+  temp.sort();
+  const categoriesFinal = temp.map((category) => {
+    return { value: category, label: category };
   });
 
-  categories.forEach((cat) => {
-    const subcategoryArrTemp = Array.from(subcategories[cat]);
-    subcategoryArrTemp.sort();
-    subcategories[cat] = subcategoryArrTemp.map((subcategory) => {
-      return { value: subcategory, label: subcategory, category: cat };
-    });
-  });
-  return [categoriesFinal, subcategories];
+  return categoriesFinal;
 };
-const [categories, subcategories] = getCategories();
+const categories = getCategories();
 
 /**
  * Speakers creation
@@ -223,8 +199,15 @@ function AllList() {
   // eslint-disable-next-line
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('english');
+  // const handleRequestSort = (event, property) => {
+  //   const isAsc = orderBy === property && order === 'asc';
+  //   setOrder(isAsc ? 'desc' : 'asc');
+  //   setOrderBy(property);
+  // };
+  // const createSortHandler = (property) => (event) => {
+  //   handleRequestSort(event, property);
+  // };
   const handleOrderByChange = () => {
-    // setOrderBy(event.target.value);
     if (orderBy === 'english') {
       setOrderBy('kashaya');
     } else {
@@ -238,7 +221,7 @@ function AllList() {
   const [openFilter, setOpenFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSpeakers, setSelectedSpeakers] = useState([]);
-  const [selectedSubcategories, setSelectedSubcategories] = useState(null);
+  //   const [selectedSubcategories, setSelectedSubcategories] = useState(null);
   const [filtersCount, setFilterCount] = useState(0);
   const handleOpenFilter = () => {
     setOpenFilter(true);
@@ -338,20 +321,19 @@ function AllList() {
   };
   // fuction called to debounce search
   const delaySearch = useCallback(
-    debounce((event, rowsTempArg) => {
+    debounce((event, rowsTemp2) => {
       if (event.target.value === '') {
-        setRows(rowsTempArg);
+        setRows(rowsTemp2);
       } else {
-        const rowsTemp2 = rowsTempArg;
+        const rowsNewTemp = rowsTemp2;
         const query = event.target.value.toLowerCase();
         const kashayaQueries = new Set();
         kashayaQueries.add(query);
         makeQueries(kashayaQueries, query, 0);
-        // combination_helper(kashayaQueries, query)
         const kashayaQueriesArr = Array.from(kashayaQueries);
-        const newRows = rowsTemp2.filter(
+        const newRows = rowsNewTemp.filter(
           (row) =>
-            row.english.includes(query) ||
+            row.english.toLowerCase().includes(query) ||
             kashayaQueriesArr.some((q) => row.kashaya.includes(q))
         );
         setRows(newRows);
@@ -366,7 +348,6 @@ function AllList() {
   };
   // eslint-disable-next-line
   String.prototype.replaceAt = function (index, replacement) {
-    // eslint-disable-next-line
     return (
       this.substr(0, index) +
       replacement +
@@ -384,19 +365,10 @@ function AllList() {
       if (selectedCategories.length === 0) {
         return true;
       }
-      if (selectedCategories.includes(row.category)) {
-        if (selectedSubcategories && selectedSubcategories[row.category]) {
-          if (selectedSubcategories[row.category].length === 0) {
-            return true;
-          }
-          const intersection = row.subcategory.filter((x) =>
-            selectedSubcategories[row.category].includes(x)
-          );
-          if (intersection.length > 0) {
-            return true;
-          }
-          return false;
-        }
+      const intersection = row.category.filter((x) =>
+        selectedCategories.includes(x)
+      );
+      if (intersection.length > 0) {
         return true;
       }
       return false;
@@ -419,7 +391,7 @@ function AllList() {
     });
     setRows(newRows2);
     setRowsTemp(newRows2);
-  }, [selectedCategories, selectedSubcategories, selectedSpeakers]);
+  }, [selectedCategories, selectedSpeakers]);
 
   /**
    * Audio
@@ -434,14 +406,12 @@ function AllList() {
    */
   return (
     <div className={classes.root}>
-      <FilterModal
+      <FilterModal2
         categories={categories}
-        subcategories={subcategories}
         openFilter={openFilter}
         speakers={speakers}
         handleCloseFilter={handleCloseFilter}
         setSelectedCategories={setSelectedCategories}
-        setSelectedSubcategories={setSelectedSubcategories}
         setSelectedSpeakers={setSelectedSpeakers}
         setFilterCount={setFilterCount}
       />
@@ -450,24 +420,24 @@ function AllList() {
         inputRef={inputRef}
         handleOpenFilter={handleOpenFilter}
         filtersCount={filtersCount}
-        version="/all"
+        version="words2"
       />
       <Container maxWidth="lg" className={classes.container}>
+        {/* Table Container */}
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             {/* Table Head */}
             <TableHead>
               <TableRow>
-                <TableCell> </TableCell>
                 <TableCell align="left">
                   <Grid container direction="row">
                     {orderBy === 'english' ? (
                       <Typography style={{ paddingTop: 3 }}>
-                        English Word
+                        English Word / Phrase
                       </Typography>
                     ) : (
                       <Typography style={{ paddingTop: 3 }}>
-                        Kashaya Word
+                        Kashaya Word / Phrase
                       </Typography>
                     )}
                     <IconButton
@@ -483,6 +453,7 @@ function AllList() {
                     <Typography>Listen</Typography>
                   </TableCell>
                 </Hidden>
+                {/* <TableCell style={{width: "30%"}}><Typography>Category</Typography></TableCell> */}
               </TableRow>
             </TableHead>
             {/* Table Body */}
@@ -490,24 +461,6 @@ function AllList() {
               {stableSort(rowsState, getComparator(order, orderBy)).map(
                 (row) => (
                   <TableRow key={row.english}>
-                    <TableCell component="th" scope="row">
-                      <Hidden xsDown>
-                        <img
-                          src={row.img}
-                          width="150"
-                          height="150"
-                          alt="unable to load"
-                        />
-                      </Hidden>
-                      <Hidden smUp>
-                        <img
-                          src={row.img}
-                          width="110"
-                          height="110"
-                          alt="unable to load"
-                        />
-                      </Hidden>
-                    </TableCell>
                     <Hidden xsDown>
                       <TableCell align="left">
                         {orderBy === 'english' ? (
@@ -528,7 +481,7 @@ function AllList() {
                       </TableCell>
                     </Hidden>
                     <Hidden smUp>
-                      <TableCell align="left" colSpan={2}>
+                      <TableCell align="left">
                         {orderBy === 'english' ? (
                           <div>
                             <Typography style={{ fontWeight: 700 }}>
@@ -544,11 +497,6 @@ function AllList() {
                             <Typography>{row.english}</Typography>
                           </div>
                         )}
-                        {/* <Player
-                          style={{ marginTop: 24 }}
-                          speakerPaths={row.speaker}
-                          selectedSpeakers={selectedSpeakers}
-                        /> */}
                         <Grid container direction="column">
                           {row.speaker.map((audio) => (
                             <Button
@@ -593,9 +541,15 @@ function AllList() {
                         </Grid>
                       </TableCell>
                     </Hidden>
-                    {/* <TableCell > </TableCell> */}
-                    {/* <TableCell align="left">{row.category}</TableCell>
-                    <TableCell align="left">{row.subcategory}</TableCell> */}
+                    {/* <TableCell align="left">
+                      {row.category.map(cat =>
+                        <Chip
+                          size="small"
+                          label={cat}
+                          color="secondary"
+                          style={{ marginRight: 5, marginBottom: 5 }} />
+                      )}
+                    </TableCell> */}
                   </TableRow>
                 )
               )}

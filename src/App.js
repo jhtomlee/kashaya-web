@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import How from './components/How';
-import AllList from './components/AllList';
-import AllListNoImg from './components/AllListNoImg';
+import WordsNoImg from './components/WordsNoImg';
+import Words from './components/Words';
 
 function App() {
   return (
@@ -13,11 +13,14 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/all">
-          <AllList />
+        <Route path="/words">
+          <Words />
         </Route>
-        <Route path="/all2">
-          <AllListNoImg />
+        <Route path="/words2">
+          <WordsNoImg />
+        </Route>
+        <Route path="/sentences">
+          <WordsNoImg />
         </Route>
         <Route path="/about">
           <About />
