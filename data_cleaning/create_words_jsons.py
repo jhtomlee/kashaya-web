@@ -4,25 +4,27 @@ import numpy as np
 from os import walk
 import json
 
-with open('vocab-images.csv', 'r') as file:
+with open('Kashaya web list - words.csv', 'r') as file:
     
     # reads all data from vocab.csv into a dataframe
-    words_df = pd.read_csv("vocab-images.csv") 
+    words_df = pd.read_csv("Kashaya web list - words.csv") 
+
+    # drops row where at least one column element is missing 
+    words_df.dropna(inplace=True)
 
     # create json_obj for each row in words_df
     json_obj = {}
     for index, row in words_df.iterrows():
         key = row['Filename']
-        if type(row['Subcategory']) is str:
-            subcategories = [word.strip() for word in row['Subcategory'].split(',')]
+        if type(row['Categories']) is str:
+            categories = [word.strip() for word in row['Categories'].split('; ')]
         else:
-            subcategories = []
+            categories = []
         temp = {
             'Filename':row['Filename'],
             'English':row['English'],
             'Kashaya':row['Kashaya'],
-            'Category':row['Category'],
-            'Subcategory': subcategories,
+            'Categories':categories,
             'Image': '',
             'Audio': []
         }
@@ -59,22 +61,30 @@ with open('vocab-images.csv', 'r') as file:
         if file_name in json_obj:
             json_obj[file_name]['Image']= path+jpg_file
 
-    # get words with no image 
-    keys_to_delete = set()
+    # get and delete words with no audio 
+    # keys_to_delete = set()
+    # for key in json_obj:
+    #     if len(json_obj[key]['Audio']) ==0 :
+    #         keys_to_delete.add(key)
+    # for key in keys_to_delete:
+    #     print('del: ', key)
+    #     del json_obj[key]
+    
+    # init the two json objects
+    words_json = {}
+    words_noimg_json ={}
+
+    # filter json_obj into either words_json or words_noimg_json
     for key in json_obj:
         if json_obj[key]['Image'] == '':
-            keys_to_delete.add(key)
-    # get words with no audio 
-    for key in json_obj:
-        if len(json_obj[key]['Audio']) ==0:
-            keys_to_delete.add(key)
-   
-    # delete words with no image or audio
-    for key in keys_to_delete:
-        del json_obj[key]
+            words_noimg_json[key] = json_obj[key]
+        else :
+            words_json[key] = json_obj[key]
 
-    #export into json file
-    with open('result_vocab_img.json', 'w') as fp :
-       json.dump(json_obj, fp, ensure_ascii=False)
+    #export 
+    with open('result_words_img.json', 'w') as fp :
+       json.dump(words_json, fp, ensure_ascii=False)
+    with open('result_words_noimg.json', 'w') as fp :
+       json.dump(words_noimg_json, fp, ensure_ascii=False)
 
     

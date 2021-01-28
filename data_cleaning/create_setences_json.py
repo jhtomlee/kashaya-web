@@ -4,16 +4,22 @@ import numpy as np
 from os import walk
 import json
 
-with open('vocab-no-images.csv', 'r') as file:
+with open('Kashaya web list - sentences.csv', 'r') as file:
     
     # reads all data from vocab.csv into a dataframe
-    words_df = pd.read_csv('vocab-no-images.csv') 
+    words_df = pd.read_csv("Kashaya web list - sentences.csv") 
+
+    # drops row where at least one column element is missing 
+    words_df.dropna(inplace=True)
 
     # create json_obj for each row in words_df
     json_obj = {}
     for index, row in words_df.iterrows():
         key = row['Filename']
-        categories = [word.strip() for word in row['Categories'].split(';')]
+        if type(row['Categories']) is str:
+            categories = [word.strip() for word in row['Categories'].split('; ')]
+        else:
+            categories = []
         temp = {
             'Filename':row['Filename'],
             'English':row['English'],
@@ -22,6 +28,7 @@ with open('vocab-no-images.csv', 'r') as file:
             'Audio': []
         }
         json_obj[key]=temp
+
 
     # read all files (jpg and mp3 files)
     files = []
@@ -35,27 +42,22 @@ with open('vocab-no-images.csv', 'r') as file:
     # add mp3 file path into json_obj
     path = './static/Files/'
     for mp3_file in mp3_files:
-        temp = mp3_file.split("=")
+        temp = mp3_file.split('=')
         file_name = temp[0]
         if file_name in json_obj:
             json_obj[file_name]['Audio'].append(path+mp3_file)
-        # else:
-        #     print(mp3_file, file_name)
 
-    # get words with no image 
+    # get and delete words with no audio 
     keys_to_delete = set()
-
-    # get words with no audio 
     for key in json_obj:
-        if len(json_obj[key]['Audio']) ==0:
+        if len(json_obj[key]['Audio']) ==0 :
             keys_to_delete.add(key)
-   
-    # delete words with no image or audio
     for key in keys_to_delete:
+        print('del: ', key)
         del json_obj[key]
-
-    #export into json file
-    with open('result_vocab_noimg.json', 'w') as fp :
+    
+    #export 
+    with open('result_setences.json', 'w') as fp :
        json.dump(json_obj, fp, ensure_ascii=False)
 
     
