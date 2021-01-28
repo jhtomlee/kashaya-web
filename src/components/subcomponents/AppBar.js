@@ -121,24 +121,19 @@ export default function TopBar(props) {
               <Typography variant="h6" className={classes.title}>
                 Words (with images)
               </Typography>
-            ) : (
-              <div />
-            )}
-            {version === 'words2' ? (
+            ) : version === 'words2' ? (
               <Typography variant="h6" className={classes.title}>
                 Words (without images)
               </Typography>
-            ) : (
-              <div />
-            )}
-            {version === '/how' ? (
+            ) : version === 'sentences' ? (
+              <Typography variant="h6" className={classes.title}>
+                Sentences
+              </Typography>
+            ) : version === '/how' ? (
               <Typography variant="h6" className={classes.title}>
                 How to use this website
               </Typography>
-            ) : (
-              <div />
-            )}
-            {version === '/about' ? (
+            ) : version === '/about' ? (
               <Typography variant="h6" className={classes.title}>
                 About Kashaya
               </Typography>
@@ -151,10 +146,7 @@ export default function TopBar(props) {
               <Typography variant="h6" className={classes.title}>
                 How to use this website
               </Typography>
-            ) : (
-              <div />
-            )}
-            {version === '/about' ? (
+            ) : version === '/about' ? (
               <Typography variant="h6" className={classes.title}>
                 About Kashaya
               </Typography>
@@ -165,7 +157,9 @@ export default function TopBar(props) {
               {' '}
             </Typography>
           </Hidden>
-          {version === 'words' || version === 'words2' ? (
+          {version === 'words' ||
+          version === 'words2' ||
+          version === 'sentences' ? (
             <div>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
@@ -187,7 +181,9 @@ export default function TopBar(props) {
           ) : (
             <div />
           )}
-          {version === 'words' || version === 'words2' ? (
+          {version === 'words' ||
+          version === 'words2' ||
+          version === 'sentences' ? (
             <IconButton
               style={{ padding: 0, marginLeft: 15 }}
               aria-label="filter list"

@@ -25,6 +25,7 @@
           "avoidEscape": true
         }
       ],
+      "no-nested-ternary": [0],
       "react/jsx-filename-extension": [0],
       "react/jsx-props-no-spreading": [0],
       "react/forbid-prop-types": [2, { "forbid": ["array", "object"], "checkContextTypes": false, "checkChildContextTypes": false }],

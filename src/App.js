@@ -5,6 +5,7 @@ import About from './components/About';
 import How from './components/How';
 import WordsNoImg from './components/WordsNoImg';
 import Words from './components/Words';
+import Sentences from './components/Sentences';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/words2">
           <WordsNoImg />
+        </Route>
+        <Route path="/sentences">
+          <Sentences />
         </Route>
         <Route path="/sentences">
           <WordsNoImg />

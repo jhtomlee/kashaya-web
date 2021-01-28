@@ -103,6 +103,11 @@ function Home() {
               Words (without images)
             </Button>
           </Grid>
+          <Grid item>
+            <Button variant="contained" color="primary" href="/sentences">
+              Sentences
+            </Button>
+          </Grid>
         </Grid>
         <Grid
           container

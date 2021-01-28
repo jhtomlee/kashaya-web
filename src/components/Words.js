@@ -188,7 +188,7 @@ function getComparator(order, orderBy) {
 /**---------------------------------
  * -------AllList Component--------
  * --------------------------------*/
-function AllList() {
+export default function Words() {
   const [rowsState, setRows] = useState(rows);
   const [rowsTemp, setRowsTemp] = useState([]);
   const classes = useStyles();
@@ -578,5 +578,3 @@ function AllList() {
     </div>
   );
 }
-
-export default AllList;

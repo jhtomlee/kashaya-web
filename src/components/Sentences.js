@@ -19,7 +19,7 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 import LoopIcon from '@material-ui/icons/Loop';
 import AppBar from './subcomponents/AppBar';
 import FilterModal2 from './subcomponents/FilterModal2';
-import data from '../static/result_words_noimg.json';
+import data from '../static/result_setences.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -188,7 +188,7 @@ function getComparator(order, orderBy) {
 /**---------------------------------
  * -------AllList Component--------
  * --------------------------------*/
-export default function WordsNoImg() {
+export default function Sentences() {
   const [rowsState, setRows] = useState(rows);
   const [rowsTemp, setRowsTemp] = useState([]);
   const classes = useStyles();
@@ -420,7 +420,7 @@ export default function WordsNoImg() {
         inputRef={inputRef}
         handleOpenFilter={handleOpenFilter}
         filtersCount={filtersCount}
-        version="words2"
+        version="sentences"
       />
       <Container maxWidth="lg" className={classes.container}>
         {/* Table Container */}
@@ -433,11 +433,11 @@ export default function WordsNoImg() {
                   <Grid container direction="row">
                     {orderBy === 'english' ? (
                       <Typography style={{ paddingTop: 3 }}>
-                        English Word
+                        English Sentence
                       </Typography>
                     ) : (
                       <Typography style={{ paddingTop: 3 }}>
-                        Kashaya Word
+                        Kashaya Sentence
                       </Typography>
                     )}
                     <IconButton
@@ -541,15 +541,6 @@ export default function WordsNoImg() {
                         </Grid>
                       </TableCell>
                     </Hidden>
-                    {/* <TableCell align="left">
-                      {row.category.map(cat =>
-                        <Chip
-                          size="small"
-                          label={cat}
-                          color="secondary"
-                          style={{ marginRight: 5, marginBottom: 5 }} />
-                      )}
-                    </TableCell> */}
                   </TableRow>
                 )
               )}
