@@ -117,13 +117,13 @@ export default function TopBar(props) {
           </IconButton>
 
           <Hidden xsDown>
-            {version === 'words' ? (
+            {version === 'imgwords' ? (
               <Typography variant="h6" className={classes.title}>
-                Words (with images)
+                Words with Images
               </Typography>
-            ) : version === 'words2' ? (
+            ) : version === 'allwords' ? (
               <Typography variant="h6" className={classes.title}>
-                Words (without images)
+                All Words
               </Typography>
             ) : version === 'sentences' ? (
               <Typography variant="h6" className={classes.title}>
@@ -157,8 +157,8 @@ export default function TopBar(props) {
               {' '}
             </Typography>
           </Hidden>
-          {version === 'words' ||
-          version === 'words2' ||
+          {version === 'allwords' ||
+          version === 'imgwords' ||
           version === 'sentences' ? (
             <div>
               <div className={classes.search}>
@@ -181,8 +181,8 @@ export default function TopBar(props) {
           ) : (
             <div />
           )}
-          {version === 'words' ||
-          version === 'words2' ||
+          {version === 'allwords' ||
+          version === 'imgwords' ||
           version === 'sentences' ? (
             <IconButton
               style={{ padding: 0, marginLeft: 15 }}

@@ -47,15 +47,6 @@ with open('Kashaya web list - sentences.csv', 'r') as file:
         if file_name in json_obj:
             json_obj[file_name]['Audio'].append(path+mp3_file)
 
-    # get and delete words with no audio 
-    keys_to_delete = set()
-    for key in json_obj:
-        if len(json_obj[key]['Audio']) ==0 :
-            keys_to_delete.add(key)
-    for key in keys_to_delete:
-        print('del: ', key)
-        del json_obj[key]
-    
     #export 
     with open('result_setences.json', 'w') as fp :
        json.dump(json_obj, fp, ensure_ascii=False)

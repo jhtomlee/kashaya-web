@@ -25,13 +25,9 @@ yarn-error.log*
 # data related
 /data_cleaning/details.txt
 /data_cleaning/speakers.txt
-/data_cleaning/vocab.csv
-/data_cleaning/result.json
-/data_cleaning/result_vocab_img.json
-/data_cleaning/result_vocab_noimg.json
 /data_cleaning/result_setences.json
-/data_cleaning/result_words_img.json
-/data_cleaning/result_words_noimg.json
+/data_cleaning/result_all_words.json
+/data_cleaning/result_img_words.json
 /data_cleaning/Files/*
 /data_cleaning/OldFiles/*
 /kashaya-web-pages.txt

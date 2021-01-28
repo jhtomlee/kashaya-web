@@ -45,12 +45,9 @@ with open('Kashaya web list - words.csv', 'r') as file:
     # add mp3 file path into json_obj
     path = './static/Files/'
     for mp3_file in mp3_files:
-        # temp = mp3_file[:-4]
-        # file_name=temp[:-3]
         temp = mp3_file.split('=')
         file_name = temp[0]
 
-        # print("test", file_name)
         if file_name in json_obj:
             json_obj[file_name]['Audio'].append(path+mp3_file)
 
@@ -70,21 +67,18 @@ with open('Kashaya web list - words.csv', 'r') as file:
     #     print('del: ', key)
     #     del json_obj[key]
     
-    # init the two json objects
-    words_json = {}
-    words_noimg_json ={}
+    # init img json
+    words_img_json = {}
 
     # filter json_obj into either words_json or words_noimg_json
     for key in json_obj:
-        if json_obj[key]['Image'] == '':
-            words_noimg_json[key] = json_obj[key]
-        else :
-            words_json[key] = json_obj[key]
+        if not json_obj[key]['Image'] == '':
+            words_img_json[key] = json_obj[key]
 
     #export 
-    with open('result_words_img.json', 'w') as fp :
-       json.dump(words_json, fp, ensure_ascii=False)
-    with open('result_words_noimg.json', 'w') as fp :
-       json.dump(words_noimg_json, fp, ensure_ascii=False)
+    with open('result_img_words.json', 'w') as fp :
+       json.dump(words_img_json, fp, ensure_ascii=False)
+    with open('result_all_words.json', 'w') as fp :
+       json.dump(json_obj, fp, ensure_ascii=False)
 
     

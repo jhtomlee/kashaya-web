@@ -19,7 +19,7 @@ import { makeStyles, fade } from '@material-ui/core/styles';
 import LoopIcon from '@material-ui/icons/Loop';
 import AppBar from './subcomponents/AppBar';
 import FilterModal2 from './subcomponents/FilterModal2';
-import data from '../static/result_words_noimg.json';
+import data from '../static/result_img_words.json';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -188,7 +188,7 @@ function getComparator(order, orderBy) {
 /**---------------------------------
  * -------AllList Component--------
  * --------------------------------*/
-export default function WordsNoImg() {
+export default function WordsImg() {
   const [rowsState, setRows] = useState(rows);
   const [rowsTemp, setRowsTemp] = useState([]);
   const classes = useStyles();
@@ -420,7 +420,7 @@ export default function WordsNoImg() {
         inputRef={inputRef}
         handleOpenFilter={handleOpenFilter}
         filtersCount={filtersCount}
-        version="words2"
+        version="imgwords"
       />
       <Container maxWidth="lg" className={classes.container}>
         {/* Table Container */}
@@ -429,6 +429,7 @@ export default function WordsNoImg() {
             {/* Table Head */}
             <TableHead>
               <TableRow>
+                <TableCell> </TableCell>
                 <TableCell align="left">
                   <Grid container direction="row">
                     {orderBy === 'english' ? (
@@ -453,7 +454,6 @@ export default function WordsNoImg() {
                     <Typography>Listen</Typography>
                   </TableCell>
                 </Hidden>
-                {/* <TableCell style={{width: "30%"}}><Typography>Category</Typography></TableCell> */}
               </TableRow>
             </TableHead>
             {/* Table Body */}
@@ -461,6 +461,24 @@ export default function WordsNoImg() {
               {stableSort(rowsState, getComparator(order, orderBy)).map(
                 (row) => (
                   <TableRow key={row.english}>
+                    <TableCell component="th" scope="row">
+                      <Hidden xsDown>
+                        <img
+                          src={row.img}
+                          width="150"
+                          height="150"
+                          alt="unable to load"
+                        />
+                      </Hidden>
+                      <Hidden smUp>
+                        <img
+                          src={row.img}
+                          width="110"
+                          height="110"
+                          alt="unable to load"
+                        />
+                      </Hidden>
+                    </TableCell>
                     <Hidden xsDown>
                       <TableCell align="left">
                         {orderBy === 'english' ? (
@@ -481,7 +499,7 @@ export default function WordsNoImg() {
                       </TableCell>
                     </Hidden>
                     <Hidden smUp>
-                      <TableCell align="left">
+                      <TableCell align="left" colSpan={2}>
                         {orderBy === 'english' ? (
                           <div>
                             <Typography style={{ fontWeight: 700 }}>
@@ -497,6 +515,11 @@ export default function WordsNoImg() {
                             <Typography>{row.english}</Typography>
                           </div>
                         )}
+                        {/* <Player
+                          style={{ marginTop: 24 }}
+                          speakerPaths={row.speaker}
+                          selectedSpeakers={selectedSpeakers}
+                        /> */}
                         <Grid container direction="column">
                           {row.speaker.map((audio) => (
                             <Button
@@ -541,15 +564,9 @@ export default function WordsNoImg() {
                         </Grid>
                       </TableCell>
                     </Hidden>
-                    {/* <TableCell align="left">
-                      {row.category.map(cat =>
-                        <Chip
-                          size="small"
-                          label={cat}
-                          color="secondary"
-                          style={{ marginRight: 5, marginBottom: 5 }} />
-                      )}
-                    </TableCell> */}
+                    {/* <TableCell > </TableCell> */}
+                    {/* <TableCell align="left">{row.category}</TableCell>
+                    <TableCell align="left">{row.subcategory}</TableCell> */}
                   </TableRow>
                 )
               )}

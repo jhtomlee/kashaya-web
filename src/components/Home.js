@@ -6,11 +6,6 @@ import '../style/style.css';
 const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: 80,
-    // flex:1,
-    // display:"flex",
-    // flexDirection: "column",
-    // justifyContent: "center",
-    // height: "70vh"
   },
   title: {
     paddingBottom: theme.spacing(3),
@@ -43,7 +38,7 @@ function Home() {
               gutterBottom
             >
               {' '}
-              Kashaya Vocabulary{' '}
+              Kashaya Language{' '}
             </Typography>
           </Hidden>
           <Hidden smUp>
@@ -53,17 +48,15 @@ function Home() {
               color="textPrimary"
               gutterBottom
             >
-              Kashaya Vocabulary
+              Kashaya Language
             </Typography>
           </Hidden>
         </div>
         <div className={classes.description}>
           <Typography className={classes.text} align="left" variant="body1">
-            {`Kashaya, also spelled Kashia by the tribe, is one 
-          of seven languages in the Pomoan family. It is the language 
-          of the Kashia Band of Pomo Indians of the Stewarts Point Rancheria.`}
-          </Typography>
-          <Typography className={classes.text} align="left" variant="body1">
+            {`Kashaya is the language of the Kashia Band of Pomo Indians of the Stewarts 
+            Point Rancheria in Sonoma County, California. `}
+
             {'This website was prepared by '}
             <a
               style={{ color: '#A8A8A8' }}
@@ -78,11 +71,13 @@ function Home() {
               style={{ color: '#A8A8A8' }}
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.linkedin.com/in/jhtomlee/"
+              href="https://jhtomlee.com"
             >
               <u>Tom Lee</u>
             </a>
-            . Click on one of the following to continue:
+            {
+              ' to make available resources for learning about Kashaya. Click on one of the buttons to continue:'
+            }
           </Typography>
         </div>
         <Grid
@@ -94,13 +89,13 @@ function Home() {
           className={classes.buttonsContainer}
         >
           <Grid item>
-            <Button variant="contained" color="primary" href="/words">
-              Words (with images)
+            <Button variant="contained" color="primary" href="/imgwords">
+              Words with Images
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="primary" href="/words2">
-              Words (without images)
+            <Button variant="contained" color="primary" href="/allwords">
+              All Words
             </Button>
           </Grid>
           <Grid item>
